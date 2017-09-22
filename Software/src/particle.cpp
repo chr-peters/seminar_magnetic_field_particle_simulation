@@ -13,4 +13,5 @@ std::ostream &operator<<(std::ostream &os, const Particle &p) {
   os << "{location: " << p.location << ", momentum: " << p.momentum <<
     ", mass: " << p.mass << ", charge: " << p.charge << ", energy: " << p.energy
      << ", time: " << p.time << "}";
+  return os;
 }

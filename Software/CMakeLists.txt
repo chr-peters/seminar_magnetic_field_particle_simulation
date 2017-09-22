@@ -18,6 +18,7 @@ list(REMOVE_ITEM SOURCES ${CMAKE_SOURCE_DIR}/${PROJECT_MAIN_FILE})
 
 # create a static library from the source files
 add_library(propagator STATIC ${SOURCES})
+target_compile_options(propagator PUBLIC ${COMPILER_FLAGS})
 
 # build the main-executable
 add_executable(run.exe ${PROJECT_MAIN_FILE})

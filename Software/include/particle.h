@@ -2,6 +2,7 @@
 #define PARTICLE_H
 
 #include "vector3d.h"
+#include "propagator.h"
 
 #include<iostream>
 
@@ -16,7 +17,7 @@ public:
   inline Vector3D getLocation() const { return location; }
   inline Vector3D getMomentum() const { return momentum; }
   friend std::ostream &operator<<(std::ostream &os, const Particle &p);
-  // TODO Propagator as friend
+  friend class Propagator;
 private:
   double time;
   double energy;
