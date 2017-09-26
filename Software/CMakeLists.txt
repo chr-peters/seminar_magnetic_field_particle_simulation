@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 set(PROJECT_NAME "Seminararbeit")
-set(PROJECT_MAIN_FILE src/main.cpp)
+#set(PROJECT_MAIN_FILE src/main.cpp)
 set(COMPILER_FLAGS -std=c++11 -Wall)
 
 # get the compile options for root necessary to build the examples
@@ -29,16 +29,16 @@ file(GLOB SOURCES src/*.cpp)
 file(GLOB EXAMPLES examples/*.cpp)
 
 # remove the .cpp file that contains the main method from the source files
-list(REMOVE_ITEM SOURCES ${CMAKE_SOURCE_DIR}/${PROJECT_MAIN_FILE})
+#list(REMOVE_ITEM SOURCES ${CMAKE_SOURCE_DIR}/${PROJECT_MAIN_FILE})
 
 # create a static library from the source files
 add_library(propagator STATIC ${SOURCES})
 target_compile_options(propagator PUBLIC ${COMPILER_FLAGS})
 
 # build the main-executable
-add_executable(run.exe ${PROJECT_MAIN_FILE})
-target_link_libraries(run.exe propagator)
-target_compile_options(run.exe PUBLIC ${COMPILER_FLAGS})
+#add_executable(run.exe ${PROJECT_MAIN_FILE})
+#target_link_libraries(run.exe propagator)
+#target_compile_options(run.exe PUBLIC ${COMPILER_FLAGS})
 
 # build the examples
 foreach(CUREXAMPLE ${EXAMPLES})
