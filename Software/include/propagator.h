@@ -12,7 +12,7 @@ class Particle;
 class Propagator {
 public:
   Propagator(const FieldDescriptor &fieldDescriptor): fieldDescriptor(fieldDescriptor){}
-  std::vector<Vector3D> getPoints(Particle particle, double simulationTime);
+  std::vector<Vector3D> getPoints(Particle &particle, double simulationTime);
 private:
   const FieldDescriptor &fieldDescriptor;
 };

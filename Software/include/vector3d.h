@@ -11,10 +11,25 @@ public:
    * Creates the null vector.
    */
   Vector3D(): x(0), y(0), z(0) {}
+
+  //TODO division operator
+  
+  /**
+   * Scalar multiplication.
+   */
+  Vector3D& operator*=(float a);
+  /**
+   * Vector addition.
+   */
+  Vector3D& operator+=(const Vector3D &rhs);
   /**
    * Prints the vector to the desired outstream.
    */
   friend std::ostream &operator<<(std::ostream &os, const Vector3D& v);
+  /**
+   * Cross product.
+   */
+  friend Vector3D crossProduct(const Vector3D &a, const Vector3D &b);
   double x;
   double y;
   double z;
@@ -24,5 +39,17 @@ public:
  * Prints the vector to the desired outstream.
  */
 std::ostream &operator<<(std::ostream &os, const Vector3D& v);
+
+/**
+ * Multiplication scalar - vector and vector - scalar
+ */
+Vector3D operator*(float a, const Vector3D &v);
+Vector3D operator*(const Vector3D &v, float a);
+Vector3D operator+(const Vector3D &lhs, const Vector3D &rhs);
+
+/**
+ * Cross product.
+ */
+Vector3D crossProduct(const Vector3D &a, const Vector3D &b);
 
 #endif
