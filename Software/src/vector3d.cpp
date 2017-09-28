@@ -18,20 +18,24 @@ Vector3D operator+(const Vector3D &lhs, const Vector3D &rhs) {
   return res;
 }
 
-Vector3D& Vector3D::operator*=(float a) {
+Vector3D& Vector3D::operator*=(double a) {
   this->x*=a;
   this->y*=a;
   this->z*=a;
   return *this;
 }
 
-Vector3D operator*(float a, const Vector3D &v) {
+Vector3D operator*(double a, const Vector3D &v) {
   Vector3D res(v);
   res*=a;
   return res;
 }
 
-Vector3D operator*(const Vector3D &v, float a) {
+double operator*(const Vector3D &lhs, const Vector3D &rhs) {
+  return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+}
+
+Vector3D operator*(const Vector3D &v, double a) {
   return a*v;
 }
 

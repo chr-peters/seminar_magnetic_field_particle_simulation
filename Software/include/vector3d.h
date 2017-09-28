@@ -17,7 +17,7 @@ public:
   /**
    * Scalar multiplication.
    */
-  Vector3D& operator*=(float a);
+  Vector3D& operator*=(double a);
   /**
    * Vector addition.
    */
@@ -41,10 +41,12 @@ public:
 std::ostream &operator<<(std::ostream &os, const Vector3D& v);
 
 /**
- * Multiplication scalar - vector and vector - scalar
+ * Multiplication scalar - vector, vector - scalar and vector - vector
  */
-Vector3D operator*(float a, const Vector3D &v);
-Vector3D operator*(const Vector3D &v, float a);
+Vector3D operator*(double a, const Vector3D &v);
+Vector3D operator*(const Vector3D &v, double a);
+double operator*(const Vector3D &lhs, const Vector3D &rhs);
+
 Vector3D operator+(const Vector3D &lhs, const Vector3D &rhs);
 
 /**

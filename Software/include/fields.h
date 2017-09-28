@@ -8,9 +8,9 @@ public:
   virtual Vector3D getStrength(const Vector3D &location) const =0;
 };
 
-class HomogenousField: public FieldDescriptor {
+class HomogeneousField: public FieldDescriptor {
 public:
-  HomogenousField(const Vector3D &strength): strength(strength) {}
+  HomogeneousField(const Vector3D &strength): strength(strength) {}
   Vector3D getStrength(const Vector3D &location) const override {
     return strength;
   }

@@ -14,7 +14,7 @@ int main () {
   Particle particle(0, 1, 1, 0.5, location, momentum);
 
   Vector3D fieldStrength(0.1, 0.1, 0);
-  HomogenousField field(fieldStrength);
+  HomogeneousField field(fieldStrength);
   Propagator propagator(field);
   std::vector<Vector3D> points = propagator.getPoints(particle, 200);
   plot("Homogeneous Field Example", points);
