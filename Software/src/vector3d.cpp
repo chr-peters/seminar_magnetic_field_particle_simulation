@@ -18,6 +18,10 @@ Vector3D operator+(const Vector3D &lhs, const Vector3D &rhs) {
   return res;
 }
 
+Vector3D operator-(const Vector3D &lhs, const Vector3D &rhs) {
+  return lhs + (-1 * rhs);
+}
+
 Vector3D& Vector3D::operator*=(double a) {
   this->x*=a;
   this->y*=a;

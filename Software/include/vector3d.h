@@ -48,6 +48,7 @@ Vector3D operator*(const Vector3D &v, double a);
 double operator*(const Vector3D &lhs, const Vector3D &rhs);
 
 Vector3D operator+(const Vector3D &lhs, const Vector3D &rhs);
+Vector3D operator-(const Vector3D &lhs, const Vector3D &rhs);
 
 /**
  * Cross product.

@@ -44,7 +44,7 @@ void plot(std::string title, const std::vector<Vector3D> &points){
   system("rm plot.plt");
 }
 
-void plot(std::string title, const std::vector<Vector3D> &points, const Plane3D &plane){
+void plot(std::string title, const std::vector<Vector3D> &points, const std::vector<Vector3D> &intersectionPoints, const Plane3D &plane){
   // first write the data points to a temporary file so gnuplot will be able to open it
   std::ofstream outFile;
   outFile.open("points.txt");
@@ -57,6 +57,18 @@ void plot(std::string title, const std::vector<Vector3D> &points, const Plane3D 
     return;
   }
   outFile.close();
+
+  // now write the intersectionPoints to a temporary file
+  std::ofstream outIntersectionFile;
+  outIntersectionFile.open("intersectionPoints.txt");
+  if (outIntersectionFile.is_open()) {
+    for (auto curPoint : intersectionPoints) {
+      outIntersectionFile << curPoint << std::endl;
+    }
+  } else {
+    std::cerr << "Could not write intersection points to temporary file!" << std::endl;
+    return;
+  }
 
   // now create the instruction file for gnuplot
   std::ofstream gnuplotFile;
@@ -79,7 +91,7 @@ void plot(std::string title, const std::vector<Vector3D> &points, const Plane3D 
     if (normalVector.y > 0)
       gnuplotScript << " - ";
     gnuplotScript << normalVector.y / normalVector.z << " * y" <<  std::endl;
-    gnuplotScript << "splot 'points.txt' with linespoints,  z(x, y)" << std::endl;
+    gnuplotScript << "splot 'points.txt' with linespoints, 'intersectionPoints.txt' with points pointtype 7 lc rgb 'red', z(x, y)" << std::endl;
 
     gnuplotFile << gnuplotScript.str() << std::endl;
 

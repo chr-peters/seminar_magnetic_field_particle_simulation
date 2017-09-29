@@ -1,8 +1,8 @@
 #include "propagator.h"
 
 std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulationTime) {
-  std:: vector<Vector3D> res;
-  double timeStep = simulationTime / 3000;
+  std::vector<Vector3D> res;
+  double timeStep = simulationTime / 1000;
   double startTime = 0;
   res.push_back(particle.location);
   while (startTime <= simulationTime) {
@@ -21,6 +21,29 @@ std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulatio
     
     startTime += timeStep;
     res.push_back(particle.location);
+  }
+  return res;
+}
+
+std::vector<Vector3D> Propagator::getIntersectionPoints(Particle &particle, const Plane3D& plane, double simulationTime) {
+  // the result
+  std::vector<Vector3D> res;
+  // first get the points
+  std::vector<Vector3D> points = getPoints(particle, simulationTime);
+  // get plane properties
+  Vector3D normalVector = plane.getNormalVector();
+  double d = normalVector * plane.getPointInPlane();
+  // iterate over the points and check if the line between two points intersects with the plane
+  for (unsigned int i=0; i<points.size()-1; i++) {
+    double t0 = d - normalVector * points[i];
+    double t1 = d - normalVector * points[i+1];
+    if (t0 * t1 <= 0) {
+      // The sign of t0 and t1 is not the same so an intersection occured
+      // get the intersection point of the line between points i and i+1 and the plane
+      Vector3D deltaP = points[i+1] - points[i];
+      double t = (d - normalVector * points[i])/(normalVector * deltaP);
+      res.push_back(points[i] + t * deltaP);
+    }
   }
   return res;
 }
