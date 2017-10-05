@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <cmath>
 
 #include "plane3d.h"
 
@@ -83,17 +84,46 @@ void plot(std::string title, const std::vector<Vector3D> &points, const std::vec
     // special treatment necessary when the z coordinate of the normal vector is zero
     Vector3D normalVector = plane.getNormalVector();
     Vector3D pointInPlane = plane.getPointInPlane();
-    gnuplotScript << "z(x, y)=";
-    gnuplotScript << (normalVector * pointInPlane) / normalVector.z;
-    if (normalVector.x > 0)
-      gnuplotScript << " - ";
-    gnuplotScript << normalVector.x / normalVector.z << " * x";
-    if (normalVector.y > 0)
-      gnuplotScript << " - ";
-    gnuplotScript << normalVector.y / normalVector.z << " * y" <<  std::endl;
-    gnuplotScript << "splot 'points.txt' with linespoints, 'intersectionPoints.txt' with points pointtype 7 lc rgb 'red', z(x, y)" << std::endl;
+    double d = normalVector * pointInPlane;
+    if (normalVector.z != 0) {
+      gnuplotScript << "z(x, y)=";
+      gnuplotScript << d / normalVector.z;
+      if (normalVector.x / normalVector.z > 0)
+	gnuplotScript << " - ";
+      else
+	gnuplotScript << " + ";
+      gnuplotScript << abs(normalVector.x / normalVector.z) << " * x";
+      if (normalVector.y / normalVector.z > 0)
+	gnuplotScript << " - ";
+      else
+	gnuplotScript << " + ";
+      gnuplotScript << abs(normalVector.y / normalVector.z) << " * y" <<  std::endl;
+      gnuplotScript << "splot 'points.txt' with linespoints, 'intersectionPoints.txt' with points pointtype 7 lc rgb 'red', z(x, y)" << std::endl;
+    } else if (normalVector.y != 0) {
+      gnuplotScript << "set parametric" << std::endl;
+      gnuplotScript << "splot 'points.txt' with linespoints, 'intersectionPoints.txt' with points pointtype 7 lc rgb 'red', u, ";
+      gnuplotScript << d/normalVector.y;
+      if (normalVector.x / normalVector.y > 0)
+	gnuplotScript << " - ";
+      else
+	gnuplotScript << " + ";
+      gnuplotScript << abs(normalVector.x / normalVector.y) << " * u, v";
+    } else if (normalVector.x != 0) {
+      gnuplotScript << "set parametric" << std::endl;
+      gnuplotScript << "splot 'points.txt' with linespoints, 'intersectionPoints.txt' with points pointtype 7 lc rgb 'red', ";
+      gnuplotScript << d/normalVector.x;
+      if (normalVector.y / normalVector.x > 0)
+	gnuplotScript << " - ";
+      else
+	gnuplotScript << " + ";
+      gnuplotScript << abs(normalVector.y / normalVector.x) << " * u, u, v";
+    } else {
+      // the normal vector of the plane is the null vector
+      std::cerr << "Could not plot plane, normal vector is null vector!" << std::endl;
+    }
 
     gnuplotFile << gnuplotScript.str() << std::endl;
+    std::cout << gnuplotScript.str() << std::endl;
 
   } else {
     std::cerr << "Could not write points to temporary file!" << std::endl;

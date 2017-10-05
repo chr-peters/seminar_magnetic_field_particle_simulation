@@ -21,7 +21,7 @@ int main () {
   HomogeneousField field(fieldStrength);
 
   // initialize the plane
-  Vector3D normalVector(1, 1, 20);
+  Vector3D normalVector(1, 0, 0);
   Vector3D pointInPlane(60, 200, -10);
   Plane3D plane(pointInPlane, normalVector);
 
