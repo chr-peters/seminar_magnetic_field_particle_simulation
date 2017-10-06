@@ -107,7 +107,10 @@ void plot(std::string title, const std::vector<Vector3D> &points, const std::vec
 	gnuplotScript << " - ";
       else
 	gnuplotScript << " + ";
-      gnuplotScript << abs(normalVector.x / normalVector.y) << " * u, v";
+      gnuplotScript << abs(normalVector.x / normalVector.y) << " * u, v" << std::endl;
+      gnuplotScript << "set vrange [GPVAL_Z_MIN:GPVAL_Z_MAX]" << std::endl;
+      gnuplotScript << "set urange [GPVAL_X_MIN:GPVAL_X_MAX]" << std::endl;
+      gnuplotScript << "replot";
     } else if (normalVector.x != 0) {
       gnuplotScript << "set parametric" << std::endl;
       gnuplotScript << "splot 'points.txt' with linespoints, 'intersectionPoints.txt' with points pointtype 7 lc rgb 'red', ";
@@ -116,14 +119,16 @@ void plot(std::string title, const std::vector<Vector3D> &points, const std::vec
 	gnuplotScript << " - ";
       else
 	gnuplotScript << " + ";
-      gnuplotScript << abs(normalVector.y / normalVector.x) << " * u, u, v";
+      gnuplotScript << abs(normalVector.y / normalVector.x) << " * u, u, v" << std::endl;
+      gnuplotScript << "set vrange [GPVAL_Z_MIN:GPVAL_Z_MAX]" << std::endl;
+      gnuplotScript << "set urange [GPVAL_Y_MIN:GPVAL_Y_MAX]" << std::endl;
+      gnuplotScript << "replot";
     } else {
       // the normal vector of the plane is the null vector
       std::cerr << "Could not plot plane, normal vector is null vector!" << std::endl;
     }
 
     gnuplotFile << gnuplotScript.str() << std::endl;
-    std::cout << gnuplotScript.str() << std::endl;
 
   } else {
     std::cerr << "Could not write points to temporary file!" << std::endl;
