@@ -12,8 +12,22 @@ public:
    */
   Vector3D(): x(0), y(0), z(0) {}
 
-  //TODO division operator
-  
+  /**
+   * First rotates around the X axis and then around the rotated Y axis Y'
+   *
+   * @param alpha The angle around the X axis in radians
+   * @param beta The angle around the Y' axis in radians
+   */
+  Vector3D rotateXY(double alpha, double beta);
+
+  /**
+   * First rotates around the Y axis and then around the rotated X axis X'
+   *
+   * @param alpha The angle around the Y axis in radians
+   * @param beta The angle around the X' axis in radians
+   */
+  Vector3D rotateYX(double alpha, double beta);
+
   /**
    * Scalar multiplication.
    */

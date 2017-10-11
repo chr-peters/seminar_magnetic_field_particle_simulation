@@ -1,27 +1,34 @@
 #include "propagator.h"
 
+#include<cmath>
+
 std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulationTime) {
   std::vector<Vector3D> res;
-  double timeStep = simulationTime / 1000;
+  double timeStep = simulationTime / 50;
   double startTime = 0;
   res.push_back(particle.location);
-  while (startTime <= simulationTime) {
-    // get the magnetic field at the position of the particle
-    Vector3D magneticField = fieldDescriptor.getStrength(particle.location);
-    // get the current momentum of the particle
-    Vector3D initialMomentum = particle.momentum;
-    // get the update of the momentum by calculating the lorentz force
-    Vector3D momentumUpdate = particle.charge * crossProduct(initialMomentum, magneticField) * (timeStep / particle.mass);
-    // get the update of the location
-    Vector3D locationUpdate = initialMomentum * (timeStep/particle.mass) +  momentumUpdate * (timeStep/particle.mass);
-    // update the parameters of the particle
-    particle.location += locationUpdate;
-    particle.momentum += momentumUpdate;
-    particle.time += timeStep;
-    
-    startTime += timeStep;
-    res.push_back(particle.location);
-  }
+
+  // TODO transform the relevant vectors
+
+  // get the magnetic field at the position of the particle
+  Vector3D magneticField = fieldDescriptor.getStrength(particle.location);
+  // get the current momentum of the particle
+  Vector3D initialMomentum = particle.momentum;
+
+  // get the radius of the circle
+  double r = std::abs(initialMomentum.y / (particle.charge * magneticField.z));
+  // get the angular velocity
+  double w = std::abs(particle.charge * magneticField.z / particle.mass);
+
+  // get the new position of the particle
+  particle.location.z = initialMomentum.z * startTime / particle.mass;
+  particle.location.x = r * sin(w * startTime) - r;
+  particle.location.y = r * cos(w * startTime);
+
+  // transform the position back to where it was initially
+
+  res.push_back(particle.location);
+
   return res;
 }
 

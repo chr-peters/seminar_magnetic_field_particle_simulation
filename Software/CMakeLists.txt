@@ -15,7 +15,8 @@ file(GLOB SOURCES src/*.cpp)
 # retrieve the example files
 file(GLOB EXAMPLES examples/*.cpp)
 
-# remove the .cpp file that contains the main method from the source files
+# retrieve the test files
+file(GLOB TESTS testcases/*.cpp)
 
 # create a static library from the source files
 add_library(propagator STATIC ${SOURCES})
@@ -29,3 +30,17 @@ foreach(CUREXAMPLE ${EXAMPLES})
   target_link_libraries(${CURNAME}.exe propagator)
   target_compile_options(${CURNAME}.exe PUBLIC ${COMPILER_FLAGS})
 endforeach(CUREXAMPLE)
+
+# check if gtest and pthread is available
+find_package(GTest REQUIRED)
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+find_package(Threads REQUIRED)
+
+# build the testcases
+foreach(CURTEST ${TESTS})
+  get_filename_component(CURNAME ${CURTEST} NAME_WE)
+  add_executable(${CURNAME}.exe ${CURTEST})
+  set_target_properties(${CURNAME}.exe PROPERTIES RUNTIME_OUTPUT_DIRECTORY testcases)
+  target_link_libraries(${CURNAME}.exe propagator ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+  target_compile_options(${CURNAME}.exe PUBLIC ${COMPILER_FLAGS})
+endforeach(CURTEST)
