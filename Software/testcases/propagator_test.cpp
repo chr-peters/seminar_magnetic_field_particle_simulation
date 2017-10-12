@@ -85,6 +85,16 @@ TEST(PropagatorTest, TestGetGammaNegative) {
   ASSERT_NEAR(result.z, 0, 1e-6);
 }
 
+TEST(PropagatorTest, TestGetGammaNull) {
+  Vector3D testVector(0, 0, 1);
+  Vector3D yAxis(0, 1, 0);
+  double gamma = getGamma(testVector);
+  Vector3D result = yAxis.rotateZ(gamma);
+  ASSERT_NEAR(result.x, 0, 1e-6);
+  ASSERT_NEAR(result.y, 1, 1e-6);
+  ASSERT_NEAR(result.z, 0, 1e-6);
+}
+
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

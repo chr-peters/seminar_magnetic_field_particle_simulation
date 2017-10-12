@@ -20,9 +20,9 @@ private:
 };
 
 
-double getAlpha(Vector3D target);
-double getBeta(Vector3D target);
-double getGamma(Vector3D target);
+double getAlpha(Vector3D target, double eps = 1e-7);
+double getBeta(Vector3D target, double eps = 1e-7);
+double getGamma(Vector3D target, double eps = 1e-7);
 
 
 #endif

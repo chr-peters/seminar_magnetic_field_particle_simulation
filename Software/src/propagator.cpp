@@ -6,30 +6,55 @@ const double PI = 4*atan(1);
 
 std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulationTime) {
   std::vector<Vector3D> res;
-  double timeStep = simulationTime / 50;
+  double timeStep = simulationTime / 100;
   double startTime = 0;
   res.push_back(particle.location);
 
-  // TODO transform the relevant vectors
+  while (startTime < simulationTime) {
 
-  // get the magnetic field at the position of the particle
-  Vector3D magneticField = fieldDescriptor.getStrength(particle.location);
-  // get the current momentum of the particle
-  Vector3D initialMomentum = particle.momentum;
+    // get the magnetic field at the position of the particle
+    Vector3D originalMagneticField = fieldDescriptor.getStrength(particle.location);
+    // get the current momentum of the particle
+    Vector3D originalInitialMomentum = particle.momentum;
 
-  // get the radius of the circle
-  double r = std::abs(initialMomentum.y / (particle.charge * magneticField.z));
-  // get the angular velocity
-  double w = std::abs(particle.charge * magneticField.z / particle.mass);
+    // transform the relevant vectors
+    double alpha = getAlpha(originalMagneticField);
+    double beta = getBeta(originalMagneticField);
+    Vector3D magneticField = originalMagneticField.rotateXY(-beta, -alpha);
+    Vector3D initialMomentum = originalInitialMomentum.rotateXY(-beta, -alpha);
+    double gamma = getGamma(initialMomentum);
+    initialMomentum = initialMomentum.rotateZ(-gamma);
 
-  // get the new position of the particle
-  particle.location.z = initialMomentum.z * startTime / particle.mass;
-  particle.location.x = r * sin(w * startTime) - r;
-  particle.location.y = r * cos(w * startTime);
+    // in the new base, the current location of the particle is at the origin
+    Vector3D curLocation;
 
-  // transform the position back to where it was initially
+    // get the radius of the circle
+    double r = std::abs(initialMomentum.y / (particle.charge * magneticField.z));
+    // get the angular velocity
+    double w = std::abs(particle.charge * magneticField.z / particle.mass);
+    // the angle the particle moves on the circle
+    double phi = w * timeStep;
 
-  res.push_back(particle.location);
+    // get the new position of the particle
+    curLocation.z = initialMomentum.z * timeStep / particle.mass;
+    curLocation.x = r * std::sin(phi) - r;
+    curLocation.y = r * std::cos(phi);
+
+    // transform the position back to where it was initially
+    curLocation = curLocation.rotateZ(gamma).rotateYX(alpha, beta);
+    
+    particle.location.x += curLocation.x;
+    particle.location.y += curLocation.y;
+    particle.location.z += curLocation.z;
+
+    // remove rounding errors before transforming back
+    initialMomentum.x = 0;
+
+    particle.momentum = initialMomentum.rotateZ(gamma+phi).rotateYX(alpha, beta);
+
+    res.push_back(particle.location);
+    startTime += timeStep;
+  }
 
   return res;
 }
@@ -57,9 +82,13 @@ std::vector<Vector3D> Propagator::getIntersectionPoints(Particle &particle, cons
   return res;
 }
 
-double getAlpha(Vector3D target) {
+double getAlpha(Vector3D target, double eps) {
   // project the target onto the xz-plane
   target.y = 0;
+
+  if (target.norm() < eps) {
+    return 0;
+  }
 
   // get the angle between the projection and the z-axis
   double alpha = std::acos(target.z/target.norm());
@@ -69,16 +98,24 @@ double getAlpha(Vector3D target) {
     return alpha;
 }
 
-double getBeta(Vector3D target) {
+double getBeta(Vector3D target, double eps) {
+  if (target.norm() < eps) {
+    return 0;
+  }
+  
   if (target.y < 0)
     return PI/2 - std::acos(-target.y/target.norm());
   else
     return std::acos(target.y/target.norm()) - PI/2;
 }
 
-double getGamma(Vector3D target) {
+double getGamma(Vector3D target, double eps) {
   // project the target onto the xy-plane
   target.z = 0;
+
+  if(target.norm() < eps) {
+    return 0;
+  }
 
   // get the angle between the projection and the y-axis
   double gamma = std::acos(target.y/target.norm());
