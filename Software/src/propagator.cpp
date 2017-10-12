@@ -2,6 +2,8 @@
 
 #include<cmath>
 
+const double PI = 4*atan(1);
+
 std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulationTime) {
   std::vector<Vector3D> res;
   double timeStep = simulationTime / 50;
@@ -53,4 +55,35 @@ std::vector<Vector3D> Propagator::getIntersectionPoints(Particle &particle, cons
     }
   }
   return res;
+}
+
+double getAlpha(Vector3D target) {
+  // project the target onto the xz-plane
+  target.y = 0;
+
+  // get the angle between the projection and the z-axis
+  double alpha = std::acos(target.z/target.norm());
+  if (target.x < 0)
+    return -alpha;
+  else
+    return alpha;
+}
+
+double getBeta(Vector3D target) {
+  if (target.y < 0)
+    return PI/2 - std::acos(-target.y/target.norm());
+  else
+    return std::acos(target.y/target.norm()) - PI/2;
+}
+
+double getGamma(Vector3D target) {
+  // project the target onto the xy-plane
+  target.z = 0;
+
+  // get the angle between the projection and the y-axis
+  double gamma = std::acos(target.y/target.norm());
+  if (target.x < 0)
+    return gamma;
+  else
+    return -gamma;
 }

@@ -2,6 +2,7 @@
 #define VECTOR3D_H
 
 #include<iostream>
+#include<cmath>
 
 class Vector3D {
 public:
@@ -27,6 +28,20 @@ public:
    * @param beta The angle around the X' axis in radians
    */
   Vector3D rotateYX(double alpha, double beta);
+
+  /**
+   * Rotates around the Z axis
+   *
+   * @param alpha The angle in radians.
+   */
+  Vector3D rotateZ(double alpha);
+
+  /**
+   * @return The euclidean norm.
+   */
+  inline double norm() {
+    return sqrt(x*x + y*y + z*z);
+  }
 
   /**
    * Scalar multiplication.

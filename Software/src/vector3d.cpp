@@ -54,6 +54,7 @@ Vector3D crossProduct(const Vector3D &a, const Vector3D &b) {
 
 Vector3D Vector3D::rotateXY(double alpha, double beta) {
   Vector3D res;
+  
   // helper variables
   double a = std::sin(alpha);
   double b = std::cos(alpha);
@@ -70,6 +71,7 @@ Vector3D Vector3D::rotateXY(double alpha, double beta) {
 
 Vector3D Vector3D::rotateYX(double alpha, double beta) {
   Vector3D res;
+  
   // helper variables
   double a = std::sin(alpha);
   double b = std::cos(alpha);
@@ -80,6 +82,20 @@ Vector3D Vector3D::rotateYX(double alpha, double beta) {
   res.x = b*x + a*c*y + a*d*z;
   res.y = d*y - c*z;
   res.z = -a*x + b*c*y + b*d*z;
+
+  return res;
+}
+
+Vector3D Vector3D::rotateZ(double alpha) {
+  Vector3D res;
+  
+  // helper variables
+  double a = std::sin(alpha);
+  double b = std::cos(alpha);
+
+  res.x = b*x - a*y;
+  res.y = a*x + b*y;
+  res.z = z;
 
   return res;
 }

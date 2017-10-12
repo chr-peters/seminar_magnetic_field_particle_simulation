@@ -39,6 +39,14 @@ TEST(Vector3DTest, TestRotateYX) {
   ASSERT_NEAR(result.z, 0, 1e-6);
 }
 
+TEST(Vector3DTest, TestRotateZ) {
+  Vector3D testVector(1, 0, 1);
+  Vector3D result = testVector.rotateZ(PI/4);
+  ASSERT_NEAR(result.x, 0.7071068, 1e-6);
+  ASSERT_NEAR(result.y, 0.7071068, 1e-6);
+  ASSERT_NEAR(result.z, 1, 1e-6);
+}
+
 TEST(Vector3DTest, TestRotateBoth) {
   Vector3D testVector(0, 0, 1);
   Vector3D result = testVector.rotateXY(1, 2).rotateYX(-2, -1);

@@ -19,4 +19,10 @@ private:
   const FieldDescriptor &fieldDescriptor;
 };
 
+
+double getAlpha(Vector3D target);
+double getBeta(Vector3D target);
+double getGamma(Vector3D target);
+
+
 #endif
