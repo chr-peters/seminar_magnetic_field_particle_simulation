@@ -6,7 +6,7 @@ const double PI = 4*atan(1);
 
 std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulationTime) {
   std::vector<Vector3D> res;
-  double timeStep = simulationTime / 100;
+  double timeStep = simulationTime / 150;
   double startTime = 0;
   res.push_back(particle.location);
 
