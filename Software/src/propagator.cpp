@@ -4,13 +4,17 @@
 
 const double PI = 4*atan(1);
 
-std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulationTime) {
-  std::vector<Vector3D> res;
-  double timeStep = simulationTime / 150;
+std::vector<Particle> Propagator::getTrack(Particle particle, double maxDistance, Vector3D referencePoint) {
+  std::vector<Particle> res;
   double startTime = 0;
-  res.push_back(particle.location);
+  res.push_back(particle);
 
-  while (startTime < simulationTime) {
+  // calculate the initial time step
+  double velocity = particle.momentum.norm() / particle.mass;
+  double completeTime = maxDistance / velocity;
+  double timeStep = completeTime / 200; // at least 100 time steps
+
+  while ((particle.location - referencePoint).norm() < maxDistance) {
 
     // get the magnetic field at the position of the particle
     Vector3D originalMagneticField = fieldDescriptor.getStrength(particle.location);
@@ -52,18 +56,29 @@ std::vector<Vector3D> Propagator::getPoints(Particle &particle, double simulatio
 
     particle.momentum = initialMomentum.rotateZ(gamma+phi).rotateYX(alpha, beta);
 
-    res.push_back(particle.location);
+    // update the time
+    particle.time += timeStep;
+
+    res.push_back(particle);
     startTime += timeStep;
   }
 
   return res;
 }
 
-std::vector<Vector3D> Propagator::getIntersectionPoints(Particle &particle, const Plane3D& plane, double simulationTime) {
+std::vector<Vector3D> Propagator::getPoints(Particle particle, double maxDistance, Vector3D referencePoint) {
+  std::vector<Vector3D> res;
+  for (auto curParticle: this->getTrack(particle, maxDistance, referencePoint)) {
+    res.push_back(curParticle.location);
+  }
+  return res;
+}
+
+std::vector<Vector3D> Propagator::getIntersectionPoints(Particle particle, const Plane3D& plane, double maxDistance, Vector3D referencePoint) {
   // the result
   std::vector<Vector3D> res;
   // first get the points
-  std::vector<Vector3D> points = getPoints(particle, simulationTime);
+  std::vector<Vector3D> points = getPoints(particle, maxDistance, referencePoint);
   // get plane properties
   Vector3D normalVector = plane.getNormalVector();
   double d = normalVector * plane.getPointInPlane();

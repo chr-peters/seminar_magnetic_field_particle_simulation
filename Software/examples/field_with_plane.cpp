@@ -14,7 +14,6 @@ int main () {
   Vector3D momentum(1, 1, 1);
   Vector3D location(1, 1, 1);
   Particle particle(0, 1, 1, 0.5, location, momentum);
-  Particle particle2(particle);
 
   // initialize the field
   Vector3D fieldStrength(0.1, 0.1, 0);
@@ -27,7 +26,7 @@ int main () {
 
   // get the relevant points
   Propagator propagator(field);
-  std::vector<Vector3D> points = propagator.getPoints(particle, 200);
-  std::vector<Vector3D> intersectionPoints = propagator.getIntersectionPoints(particle2, plane, 200);
+  std::vector<Vector3D> points = propagator.getPoints(particle, 1000, location);
+  std::vector<Vector3D> intersectionPoints = propagator.getIntersectionPoints(particle, plane, 1000, location);
   plot("Homogeneous field with plane intersection", points, intersectionPoints, plane);
 }

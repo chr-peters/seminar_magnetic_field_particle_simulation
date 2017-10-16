@@ -13,8 +13,9 @@ class Particle;
 class Propagator {
 public:
   Propagator(const FieldDescriptor &fieldDescriptor): fieldDescriptor(fieldDescriptor){}
-  std::vector<Vector3D> getPoints(Particle &particle, double simulationTime);
-  std::vector<Vector3D> getIntersectionPoints(Particle &particle, const Plane3D &plane, double simulationTime);
+  std::vector<Vector3D> getPoints(Particle particle, double maxDistance, Vector3D referencePoint);
+  std::vector<Particle> getTrack(Particle particle, double maxDistance, Vector3D referencePoint);
+  std::vector<Vector3D> getIntersectionPoints(Particle particle, const Plane3D &plane, double maxDistance, Vector3D referencePoint);
 private:
   const FieldDescriptor &fieldDescriptor;
 };
