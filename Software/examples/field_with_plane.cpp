@@ -5,6 +5,7 @@
 #include "fields.h"
 #include "propagator.h"
 #include "plane3d.h"
+#include "conditions.h"
 
 #include<vector>
 #include<iostream>
@@ -26,7 +27,7 @@ int main () {
 
   // get the relevant points
   Propagator propagator(field);
-  std::vector<Vector3D> points = propagator.getPoints(particle, 1000, location);
-  std::vector<Vector3D> intersectionPoints = propagator.getIntersectionPoints(particle, plane, 1000, location);
+  std::vector<Vector3D> points = propagator.getPoints(particle, MaximumDistanceCondition(1000, location));
+  std::vector<Vector3D> intersectionPoints = propagator.getIntersectionPoints(particle, plane, MaximumDistanceCondition(1000, location));
   plot("Homogeneous field with plane intersection", points, intersectionPoints, plane);
 }

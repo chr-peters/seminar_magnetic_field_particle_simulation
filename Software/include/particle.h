@@ -2,7 +2,6 @@
 #define PARTICLE_H
 
 #include "vector3d.h"
-#include "propagator.h"
 
 #include<iostream>
 

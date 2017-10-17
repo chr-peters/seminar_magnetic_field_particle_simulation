@@ -5,6 +5,7 @@
 #include "fields.h"
 #include "propagator.h"
 #include "plane3d.h"
+#include "conditions.h"
 
 #include<vector>
 #include<iostream>
@@ -40,6 +41,6 @@ int main () {
 
   // propagate the particle through the field
   Propagator propagator(field);
-  std::vector<Vector3D> points = propagator.getPoints(particle, 2000, location);
+  std::vector<Vector3D> points = propagator.getPoints(particle, MaximumDistanceCondition(4000, location));
   plot("Two Homogeneous Fields Example", points);
 }
