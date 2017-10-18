@@ -29,6 +29,11 @@ void plot(std::string title, const std::vector<Vector3D> &points){
     std::ostringstream gnuplotScript;
     gnuplotScript << "set title '" << title << "'" << std::endl;
     gnuplotScript << "set xlabel 'x'" << std::endl << "set ylabel 'y'" << std::endl << "set zlabel 'z'" << std::endl;
+    /* === ANIMATION === */
+    /* gnuplotScript << "n=1000" << std::endl; */
+    /* gnuplotScript << "do for [i=1:n] {" << std::endl; */
+    /* gnuplotScript << "splot 'points.txt' every ::1::i with linespoints" << std::endl; */
+    /* gnuplotScript << "pause 0.005" << std::endl << "}" << std::endl; */
     gnuplotScript << "splot 'points.txt' with linespoints" << std::endl;
 
     gnuplotFile << gnuplotScript.str();
