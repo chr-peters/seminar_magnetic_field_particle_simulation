@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.pdf
+*.run.xml
+*.toc
+*.lof
