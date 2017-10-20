@@ -4,6 +4,7 @@
 #include "vector3d.h"
 #include "particle.h"
 #include "propagator.h"
+#include "plane3d.h"
 
 #include<vector>
 
@@ -44,6 +45,27 @@ public:
 private:
   double maxDistance;
   Vector3D referencePoint;
+};
+
+class PlaneIntersectionCondition: public Condition {
+public:
+  PlaneIntersectionCondition(Plane3D plane): plane(plane) {}
+  bool check(const std::vector<Particle> &track) const override {
+    if (track.size() < 2) {
+      return false;
+    }
+    Vector3D normalVector = plane.getNormalVector();
+    double d = normalVector * plane.getPointInPlane();
+    double t0 = d - normalVector * track[track.size()-1].getLocation();
+    double t1 = d - normalVector * track[track.size()].getLocation();
+    if (t0 * t1 <= 0) {
+      // The sign of t0 and t1 is not the same so an intersection occured
+      return true;
+    }
+    return false;
+  }
+private:
+  Plane3D plane;
 };
 
 #endif

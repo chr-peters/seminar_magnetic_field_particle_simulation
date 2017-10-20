@@ -64,7 +64,7 @@ std::vector<Particle> Propagator::getTrack(Particle particle, const Condition &s
 
 std::vector<Vector3D> Propagator::getPoints(Particle particle, const Condition &stoppingCondition, double initialTimeStep) {
   std::vector<Vector3D> res;
-  for (auto curParticle: this->getTrack(particle, stoppingCondition)) {
+  for (auto curParticle: this->getTrack(particle, stoppingCondition, initialTimeStep)) {
     res.push_back(curParticle.location);
   }
   return res;
@@ -74,7 +74,7 @@ std::vector<Vector3D> Propagator::getIntersectionPoints(Particle particle, const
   // the result
   std::vector<Vector3D> res;
   // first get the points
-  std::vector<Vector3D> points = getPoints(particle, stoppingCondition);
+  std::vector<Vector3D> points = getPoints(particle, stoppingCondition, initialTimeStep);
   // get plane properties
   Vector3D normalVector = plane.getNormalVector();
   double d = normalVector * plane.getPointInPlane();
