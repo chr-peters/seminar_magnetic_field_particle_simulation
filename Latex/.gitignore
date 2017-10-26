@@ -4,3 +4,6 @@
 *.run.xml
 *.toc
 *.lof
+*.bbl
+*.bcf
+*.blg
