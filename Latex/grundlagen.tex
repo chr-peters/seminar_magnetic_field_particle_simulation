@@ -8,28 +8,24 @@ dieser Arbeit unbedingt notwendig. Die hier dargelegten Ausf\"uhrungen berufen s
 
 \section{Die Lorentz-Kraft und ihre Eigenschaften}
 
-Bewegt sich ein geladenes Teilchen mit der Geschwindigkeit \(\vec{v}\) durch ein magnetisches Feld \(\vec{B}\),
-so erf\"ahrt es die Lorentz-Kraft \(\vec{F_L}\). Diese Kraft wirkt nur, wenn sich das geladene Teilchen \textit{bewegt}, weiterhin
+Bewegt sich ein geladenes Teilchen mit der Geschwindigkeit \(v\) durch ein magnetisches Feld \(B\),
+so erf\"ahrt es die Lorentz-Kraft \(F_L\). Diese Kraft wirkt nur, wenn sich das geladene Teilchen \textit{bewegt}, weiterhin
 ist der Betrag dieser Kraft sowohl proportional zur Ladung \(Q\) des Teilchens, als auch zu seiner Geschwindigkeit.
 Die Lorentz-Kraft wirkt stets sowohl \textit{senkrecht} zur Bewegungsrichtung des Teilchens, als auch \textit{senkrecht} zur Richtung
 des Magnetfeldes. Das Teilchen wird wird in seiner Flugbahn also
-\textit{seitlich} abgelenkt. Der Betrag der Kraft h\"angt au{\ss}erdem von der Richtung der Teilchenbewegung ab, verl\"auft diese
-parallel zur Richtung des magnetischen Feldes, so gilt \(\abs{\vec{F_L}} = 0\). F\"ur beliebige Winkel \(\alpha\) ver\"andert
-sich der Betrag der Lorentz-Kraft wie \(\abs{\vec{v}}\sin{\alpha}\).
+\textit{seitlich} abgelenkt. Der Betrag der Kraft h\"angt au{\ss}erdem von der Richtung der Teilchenbewegung ab: Verl\"auft diese
+parallel zur Richtung des magnetischen Feldes, so gilt \(F_L = 0\). F\"ur beliebige Winkel \(\alpha\) ver\"andert
+sich der Betrag der Lorentz-Kraft wie \(v \cdot \sin{\alpha}\).
 Fasst man alle diese Eigenschaften zusammen, so erh\"alt man den folgenden Ausdruck:
 \begin{equation}
-  \vec{F_L} = Q \cdot \vec{v} \times \vec{B}
-\end{equation}
-Ist man nur am Betrag der Lorentz-Kraft interessiert, so l\"asst sich dessen Berechnung unter Verwendung des Zusammenhangs
-\(\abs{\vec{v} \times \vec{B}} = \abs{\vec{v}} \cdot \abs{\vec{B}} \cdot \sin{\alpha} \) durch den folgenden Ausdruck vereinfachen:
-\begin{equation}
-  \abs{\vec{F_L}} = \abs{Q} \cdot \abs{\vec{v}} \cdot \abs{\vec{B}} \cdot \sin{\alpha}
+  \label{eq:lorentz_abs}
+  F_L = Q \cdot v \cdot B \cdot \sin{\alpha}
 \end{equation}
 Die konkrete Wirkungsrichtung der Lorentz-Kraft l\"asst sich leicht anhand der \textit{Linke-Hand-Regel} ermitteln:
 Zeigt der Daumen der linken Hand in Richtung der Ursache f\"ur die Lorentz-Kraft, also der Bewegung eines geladenen Teilchens,
 und zeigt ferner der Zeigefinger der linken Hand in Richtung des magnetischen Feldes, so ergibt sich die Richtung der
-Lorentz-Kraft aus der Richtung des Mittelfingers der linken Hand. Die Vektoren \(\vec{v}\), \(\vec{B}\) und \(\vec{F_L}\)
-bilden also ein \textit{Linkssystem}.
+Lorentz-Kraft aus der Richtung des Mittelfingers der linken Hand. Fasst man die bisherigen gr\"o{\ss}en als die Vektoren
+\(\vec{v}\), \(\vec{B}\) und \(\vec{F_L}\) auf, so bilden diese ein \textit{Linkssystem}.
 Hierbei einigt man sich auf die sogenannte \textit{physikalische Stromrichtung}: Negative Ladungen (beispielsweise
 freie Elektronen) bewegen sich per Definition vom negativen hin zum positiven Pol einer Spannungsquelle. Im Falle der
 \textit{Linke-Hand-Regel} zeigt der Daumen also immer hin zur \textit{physikalischen Stromrichtung}.
@@ -60,10 +56,11 @@ Damit sich ein K\"orper \"uberhaupt auf einer Kreisbahn bewegen kann, muss auf i
 h\"alt. Diese Kraft, die stets radial zum Mittelpunkte des Kreises hin gerichtet ist, nennt man \textit{Zentripetalkraft}.
 Es gilt der folgende Zusammenhang f\"ur den Betrag der Zentripetalkraft:
 \begin{equation}
+\label{eq:zentripetalkraft}
 F = \frac{mv^2}{r} = m\omega^2r
 \end{equation}
 
-\subsection{Die Flugbahn eines bewegten Ladungstr\"agers im homogenen Magnetfeld}
+\subsection{Beschreibung der Flugbahn}
 
 Betrachtet man vor diesem Hintergrund erneut die Lorentz-Kraft \(F_L\), so wird deutlich, dass diese alle Eigenschaften der in
 \fref{sec:kreisbewegung} beschriebenen Zentripetalkraft erf\"ullt. Dies liegt daran, dass die Lorentz-Kraft zum einen den Betrag
@@ -79,6 +76,44 @@ der Anteil \(v_\parallel\) wird jedoch nicht von der Lorentz-Kraft beeinflusst.
 Die Summe dieser beiden Bewegungen ergibt
 eine Schraubenlinie, welche durch einen Zylinder mit dem Radius \(r\) der Kreisbahn begrenzt ist. Die orthogonale Projektion dieser
 Schraubenbewegung vollzieht genau die Kreisbewegung, welche von der Lorentz-Kraft verursacht wird.
-
 Um die konkreten Eigenschaften der Flugbahn zu quantifizieren, reicht es also aus, beide Teile der Bewegung f\"ur sich genommen
 zu beschreiben. 
+
+Betrachtet man die zum Magnetfeld senkrechte Komponente \(v_\perp\) der Teilchenbewegung, so l\"asst sich die resultierende Kreisbewegung
+eindeutig durch die Angabe des Radius \(r\), sowie durch die Winkelgeschwindigkeit \(\omega\) beschreiben. Den Radius \(r\) erh\"alt
+man aus dem Zusammenhang, dass die Lorentz-Kraft die Rolle der Zentripetalkraft einnimmt. Setzt man \fref{eq:lorentz_abs} unter der
+Bedingung \(\alpha = \frac{\pi}{2}\), die sich aus der Konstruktion ergibt (\(v_\perp\) steht \textit{senkrecht} zum Magnetfeld),
+mit \fref{eq:zentripetalkraft}, der Gleichung der Zentripetalkraft, gleich, so erh\"alt man:
+\begin{equation*}
+  \frac{m \cdot v_\perp^2}{r} = Q \cdot v_\perp \cdot B
+\end{equation*}
+\begin{equation}
+  \label{eq:radius}
+  r = \frac{m \cdot v_\perp}{Q \cdot B}
+\end{equation}
+Ein \"ahnlicher Ansatz wird verwendet, um die Winkelgeschwindigkeit \(\omega\) der Kreisbewegung zu berechnen. Der einzige Unterschied
+ist, dass die Gleichung der Zentripetalkraft verwendet wird, welche die Winkelgeschwindigkeit enth\"alt. Gleichsetzen ergibt den
+folgenden Ausdruck:
+\begin{equation*}
+  m \cdot \omega^2 \cdot r = Q \cdot v_\perp \cdot B
+\end{equation*}
+\begin{equation*}
+  \omega^2 = \frac{Q \cdot v_\perp \cdot B}{m \cdot r}
+\end{equation*}
+Setzen wir nun f\"ur \(r\) das Ergebnis aus \fref{eq:radius} ein, so ergibt sich folgender Zusammenhang f\"ur die
+Winkelgeschwindigkeit der Bewegung:
+\begin{equation*}
+  \omega^2 = \frac{Q^2 \cdot v_\perp \cdot B^2}{m^2 \cdot v_\perp} = \frac{Q^2 \cdot B^2}{m^2}
+\end{equation*}
+\begin{equation}
+  \omega = \frac{Q \cdot B}{m}
+\end{equation}
+
+Um den Bewegungsanteil \(v_\parallel\) zu beschreiben, welcher entlang des Magnetfeldes verl\"auft, gen\"ugen die Gesetze einer
+gleichf\"ormigen Bewegung konstanter Geschwinditkeit. Ist man daran interessiert, welche Strecke \(S\) das Teilchen innerhalb einer
+Zeit \(t\) zur\"ucklegt, so gilt der folgende allgemein bekannte Zusammenhang:
+\begin{equation}
+  S = v_\parallel \cdot t
+\end{equation}
+Addiert man diese beiden unabh\"angigen Teile der Bewegung, so erh\"alt man insgesamt die oben beschriebenen Schraubenlinien, welche
+das Teilchen auf seinem Weg durch das homogene Magnetfeld verfolgt.
