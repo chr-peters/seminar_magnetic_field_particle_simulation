@@ -1,17 +1,51 @@
 \chapter{Aufbau des Verfahrens}
 
-Hier wird der Aufbau des Algorithmus beschrieben.
+Um nun aufbauend auf diesen Erkenntnissen die allgemeinen Flugbahnen beliebiger Ladungstr\"ager durch beliebige, unter Umst\"anden
+auch \textit{inhomogene}, Magnetfelder simulieren zu k\"onnen, sind mehrere Zwischenschritte notwendig.
+Unter Verwendung der Ergebnisse aus \fref{sec:flugbahnbeschreibung} wird zun\"achst ein Verfahren hergeleitet, welches es erm\"oglicht,
+die Teilchenflugbahnen in \textit{homogenen} Magnetfeldern zu simulieren. Dieses Verfahren kann anschlie{\ss}end auf beliebige
+Magnetfelder ausgeweitet werden, indem man diese abschnittsweise durch homogene Teilfelder approximiert, auf welchen dann das
+hergeleitete Verfahren zur Anwendung kommt.
 
-\section{Simulation der Grundbewegung}
+\section{Simulation der Flugbahn im homogenen Magnetfeld}
 
-Hier die absoluten Basics
+Bewegen sich Teilchen im Raum, so kann dies in allen m\"oglichen Orientierungen erfolgen. Um diesem Sachverhalt Rechnung zu tragen,
+werden zun\"achst s\"amtliche Schritte im lokalen Bezugssystem des Ladungstr\"agers durchgef\"uhrt. Unabh\"angig von der speziellen
+Orientierung des Teilchens gew\"ahrleistet dies einheitliche Rechenvorschriften, welche im Anschluss durch einfache
+Basistransformationen in das globale Koordinatensystem \"uberf\"uhrt werden k\"onnen.
 
-\section{Verallgemeinerung der Grundbewegung}
+\subsection{Die Flugbahn im lokalen Bezugssystem des Ladungstr\"agers}
 
-\subsection{Die Grundbewegung in beliebiger Orientierung}
+Das lokale Koordinatensystem wird nun so gew\"ahlt, dass sich die Position des Teilchens genau im Ursprung befindet.
+Weiterhin zeigen die magnetischen
+Feldlinien genau in Richtung der \textit{z-Achse}, die orthogonale Projektion der Teilchenbewegung auf die xy-Ebene zeigt genau
+entlang der \textit{y-Achse}. Auf diese Weise lassen sich die beiden Anteile der Bewegung, welche in \fref{sec:flugbahnbeschreibung}
+beschrieben wurden, optimal trennen: Der gleichf\"ormige Anteil der Bewegung, welcher auf \(v_\parallel\) zur\"uckzuf\"uhren ist,
+verl\"auft genau entlang der \textit{z-Achse}, w\"ahrend \(v_\perp\) eine Kreisbewegung in der \textit{xy-Ebene} verursacht.
+\(v_\parallel\) beeinflusst also nur die \textit{z-Koordinate} des Ladungstr\"agers, w\"ahrend \(v_\perp\) ausschlie{\ss}lich die
+\textit{x}-, sowie die \textit{y-Koordinate} beeinflusst.
+
+Um nun den Mittelpunkt \(M\) des Kreises zu ermitteln, welchem die Bewegung in der \textit{xy-Ebene} folgt, kann zun\"achst der
+Radius \(r\) des Kreises bestimmt werden. Gem\"a{\ss} der Konstruktion und unter Ber\"ucksichtigung der \textit{Linke-Hand-Regel}
+liegt \(M\) dann genau auf der \textit{x-Achse} und hat die xy-Koordinaten \(\left(-r| 0 \right)\). Der Radius l\"asst sich nun,
+wie in \fref{sec:flugbahnbeschreibung} mit \fref{eq:radius} beschrieben, ohne weiteres berechnen. Man beachte, dass aufgrund der
+Konstruktion nur die \textit{z-Koordinate} des Magnetfeldes \(\vec{B}\), sowie die \textit{y-Koordinate} der Teilchengeschwindigkeit
+\(\vec{v}\) relevant ist. Weiterhin ist ebenfalls konstruktionsbedingt \(\alpha = \frac{\pi}{2}\), weshalb der Term \(\sin{\alpha}\)
+entf\"allt. Benutzen wir also \(v_\perp = \vec{v}.y\) und \(B = \vec{B}.z\), so erhalten wir f\"ur den Radius \(r\) im lokalen
+Bezugssystem:
+\begin{equation*}
+  r = \frac{m \cdot v_\perp}{Q \cdot B}
+\end{equation*}
+Dies entspricht exakt \fref{eq:radius} und wird hier nur aus Gr\"unden der Lesbarkeit erneut aufgef\"uhrt.
+
+\subsection{\"Ubertragung auf das globale Koordinatensystem}
+
+\section{Ausweitung auf inhomogene Magnetfelder}
 
 \subsection{Diskretisierung inhomogener Magnetfelder}
 
 \subsubsection{TODO Fehler}
+
+\section{Abbruchkriterien}
 
 \section{Der resultierende Algorithmus}
