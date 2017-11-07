@@ -12,7 +12,10 @@ hergeleitete Verfahren zur Anwendung kommt.
 Bewegen sich Teilchen im Raum, so kann dies in allen m\"oglichen Orientierungen erfolgen. Um diesem Sachverhalt Rechnung zu tragen,
 werden zun\"achst s\"amtliche Schritte im lokalen Bezugssystem des Ladungstr\"agers durchgef\"uhrt. Unabh\"angig von der speziellen
 Orientierung des Teilchens gew\"ahrleistet dies einheitliche Rechenvorschriften, welche im Anschluss durch einfache
-Basistransformationen in das globale Koordinatensystem \"uberf\"uhrt werden k\"onnen.
+Basistransformationen in das globale Koordinatensystem \"uberf\"uhrt werden k\"onnen. Die gr\"o{\ss}en \(v\) und \(B\), welche
+in \fref{sec:flugbahnbeschreibung} noch als Skalare betrachtet wurden, m\"ussen nun \textit{vektoriell} als \(\vec{v}\) und \(\vec{B}\)
+aufgefasst werden. Es wird sich aber zeigen, dass dies durch geeignete Wahl der lokalen Basisvektoren nur eine untergeordnete Rolle
+spielt.
 
 \subsection{Die Flugbahn im lokalen Bezugssystem des Ladungstr\"agers}
 
@@ -26,17 +29,56 @@ verl\"auft genau entlang der \textit{z-Achse}, w\"ahrend \(v_\perp\) eine Kreisb
 \textit{x}-, sowie die \textit{y-Koordinate} beeinflusst.
 
 Um nun den Mittelpunkt \(M\) des Kreises zu ermitteln, welchem die Bewegung in der \textit{xy-Ebene} folgt, kann zun\"achst der
-Radius \(r\) des Kreises bestimmt werden. Gem\"a{\ss} der Konstruktion und unter Ber\"ucksichtigung der \textit{Linke-Hand-Regel}
+Radius \(r\) dieses Kreises bestimmt werden. Gem\"a{\ss} der Konstruktion und unter Ber\"ucksichtigung der \textit{Linke-Hand-Regel}
 liegt \(M\) dann genau auf der \textit{x-Achse} und hat die xy-Koordinaten \(\left(-r| 0 \right)\). Der Radius l\"asst sich nun,
 wie in \fref{sec:flugbahnbeschreibung} mit \fref{eq:radius} beschrieben, ohne weiteres berechnen. Man beachte, dass aufgrund der
 Konstruktion nur die \textit{z-Koordinate} des Magnetfeldes \(\vec{B}\), sowie die \textit{y-Koordinate} der Teilchengeschwindigkeit
 \(\vec{v}\) relevant ist. Weiterhin ist ebenfalls konstruktionsbedingt \(\alpha = \frac{\pi}{2}\), weshalb der Term \(\sin{\alpha}\)
-entf\"allt. Benutzen wir also \(v_\perp = \vec{v}.y\) und \(B = \vec{B}.z\), so erhalten wir f\"ur den Radius \(r\) im lokalen
-Bezugssystem:
+entf\"allt. Benutzen wir also \(v_\perp = \vec{v}_y\) und \(B = \vec{B}_z\), so erhalten wir folgenden Zusammenhang f\"ur den Radius
+\(r\) im lokalen Bezugssystem:
+\begin{equation}
+  r = \frac{m \cdot \vec{v}_y}{Q \cdot \vec{B}_z}
+\end{equation}
+Damit der exakte Punkt berechnet werden kann, an dem sich der Ladungstr\"ager nach einer gewissen Zeitspanne \(t\) befindet, wird
+weiterhin die Winkelgeschwindigkeit \(\omega\) der Kreisbewegung ben\"otigt. Wenden wir die \"Uberlegung \(B = \vec{B}_z \) auf
+\fref{eq:omega} an, so ergibt sich f\"ur die Winkelgeschwindigkeit:
+\begin{equation}
+  \omega = \frac{Q \cdot \vec{B}_z}{m}
+\end{equation}
+Aus der Winkelgeschwindigkeit \(\omega\), dem Radius \(r\) und der gegebenen Simulationszeit \(t\) l\"asst sich mithilfe der
+Bewegungsgleichungen der gleichf\"ormigen Kreisbewegung die exakte Position des Teilchens in der xy-Ebene ermitteln.
+Hierzu wird der folgende allgemeine Zusammenhang angewandt, der f\"ur gleichf\"ormige Kreisbewegungen in der Ebene g\"ultig ist:
 \begin{equation*}
-  r = \frac{m \cdot v_\perp}{Q \cdot B}
+  \begin{pmatrix}
+    x(t) \\
+    y(t)
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    r \cdot \sin{\left(\omega \cdot t\right)} + M_x \\
+    r \cdot \cos{\left(\omega \cdot t\right)} + M_y
+  \end{pmatrix}
 \end{equation*}
-Dies entspricht exakt \fref{eq:radius} und wird hier nur aus Gr\"unden der Lesbarkeit erneut aufgef\"uhrt.
+Die Koordinaten von \(M_x\) und \(M_y\) erh\"alt man direkt aus den obigen \"Uberlegungen.
+
+Die Ver\"anderung der z-Koordinate, also der Anteil der Bewegung, welcher durch \(\vec{v_\parallel}\) verursacht wird, l\"asst sich
+direkt mithilfe \fref{eq:s_parallel} bestimmen. Auch hier l\"asst sich aufgrund der Konstruktion die Vereinfachung
+\(v_\parallel = \vec{v}_z\) durchf\"uhren, da \(v_\parallel\) lediglich durch die Projektion von \(\vec{v}\) auf die z-Achse gegeben ist.
+Insgesamt erhalten wir folgenden Zusammenhang \"uber die neue Position des
+Ladungstr\"agers nach der Zeit \(t\), bezogen auf sein lokales Koordinatensystem:
+\begin{equation}
+  \begin{pmatrix}
+    x(t) \\
+    y(t) \\
+    z(t)
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    r \cdot \sin{\left(\omega \cdot t\right)} - r \\
+    r \cdot \cos{\left(\omega \cdot t\right)} \\
+    \vec{v}_z \cdot t
+  \end{pmatrix}
+\end{equation}
 
 \subsection{\"Ubertragung auf das globale Koordinatensystem}
 
