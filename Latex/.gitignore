@@ -1,9 +1,1 @@
-*.aux
-*.log
-*.pdf
-*.run.xml
-*.toc
-*.lof
-*.bbl
-*.bcf
-*.blg
+latex_output/
