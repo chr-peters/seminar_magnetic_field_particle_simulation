@@ -18,6 +18,7 @@ aufgefasst werden. Es wird sich aber zeigen, dass dies durch geeignete Wahl der 
 spielt.
 
 \subsection{Die Flugbahn im lokalen Bezugssystem des Ladungstr\"agers}
+\label{sec:lokales_bezugssystem}
 
 Das lokale Koordinatensystem wird nun so gew\"ahlt, dass sich die Position des Teilchens genau im Ursprung befindet.
 Weiterhin zeigen die magnetischen
@@ -81,6 +82,27 @@ Ladungstr\"agers nach der Zeit \(t\), bezogen auf sein lokales Koordinatensystem
 \end{equation}
 
 \subsection{\"Ubertragung auf das globale Koordinatensystem}
+
+Um die neue Position des Ladungstr\"agers bezogen auf das globale Koordinatensystem zu erhalten, ist ein Wechsel der Basis erforderlich.
+Zun\"achst m\"ussen die Gr\"o{\ss}en \(\vec{v}\) und \(\vec{B}\) in das lokale Bezugssystem des Ladungstr\"agers \"uberf\"uhrt werden,
+damit in dieser neuen Basis die Zusammenh\"ange aus \fref{sec:lokales_bezugssystem} angewandt werden k\"onnen. Anschlie{\ss}end werden
+die Ergebnisse, also die berechnete neue Position des Ladungstr\"agers, wieder zur\"uck in die urspr\"ungliche Basis transformiert.
+
+\subsubsection{Eulersche Winkel}
+
+Betrachtet man das vorliegende Modell genauer, so f\"allt auf, dass sich alle notwendigen Transformationen auf die
+Hintereinanderausf\"uhrung von Drehungen zur\"uckf\"uhren lassen. Da es sich bei Drehungen um sogenannte orthogonale Transformationen
+handelt, bleiben Abst\"ande und Normen nach der Transformation erhalten. Diese Eigenschaft ist besonders wichtig, da sich sonst
+die Erkenntnisse aus \fref{sec:lokales_bezugssystem} nicht ohne weiteres auf die transformierten Gr\"o{\ss}en anwenden lie{\ss}en.
+
+Die Hintereinanderausf\"uhrung von Drehungen wird durch sogenannte \textit{Eulersche Winkel} beschrieben. Hierbei handelt es sich
+um die Angabe von Winkeln, die jeweils die Rotation um eine Achse beschreiben. Die Besonderheit hierbei ist, dass nur die erste
+Rotation um eine \textit{raumfeste} Achse erfolgt. Die weiteren Drehungen beziehen sich stets auf die mitgedrehten lokalen Achsen des
+zu drehenden K\"orpers. Siehe \cite{Fis12}\footnote{Vgl. hierzu Abschnitt 5.3.6 f\"ur einen ausf\"uhrlichen Beweis.}.
+
+\subsubsection{Bestimmung der Drehwinkel}
+
+\subsubsection{Zusammenfassung der Transformationsschritte}
 
 \section{Ausweitung auf inhomogene Magnetfelder}
 
