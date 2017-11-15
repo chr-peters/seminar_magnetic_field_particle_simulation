@@ -98,9 +98,41 @@ die Erkenntnisse aus \fref{sec:lokales_bezugssystem} nicht ohne weiteres auf die
 Die Hintereinanderausf\"uhrung von Drehungen wird durch sogenannte \textit{Eulersche Winkel} beschrieben. Hierbei handelt es sich
 um die Angabe von Winkeln, die jeweils die Rotation um eine Achse beschreiben. Die Besonderheit hierbei ist, dass nur die erste
 Rotation um eine \textit{raumfeste} Achse erfolgt. Die weiteren Drehungen beziehen sich stets auf die mitgedrehten lokalen Achsen des
-zu drehenden K\"orpers. Siehe \cite{Fis12}\footnote{Vgl. hierzu Abschnitt 5.3.6 f\"ur einen ausf\"uhrlichen Beweis.}.
+zu drehenden K\"orpers.
+
+Seien \(R_x(\alpha)\), \(R_y(\beta)\), \(R_z(\gamma)\) die Drehmatrizen zur Drehung um die \textit{globalen} Achsen \(x\), \(y\)
+und \(z\). Nach \cite{Fis12}\footnote{Vgl. hierzu Abschnitt 5.3.6 f\"ur einen ausf\"uhrlichen Beweis.} ergibt sich die
+Gesamtdrehmatrix einer eulerschen Drehung durch das Produkt der einzelnen Drehmatrizen
+in der gew\"unschten Reihenfolge. M\"ochte man beispielweise zun\"achst um die \textit{globale} \(x\)-Achse, dann um die mitgedrehte
+\textit{lokale} \(y\)-Achse und anschlie{\ss}end um die resultierende \textit{lokale} \(z\)-Achse drehen, ergibt sich die
+Gesamtdrehmatrix \(R\) zu \(R = R_x(\alpha) \cdot R_y(\beta) \cdot R_z(\gamma)\), wenn jeweils um die zugeh\"origen Winkel
+\(\alpha\), \(\beta\) und \(\gamma\) gedreht wird, die man in diesem Kontext als \textit{Eulersche Winkel} bezeichnet.
+
+M\"ochte man die Drehung r\"uckg\"angig machen, so stellt sich die Frage nach der \textit{inversen} zu \(R\), also \(R^{-1}\).
+Da f\"ur die Matrizen der Einzeldrehungen jeweils der Zusammenhang \(R_g(\alpha)^{-1} = R_g(-\alpha)\) gilt, wobei \(g\) eine beliebige
+Achse beschreibt, gilt f\"ur die Inverse der Gesamtdrehmatrix \(R\):
+\begin{equation}
+  \label{eq:gesamtdrehung}
+  \begin{split}
+R^{-1} = \left(R_x(\alpha) \cdot R_y(\beta) \cdot R_z(\gamma)\right)^{-1} = R_z(\gamma)^{-1} \cdot R_y(\beta)^{-1} \cdot
+R_x(\alpha)^{-1} \\
+= R_z(-\gamma) \cdot R_y(-\beta) \cdot R_x(-\alpha)
+  \end{split}
+\end{equation}
 
 \subsubsection{Bestimmung der Drehwinkel}
+
+Wie in \fref{sec:lokales_bezugssystem} beschrieben, zeigt die \(z\)-Achse im lokalen Bezugssystem des Ladungstr\"agers genau in die
+Richtung des magnetischen Feldes \(\vec{B}\). Um \(\vec{B}\) nun durch Drehungen so zu transformieren, dass die Richtung der
+\(z\)-Achse entspricht, k\"onnen Eulersche Winkel eingesetzt werden. Da die Drehung von \(\vec{B}\) auf die \(z\)-Achse genau der
+entgegengesetzten, also der \textit{inversen} Drehung der \(z\)-Achse auf \(\vec{B}\) entspricht, die Winkel zu dieser inversen
+Drehung allerdings leichter zu bestimmen sind, wird zun\"achst die \(z\)-Achse auf \(\vec{B}\) gedreht. Diese Transformation kann
+dann unter Verwendung von \fref{eq:gesamtdrehung} im Umkehrschluss auf \(\vec{B}\) angewandt werden, um die eigentlich relevante
+Drehmatrix zu erhalten.
+
+Um die \(z\)-Achse, im Folgenden mit der Bezeichnung des Einheitsvektors \(\vec{z}\) beschrieben, auf \(\vec{B}\) zu drehen, sind
+zwei Drehungen erforderlich: Zun\"achst muss eine Drehung um die \(y\)-Achse um den Winkel \(\alpha\), anschlie{\ss}end eine Drehung
+um die lokal mitgedrehte \(x\)-Achse um den Winkel \(\beta\) erfolgen.
 
 \subsubsection{Zusammenfassung der Transformationsschritte}
 
