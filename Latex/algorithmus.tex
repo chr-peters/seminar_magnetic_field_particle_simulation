@@ -134,6 +134,32 @@ Um die \(z\)-Achse, im Folgenden mit der Bezeichnung des Einheitsvektors \(\vec{
 zwei Drehungen erforderlich: Zun\"achst muss eine Drehung um die \(y\)-Achse um den Winkel \(\alpha\), anschlie{\ss}end eine Drehung
 um die lokal mitgedrehte \(x\)-Achse um den Winkel \(\beta\) erfolgen.
 
+Der Winkel \(\alpha\) l\"asst sich bestimmen, indem \(\vec{B}\) zun\"achst orthogonal auf die \(xz\)-Ebene projiziert wird. \(\alpha\)
+entspricht dann genau dem Winkel zwischen dem aus der Projektion resultierenden Vektor \(\vec{p}_B\) und \(\vec{z}\).
+Um \(\vec{B}\) auf die \(xz\)-Ebene zu projizieren, kann einfach \(\vec{B}_y=0\) gesetzt werden. Zur Berechnung des Winkels
+zwischen \(\vec{p}_B\) und \(\vec{z}\)
+wird folgender Zusammenhang verwendet, der f\"ur den Winkel zwischen zwei beliebigen Vektoren \(\vec{a}\) und \(\vec{b}\) gilt:
+\begin{equation}
+  \sphericalangle{\left(\vec{a},\vec{b}\right)} = \arccos{\left(\frac{\vec{a} \cdot \vec{b}}{\abs{a} \cdot \abs{b}}\right)}
+\end{equation}
+wobei \(\abs{\cdot}\) der euklidischen Norm entspricht. Da \(\vec{z}\) Einheitsvektor ist, gilt \(\abs{\vec{z}} = 1\), weiterhin ist
+\(\vec{z}_x = \vec{z}_y = 0\), weshalb \(\vec{z} \cdot \vec{p}_B = \vec{p}_{B_z} = \vec{B}_z\). Insgesamt ergibt sich also f\"ur den
+Winkel \(\alpha\):
+\begin{equation}
+  \label{eq:alpha}
+  \alpha = \arccos{\left(\frac{\vec{B}_z}{\abs{\vec{p}_B}}\right)}
+\end{equation}
+Da man durch Anwendung dieser Formel ausschlie{\ss}lich Winkel im Bereich von \(0 \leq \alpha \leq \pi\) erh\"alt, ist noch eine kleine
+Anpassung n\"otig, damit auch im Falle eines \"uberstumpfen Winkels korrekt gedreht werden kann. Dieser Fall l\"asst sich erkennen,
+indem die \(x\)-Koordinate von \(\vec{p}_B\) \"uberpr\"uft wird. Ist diese positiv, sind keine weiteren Anpassungen notwendig,
+ist sie negativ, kann einfach in die andere Richtung, also um den Winkel \(-\alpha\) gedreht werden. F\"ur den Fall, dass \(\vec{p}_B\)
+gerade dem Nullvektor entspricht, also dass \(\vec{B}\) genau in Richtung der \(y\)-Achse zeigt, entf\"allt die Notwendigkeit
+der Drehung. Hier kann formal \(\alpha = 0\) gesetzt werden.
+
+Um nun den Drehwinkel \(\beta\) zu bestimmen, der die Drehung um die \textit{lokale} mitgedrehte \(x\)-Achse beschreibt, wird
+zun\"achst der Winkel \(\delta\) berechnet, welcher den Winkel zwischen der \(y\)-Achse, im Folgenden mit \(\vec{y}\) bezeichnet,
+und \(\vec{B}\) angibt. Der Winkel \(\beta\) ergibt sich dann anschaulich aus dem Zusammenhang \(\beta = \delta - \frac{\pi}{2}\).
+
 \subsubsection{Zusammenfassung der Transformationsschritte}
 
 \section{Ausweitung auf inhomogene Magnetfelder}
