@@ -23,7 +23,7 @@ std::vector<Particle> Propagator::getTrack(Particle particle, const Condition &s
     Vector3D magneticField = originalMagneticField.rotateXY(-beta, -alpha);
     Vector3D initialMomentum = originalInitialMomentum.rotateXY(-beta, -alpha);
     double gamma = getGamma(initialMomentum);
-    initialMomentum = initialMomentum.rotateZ(-gamma);
+    initialMomentum = initialMomentum.rotateZ(gamma);
 
     // in the new base, the current location of the particle is at the origin
     Vector3D curLocation;
@@ -41,7 +41,7 @@ std::vector<Particle> Propagator::getTrack(Particle particle, const Condition &s
     curLocation.y = r * std::cos(phi);
 
     // transform the position back to where it was initially
-    curLocation = curLocation.rotateZ(gamma).rotateYX(alpha, beta);
+    curLocation = curLocation.rotateZ(-gamma).rotateYX(alpha, beta);
     
     particle.location.x += curLocation.x;
     particle.location.y += curLocation.y;
@@ -50,7 +50,7 @@ std::vector<Particle> Propagator::getTrack(Particle particle, const Condition &s
     // remove rounding errors before transforming back
     initialMomentum.x = 0;
 
-    particle.momentum = initialMomentum.rotateZ(gamma+phi).rotateYX(alpha, beta);
+    particle.momentum = initialMomentum.rotateZ(phi-gamma).rotateYX(alpha, beta);
 
     // update the time
     particle.time += timeStep;
@@ -131,7 +131,7 @@ double getGamma(Vector3D target, double eps) {
   // get the angle between the projection and the y-axis
   double gamma = std::acos(target.y/target.norm());
   if (target.x < 0)
-    return gamma;
-  else
     return -gamma;
+  else
+    return gamma;
 }

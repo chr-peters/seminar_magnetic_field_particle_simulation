@@ -80,6 +80,13 @@ Ladungstr\"agers nach der Zeit \(t\), bezogen auf sein lokales Koordinatensystem
     \vec{v}_z \cdot t
   \end{pmatrix}
 \end{equation}
+Weiterhin geht aus diesem Zusammenhang der Drehwinkel \(\varphi\) unmittelbar hervor, der die Drehung der Richtung von \(v_\perp\)
+beschreibt. Die Drehung von \(v_\perp\) um diesen Winkel muss erfolgen, um im n\"achsten Schritt auf dieser neuen Richtung aufbauen
+zu k\"onnen. Der zugeh\"orige Winkel kann wie folgt berechnet werden:
+\begin{equation}
+  \label{eq:phi}
+  \varphi = \omega \cdot t
+\end{equation}
 
 \subsection{\"Ubertragung auf das globale Koordinatensystem}
 
@@ -121,6 +128,7 @@ R_x(\alpha)^{-1} \\
 \end{equation}
 
 \subsubsection{Bestimmung der Drehwinkel}
+\label{sec:drehwinkel}
 
 Wie in \fref{sec:lokales_bezugssystem} beschrieben, zeigt die \(z\)-Achse im lokalen Bezugssystem des Ladungstr\"agers genau in die
 Richtung des magnetischen Feldes \(\vec{B}\). Um \(\vec{B}\) nun durch Drehungen so zu transformieren, dass die Richtung der
@@ -158,9 +166,64 @@ der Drehung. Hier kann formal \(\alpha = 0\) gesetzt werden.
 
 Um nun den Drehwinkel \(\beta\) zu bestimmen, der die Drehung um die \textit{lokale} mitgedrehte \(x\)-Achse beschreibt, wird
 zun\"achst der Winkel \(\delta\) berechnet, welcher den Winkel zwischen der \(y\)-Achse, im Folgenden mit \(\vec{y}\) bezeichnet,
-und \(\vec{B}\) angibt. Der Winkel \(\beta\) ergibt sich dann anschaulich aus dem Zusammenhang \(\beta = \delta - \frac{\pi}{2}\).
+und \(\vec{B}\) angibt. Der Winkel \(\beta\) ergibt sich dann anschaulich aus dem Zusammenhang
+\(\beta = -\left(\frac{\pi}{2} - \delta\right) = \delta - \frac{\pi}{2}\). Das \(-\) r\"uhrt daher, dass in diesem Fall entgegen
+der mathematisch positiven Drehrichtung gedreht wird. Auch hier muss der Fall, dass \(\vec{B}_y < 0 \), um der Drehrichtung willen
+gesondert betrachtet werden: Da hier genau entgegengesetzt gedreht werden muss, entf\"allt das \(-\) und es gilt
+\(\beta = \frac{\pi}{2} - \delta\). Zeigt \(\vec{z}\) analog zum vorherigen Fall bereits in Richtung \(\vec{B}\), so entf\"allt auch
+hier die Notwendigkeit der Drehung, und es kann \(\beta = 0\) gesetzt werden. Analog zu den obigen \"Uberlegungen berechnet sich
+\(\delta\) f\"ur \(\vec{B}_y \geq 0\) zu
+\begin{equation}
+  \delta = \arccos{\left(\frac{\vec{B}_y}{\abs{\vec{B}}}\right)}
+\end{equation}
+und f\"ur \(\vec{B}_y < 0 \) zu
+\begin{equation}
+  \delta = \arccos{\left(\frac{-\vec{B}_y}{\abs{\vec{B}}}\right)}
+\end{equation}
+Da die \(z\)-Achse nun durch diese beiden Drehungen erfolgreich auf \(\vec{B}\) gedreht wurde, fehlt im n\"achsten Schritt nur noch
+die Drehung von \(\vec{v}\), so dass die orthogonale Projektion von \(\vec{v}\) auf die \(xy\)-Ebene genau auf der \(y\)-Achse
+liegt. Der Winkel \(\gamma\), welcher zu diesem Zweck ben\"otigt wird, kann leicht bestimmt werden, indem der Winkel zwischen
+der Projektion \(\vec{p}_v\) und \(\vec{y}\) bestimmt wird. Analog zu den obigen Ergebnissen berechnet sich dieser f\"ur
+\(\vec{p}_{v_x} \geq 0\) zu
+\begin{equation}
+  \gamma = \arccos{\left(\frac{\vec{v}_y}{\abs{\vec{p}_v}}\right)}
+\end{equation}
+aufgrund der umgekehrten Drehrichtung im Falle von \(\vec{p}_{v_x} < 0\) ergibt sich hier
+\begin{equation}
+  \gamma = -\arccos{\left(\frac{\vec{v}_y}{\abs{\vec{p}_v}}\right)}
+\end{equation}
 
 \subsubsection{Zusammenfassung der Transformationsschritte}
+Unter Verwendung der in \fref{sec:drehwinkel} bestimmten Drehwinkel, kann nun die vollst\"andige Transformationsvorschrift angegeben
+werden, die den \"Ubergang vom \textit{globalen} ins \textit{lokale} Bezugssystem des Ladungstr\"agers beschreibt. Im ersten Schritt
+muss hierzu die Position des Teilchens in den Ursprung verschoben werden. F\"ur die relevanten Vektoren \(\vec{B}\) und \(\vec{v}\)
+hat dies keine Auswirkungen, sie bleiben davon also unbeeinflusst. Im n\"achsten Schritt m\"ussen die beschriebenen Drehungen
+durchgef\"uhrt werden. Da sich \(\alpha\) und \(\beta\) darauf beziehen, wie die \(z\)-Achse auf \(\vec{B}\) gedreht wird, wir aber
+\(\vec{B}\) auf die \(z\)-Achse drehen wollen, erhalten wir aus obigen \"Uberlegungen die \textit{Inverse} der gew\"unschten
+Transformation \(T_B\), die sich aus den \textit{Eulerschen Winkeln} \(\alpha\) und \(\beta\) ergibt:
+\begin{equation}
+  T_B^{-1} = R_y(\alpha) \cdot R_x(\beta)
+\end{equation}
+Nach \fref{eq:gesamtdrehung} l\"asst sich hieraus die Drehung von \(\vec{B}\) auf die \(z\)-Achse wie folgt berechnen:
+\begin{equation}
+  T_B = R_x(-\beta) \cdot R_y(-\alpha)
+\end{equation}
+Die anschlie{\ss}ende Transformation von \(\vec{v}\) ergibt sich dann zu
+\begin{equation}
+  T_v = R_z(\gamma)
+\end{equation}
+Aus diesen beiden Matrizen l\"asst sich dann die Gesamttransformation wie folgt berechnen:
+\begin{equation}
+  T = T_v \cdot T_B = R_z(\gamma) \cdot R_x(-\beta) \cdot R_y(-\alpha)
+\end{equation}
+Durch diese Matrix \(T\) l\"asst sich also jeder beliebige Vektor in das lokale Bezugssystem des Ladungstr\"agers \"uberf\"uhren.
+Nachdem die in \fref{sec:lokales_bezugssystem} beschriebenen Berechnungen in dieser Basis durchgef\"uhrt wurden,
+m\"ussen die Gr\"o{\ss}en dann im
+Anschluss wieder in die alte Basis zur\"ucktransformiert werden. Zu diesem Zweck kann einfach die \textit{Inverse} Matrix von \(T\)
+wie folgt bestimmt werden:
+\begin{equation}
+  T^{-1} = T_B^{-1} \cdot T_v^{-1} = R_y(\alpha) \cdot R_x(\beta) \cdot R_z(-\gamma)
+\end{equation}
 
 \section{Ausweitung auf inhomogene Magnetfelder}
 
