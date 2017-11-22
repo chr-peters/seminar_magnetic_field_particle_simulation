@@ -148,19 +148,24 @@ Um \(\vec{B}\) auf die \(xz\)-Ebene zu projizieren, kann einfach \(\vec{B}_y=0\)
 zwischen \(\vec{p}_B\) und \(\vec{z}\)
 wird folgender Zusammenhang verwendet, der f\"ur den Winkel zwischen zwei beliebigen Vektoren \(\vec{a}\) und \(\vec{b}\) gilt:
 \begin{equation}
-  \sphericalangle{\left(\vec{a},\vec{b}\right)} = \arccos{\left(\frac{\vec{a} \cdot \vec{b}}{\abs{a} \cdot \abs{b}}\right)}
+  \sphericalangle{\left(\vec{a},\vec{b}\right)} = \arccos{\left(\frac{\vec{a} \cdot \vec{b}}{\norm{a}_2 \cdot \norm{b}_2}\right)}
 \end{equation}
-wobei \(\abs{\cdot}\) der euklidischen Norm entspricht. Da \(\vec{z}\) Einheitsvektor ist, gilt \(\abs{\vec{z}} = 1\), weiterhin ist
+wobei \(\norm{\cdot}_2\) der euklidischen Norm entspricht. Da \(\vec{z}\) Einheitsvektor ist, gilt \(\norm{\vec{z}}_2 = 1\),
+weiterhin ist
 \(\vec{z}_x = \vec{z}_y = 0\), weshalb \(\vec{z} \cdot \vec{p}_B = \vec{p}_{B_z} = \vec{B}_z\). Insgesamt ergibt sich also f\"ur den
 Winkel \(\alpha\):
 \begin{equation}
   \label{eq:alpha}
-  \alpha = \arccos{\left(\frac{\vec{B}_z}{\abs{\vec{p}_B}}\right)}
+  \alpha = \arccos{\left(\frac{\vec{B}_z}{\norm{\vec{p}_B}}_2\right)}
 \end{equation}
 Da man durch Anwendung dieser Formel ausschlie{\ss}lich Winkel im Bereich von \(0 \leq \alpha \leq \pi\) erh\"alt, ist noch eine kleine
 Anpassung n\"otig, damit auch im Falle eines \"uberstumpfen Winkels korrekt gedreht werden kann. Dieser Fall l\"asst sich erkennen,
 indem die \(x\)-Koordinate von \(\vec{p}_B\) \"uberpr\"uft wird. Ist diese positiv, sind keine weiteren Anpassungen notwendig,
-ist sie negativ, kann einfach in die andere Richtung, also um den Winkel \(-\alpha\) gedreht werden. F\"ur den Fall, dass \(\vec{p}_B\)
+ist sie negativ, kann einfach in die andere Richtung, also um den Winkel \(-\alpha\) gedreht werden, es ergibt sich also:
+\begin{equation}
+  \alpha = -\arccos{\left(\frac{\vec{B}_z}{\norm{\vec{p}_B}}_2\right)}
+\end{equation}
+F\"ur den Fall, dass \(\vec{p}_B\)
 gerade dem Nullvektor entspricht, also dass \(\vec{B}\) genau in Richtung der \(y\)-Achse zeigt, entf\"allt die Notwendigkeit
 der Drehung. Hier kann formal \(\alpha = 0\) gesetzt werden.
 
@@ -174,11 +179,11 @@ gesondert betrachtet werden: Da hier genau entgegengesetzt gedreht werden muss, 
 hier die Notwendigkeit der Drehung, und es kann \(\beta = 0\) gesetzt werden. Analog zu den obigen \"Uberlegungen berechnet sich
 \(\delta\) f\"ur \(\vec{B}_y \geq 0\) zu
 \begin{equation}
-  \delta = \arccos{\left(\frac{\vec{B}_y}{\abs{\vec{B}}}\right)}
+  \delta = \arccos{\left(\frac{\vec{B}_y}{\norm{\vec{B}}}_2\right)}
 \end{equation}
 und f\"ur \(\vec{B}_y < 0 \) zu
 \begin{equation}
-  \delta = \arccos{\left(\frac{-\vec{B}_y}{\abs{\vec{B}}}\right)}
+  \delta = \arccos{\left(\frac{-\vec{B}_y}{\norm{\vec{B}}}_2\right)}
 \end{equation}
 Da die \(z\)-Achse nun durch diese beiden Drehungen erfolgreich auf \(\vec{B}\) gedreht wurde, fehlt im n\"achsten Schritt nur noch
 die Drehung von \(\vec{v}\), so dass die orthogonale Projektion von \(\vec{v}\) auf die \(xy\)-Ebene genau auf der \(y\)-Achse
@@ -186,11 +191,11 @@ liegt. Der Winkel \(\gamma\), welcher zu diesem Zweck ben\"otigt wird, kann leic
 der Projektion \(\vec{p}_v\) und \(\vec{y}\) bestimmt wird. Analog zu den obigen Ergebnissen berechnet sich dieser f\"ur
 \(\vec{p}_{v_x} \geq 0\) zu
 \begin{equation}
-  \gamma = \arccos{\left(\frac{\vec{v}_y}{\abs{\vec{p}_v}}\right)}
+  \gamma = \arccos{\left(\frac{\vec{v}_y}{\norm{\vec{p}_v}_2}\right)}
 \end{equation}
 aufgrund der umgekehrten Drehrichtung im Falle von \(\vec{p}_{v_x} < 0\) ergibt sich hier
 \begin{equation}
-  \gamma = -\arccos{\left(\frac{\vec{v}_y}{\abs{\vec{p}_v}}\right)}
+  \gamma = -\arccos{\left(\frac{\vec{v}_y}{\norm{\vec{p}_v}_2}\right)}
 \end{equation}
 
 \subsubsection{Zusammenfassung der Transformationsschritte}
@@ -199,7 +204,7 @@ werden, die den \"Ubergang vom \textit{globalen} ins \textit{lokale} Bezugssyste
 muss hierzu die Position des Teilchens in den Ursprung verschoben werden. F\"ur die relevanten Vektoren \(\vec{B}\) und \(\vec{v}\)
 hat dies keine Auswirkungen, sie bleiben davon also unbeeinflusst. Im n\"achsten Schritt m\"ussen die beschriebenen Drehungen
 durchgef\"uhrt werden. Da sich \(\alpha\) und \(\beta\) darauf beziehen, wie die \(z\)-Achse auf \(\vec{B}\) gedreht wird, wir aber
-\(\vec{B}\) auf die \(z\)-Achse drehen wollen, erhalten wir aus obigen \"Uberlegungen die \textit{Inverse} der gew\"unschten
+\(\vec{B}\) auf die \(z\)-Achse drehen wollen, erhalten wir aus obigen \"Uberlegungen die \textit{inverse} der gew\"unschten
 Transformation \(T_B\), die sich aus den \textit{Eulerschen Winkeln} \(\alpha\) und \(\beta\) ergibt:
 \begin{equation}
   T_B^{-1} = R_y(\alpha) \cdot R_x(\beta)
@@ -219,18 +224,79 @@ Aus diesen beiden Matrizen l\"asst sich dann die Gesamttransformation wie folgt 
 Durch diese Matrix \(T\) l\"asst sich also jeder beliebige Vektor in das lokale Bezugssystem des Ladungstr\"agers \"uberf\"uhren.
 Nachdem die in \fref{sec:lokales_bezugssystem} beschriebenen Berechnungen in dieser Basis durchgef\"uhrt wurden,
 m\"ussen die Gr\"o{\ss}en dann im
-Anschluss wieder in die alte Basis zur\"ucktransformiert werden. Zu diesem Zweck kann einfach die \textit{Inverse} Matrix von \(T\)
+Anschluss wieder in die alte Basis zur\"ucktransformiert werden. Zu diesem Zweck kann die \textit{inverse} Matrix von \(T\)
 wie folgt bestimmt werden:
 \begin{equation}
   T^{-1} = T_B^{-1} \cdot T_v^{-1} = R_y(\alpha) \cdot R_x(\beta) \cdot R_z(-\gamma)
 \end{equation}
+Die Verschiebung der Teilchenposition muss nach Anwendung der lokalen Berechnungsvorschriften ebenfalls r\"uckg\"angig gemacht werden.
 
 \section{Ausweitung auf inhomogene Magnetfelder}
 
+Nachdem die Flugbahnen bewegter Ladungstr\"ager in \textit{homogenen} Magnetfeldern nun ohne weiteres bestimmt werden k\"onnen, kann
+das Verfahren im n\"achsten Schritt auf \textit{inhomogene} Magnetfelder ausgeweitet werden. Zu diesem Zweck wird das Verfahren
+auf mehrere Iterationen heruntergebrochen. In jedem Iterationsschritt wird das magnetische Feld in der lokalen Umgebung des Teilchens
+durch ein \textit{homogenes} Magnetfeld approximiert. In dieser Approximation wird anschlie{\ss}end die neue Position des
+Ladungstr\"agers bestimmt, ausgehend von dieser neuen Position kann dann wieder ein lokales homogenes Magnetfeld zur N\"aherung
+verwendet werden. Im Rahmen dieser Vorgehensweise wird also eine Diskretisierung des inhomogenen Feldes vorgenommen. Das inhomogene
+Feld wird dabei in lokal homogene Teilfelder zerteilt, auf denen die bekannten Berechnungsvorschriften zur Anwendung kommen.
+
 \subsection{Diskretisierung inhomogener Magnetfelder}
+
+Um nun inhomogene Magnetfelder diskretisieren zu k\"onnen, muss im ersten Schritt die lokale Feldst\"arke \(\vec{B}\) an der Position
+des Teilchens bestimmt werden. Aufbauend auf \(\vec{B}\) und der Teilchengeschwindigkeit \(\vec{v}\) k\"onnen anschlie{\ss}end nach
+der notwendigen Transformation die Erkenntnisse aus \fref{sec:lokales_bezugssystem} angewendet werden. Zur Diskretisierung stellt
+sich nun noch die
+Frage, wie fein bzw. grob das inhomogene Feld unterteilt werden soll. Diese Unterteilung l\"asst sich leicht \"uber die in
+\fref{sec:lokales_bezugssystem} beschriebene Simulationszeit \(t\) steuern. Beschr\"ankt man die Simulation der Flugbahn unter
+Verwendung des lokalen homogenen Modells nur auf einen kurzen Zeitabschnitt \(t\), so ist die Unterteilung fein. Erh\"oht man \(t\),
+so erh\"alt man eine gr\"obere Diskretisierung. Die Zeit \(t\) wird also zum Diskretisierungsparameter des Verfahrens. Je kleiner
+die einzelnen Zeitabschnitte sind, in die die Gesamtsimulation unterteilt wird, desto feiner wird diskretisiert und desto geringer
+sind die Abweichungen von den tats\"achlichen Gr\"o{\ss}en.
 
 \subsubsection{TODO Fehler}
 
 \section{Abbruchkriterien}
+
+Nachdem beschrieben wurde, welche einzelnen Schritte in jeder Iteration durchzuf\"uhren sind, muss nun noch entschieden werden,
+wann die Iteration abgebrochen werden soll. Abh\"angig vom tats\"achlichen Einsatzgebiet des Verfahrens sind hierzu verschiedene
+Abbruchkriterien denkbar.
+Die hier aufgelisteten m\"oglichen Bedingungen zur Beendigung der Iteration werden im Folgenden kurz erl\"autert.
+\begin{itemize}
+\item Schnittpunkt der Flugbahn mit einer Ebene
+\item Zur\"ucklegen einer maximalen Distanz
+\item Wechsel der Detektorgeometrie
+\item Passieren eines bestimmten Ortes
+\end{itemize}
+
+\paragraph{Schnittpunkt der Flugbahn mit einer Ebene}
+Oft k\"onnen bestimmte r\"aumliche Bereiche, in denen die Simulation der Teilchenflugbahn nicht weiter gew\"unscht ist, durch
+Ebenen abgetrennt werden. Durchquert das Teilchen auf seinem Weg eine solche Ebene, die den \"Ubergang in einen derartigen Bereich
+markiert, kann die Simulation somit abgebrochen werden.
+
+\paragraph{Zur\"ucklegen einer maximalen Distanz}
+M\"ochte man die Ausdehnung der Flugbahn \"uber die zur\"uckgelegte Distanz beschr\"anken, so kann dieses Kriterium zur Anwendung
+kommen. Unter Verwendung eines Bezugspunktes kann in jedem Iterationsschritt die aktuelle Distanz zu diesem Punkt berechnet werden,
+\"uberschreitet diese eine gegebene Schwelle, so kann die Iteration abgebrochen werden.
+
+\paragraph{Wechsel der Detektorgeometrie}
+Liegen Informationen \"uber den Aufbau des verwendeten Teilchendetektors vor, so kann mithilfe dieser Bedingung der \"Ubergang in
+irrelevante Bereiche des Detektors erfragt werden. Gelangt das Teilchen auf seinem Weg in solche Detektorabschnitte, so kann die
+Simulation beendet werden.
+
+\paragraph{Passieren eines bestimmten Ortes}
+Unter Umst\"anden ist die Flugbahn des Teilchens nur solange von Interesse, bis dieses einen bestimmten Ort passiert hat. Hier
+kann in jedem Iterationsschritt der aktuelle Abstand zwischen der Teilchenposition und dem gegebenen Ort berechnet werden.
+Erreicht diese Distanz in einem Schritt ihr Minimum und w\"achst im n\"achsten Iterationsschritt wieder an, so wird die
+Simulation abgebrochen.
+\\
+\\
+Je nach Anwendungsfall ist es also unterschiedlich, welche der Bedingungen sinnvollerweise eingesetzt werden. Nat\"urlich sind
+auch diverse Kombinationen und Verkn\"upfungen der verschiedenen Abbruchkriterien denkbar. Beispielsweise k\"onnte man in einem
+speziellen Fall die Simulation beenden wollen, wenn das Teilchen entweder eine bestimmte Ebene schneidet, die beispielsweise eine
+Seitenwand des Detektors markiert, oder wenn es eine maximale Distanz zur\"ucklegt.
+
+Wichtig ist es, an dieser Stelle zu betonen, dass die aufgef\"uhrte Liste bei Weitem keine Anspruch auf Vollst\"andigkeit erhebt,
+das Verfahren l\"asst sich in dieser Hinsicht also beliebig erweitern und konfigurieren.
 
 \section{Der resultierende Algorithmus}
