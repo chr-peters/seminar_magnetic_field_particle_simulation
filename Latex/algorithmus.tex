@@ -300,3 +300,17 @@ Wichtig ist es, an dieser Stelle zu betonen, dass die aufgef\"uhrte Liste bei We
 das Verfahren l\"asst sich in dieser Hinsicht also beliebig erweitern und konfigurieren.
 
 \section{Der resultierende Algorithmus}
+
+Um abschlie{\ss}end alle Schritte zusammenzufassen, welche das Verfahren beschreiben, wird der resultierende Algorithmus im Folgenden
+in Pseudocode dargestellt.
+
+\begin{algorithmic}[1]
+  \STATE Initialisiere Flugbahn als Liste von Teilchenzust\"anden
+  \STATE F\"uge der Flugbahn den initialen Teilchenzustand hinzu
+  \WHILE{Abbruchkriterium nicht erf\"ullt}
+  \STATE Transformieren
+  \STATE Berechnen
+  \STATE Zur\"ucktransformieren
+  \STATE Neuen Zustand der Flugbahn anf\"ugen
+  \ENDWHILE
+\end{algorithmic}
