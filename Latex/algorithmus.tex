@@ -311,15 +311,55 @@ das Verfahren l\"asst sich in dieser Hinsicht also beliebig erweitern und konfig
 \section{Der resultierende Algorithmus}
 
 Um abschlie{\ss}end alle Schritte zusammenzufassen, welche das Verfahren beschreiben, wird der resultierende Algorithmus im Folgenden
-in Pseudocode dargestellt.
+in Pseudocode dargestellt. Das erzielte Ergebnis der Simulation, also die Flugbahn des Ladungstr\"agers, wird hierbei durch eine
+Aneinanderreihung von Teilchenzust\"anden, repr\"asentiert, die sich jeweils auf einen konkreten Zeitpunkt beziehen. Diese
+Information wird in der Variable \textit{track} abgelegt.
 
+\paragraph{Der Algorithmus in Pseudocode}
 \begin{algorithmic}[1]
-  \STATE Initialisiere Flugbahn als Liste von Teilchenzust\"anden
-  \STATE F\"uge der Flugbahn den initialen Teilchenzustand hinzu
-  \WHILE{Abbruchkriterium nicht erf\"ullt}
-  \STATE Transformieren
-  \STATE Berechnen
-  \STATE Zur\"ucktransformieren
-  \STATE Neuen Zustand der Flugbahn anf\"ugen
+  \STATE \COMMENT{Init variables}
+  \STATE track, timeStep, particleState
+  \STATE track.add(particleState)
+  \WHILE{!stoppingCondition}
+  \STATE \COMMENT{Get quantities}
+  \STATE magneticField $\leftarrow$ getMagneticField(particleState.location)
+  \STATE velocity $\leftarrow$ particleState.velocity
+  \STATE oldLocation $\leftarrow$ particleState.location
+  \STATE
+  \STATE \COMMENT{Get angles for transformation}
+  \STATE $\alpha \leftarrow$ getAlpha()
+  \STATE $\beta \leftarrow$ getBeta()
+  \STATE $\gamma \leftarrow$ getGamma()
+  \STATE
+  \STATE \COMMENT{Do the transformation}
+  \STATE magneticField.rotateXY($-\beta$, $-\alpha$)
+  \STATE velocity.rotateXY($-\beta$, $-\alpha$)
+  \STATE velocity.rotateZ($\gamma$)
+  \STATE newLocation $\leftarrow$ \(\left(0, 0, 0\right)\)
+  \STATE
+  \STATE \COMMENT{Calculate the characteristics of the local motion}
+  \STATE $r \leftarrow$ calculateRadius()
+  \STATE $\omega \leftarrow$ calculateAngularVelocity()
+  \STATE $\varphi \leftarrow \omega \cdot$ timeStep
+  \STATE
+  \STATE \COMMENT{Update the position in the local coordinate system}
+  \STATE newLocation.x $\leftarrow r \cdot \sin(\varphi) -r$
+  \STATE newLocation.y $\leftarrow r \cdot \cos(\varphi)$
+  \STATE newLocation.z $\leftarrow$ velocity.z $\cdot$ timeStep
+  \STATE
+  \STATE \COMMENT{Rotate the velocity as it follows the circular motion}
+  \STATE velocity.rotateZ($\varphi$)
+  \STATE
+  \STATE \COMMENT{Transform back into the original system}
+  \STATE particleState.location $\leftarrow$ oldLocation + newLocation
+  \STATE particleState.velocity $\leftarrow$ velocity.rotateZ($-\gamma$).rotateYX($\alpha$, $\beta$)
+  \STATE
+  \STATE \COMMENT{Set a timestamp for each particle state in the track}
+  \STATE particleState.time $\leftarrow$ particleState.time + timeStep
+  \STATE
+  \STATE \COMMENT{Add the new state to the track}
+  \STATE track.add(particleState)
   \ENDWHILE
+  \STATE
+  \STATE \textbf{return} track
 \end{algorithmic}
