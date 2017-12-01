@@ -351,8 +351,10 @@ Information wird in der Variable \textit{track} abgelegt.
   \STATE velocity.rotateZ($\varphi$)
   \STATE
   \STATE \COMMENT{Transform back into the original system}
+  \STATE velocity.rotateZ($-\gamma$)
+  \STATE velocity.rotateYX($\alpha$, $\beta$)
+  \STATE particleState.velocity $\leftarrow$ velocity
   \STATE particleState.location $\leftarrow$ oldLocation + newLocation
-  \STATE particleState.velocity $\leftarrow$ velocity.rotateZ($-\gamma$).rotateYX($\alpha$, $\beta$)
   \STATE
   \STATE \COMMENT{Set a timestamp for each particle state in the track}
   \STATE particleState.time $\leftarrow$ particleState.time + timeStep
