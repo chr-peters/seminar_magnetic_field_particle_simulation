@@ -8,15 +8,113 @@ realisiert, diese kann dann zum konkreten Einsatz bequem eingebunden werden.
 
 \section{Aufbau der Software}
 
-
+Das Gesamtger\"ust des Programms wurde auf dem Paradigma der \textit{objektorientierten Programmierung} aufgebaut. Dies bedeutet,
+dass der Algorithmus
+und die zugrundeliegende Funktionalit\"at in Klassen gekapselt und durch klar definierte Schnittstellen dem Benutzer zug\"anglich
+gemacht wird.
 
 \subsection{Klassendesign}
 
-\subsection{Benutzungsschnittstelle}
+\fref{fig:klassen} gibt einen \"Uberblick \"uber die Struktur der wichtigsten Klassen und Interfaces in Form eines UML-Klassendiagramms.
+Weniger wichtige Beziehungen und Operationen, sowie Klassen, die nur der reinen Repr\"asentation von Daten dienen, wurden bewusst
+aus Gr\"unden der \"Ubersichtlichkeit ausgespart.
+Die konkreten Aufgaben aller Klassen werden im Folgenden n\"aher beschrieben.
+
+\begin{figure}
+  \label{fig:klassen}
+  \centering
+  \begin{tikzpicture}%[show background grid]
+    \begin{class}[text width=15cm]{Propagator}{0,0}
+      \attribute{- fieldDescriptor: FieldDescriptor}
+
+      \operation{+ Propagator( fieldDescriptor: FieldDescriptor )}
+      \operation{+ getTrack( particle: Particle, stoppingCondition: Condition, initialTimeStep: double ): vector<Particle>}
+    \end{class}
+
+    \begin{interface}[text width=7.5cm]{FieldDescriptor}{-4, -4}
+      \operation[0]{getStrength( location: Vector3D ): Vector3D}
+    \end{interface}
+    
+    \begin{interface}[text width=6.5cm]{Condition}{4, -4}
+      \operation[0]{check( track: vector<Particle> ): bool}
+    \end{interface}
+
+    \begin{class}[text width=6cm]{MaximumDistanceCondition}{-4, -7}
+      \implement{Condition}
+      \attribute{- maxDistance: double}
+      \attribute{- referencePoint: Vector3D}
+    \end{class}
+
+    \begin{class}[text width=6cm]{PlaneIntersectionCondition}{4, -7}
+      \implement{Condition}
+      \attribute{- plane: Plane3D}
+    \end{class}
+
+    \draw[umlcd  style  dashed  line ,->] (Propagator) --node[above , sloped ,
+      black]{} (FieldDescriptor);
+
+    \draw[umlcd  style  dashed  line ,->] (Propagator) --node[above , sloped ,
+      black]{} (Condition);
+  \end{tikzpicture}
+  \caption{Die strukturelle Anordnung der wichtigsten Klassen.}
+\end{figure}
+
+\paragraph{Particle}
+
+Enth\"alt Informationen \"uber den Zustand eines Teilchens. Hierzu z\"ahlen die Eigenschaften \textit{Zeit, Energie, Masse, Ladung,
+  Ort} und \textit{Impuls}. Die Geschwindigkeit des Teilchens kann unter Kenntnis der Masse mithilfe des Impulses bestimmt werden.
+
+\paragraph{Vector3D}
+Wird verwendet, um Vektoren im dreidimensionalen Raum darzustellen. Implementiert au{\ss}erdem diverse Vektoroperationen wie
+\textit{Skalarmultiplikation, Vektoraddition} oder das \textit{Skalarprodukt}. Die Rotation eines Vektors, welche in der
+Transformation zur Anwendung kommt, ist ebenfalls innerhalb dieser Klasse realisiert worden.
+
+\paragraph{Plane3D}
+Repr\"asentiert eine Ebene im dreidimensionalen Raum. Hierzu wird der Normalenvektor, sowie ein beliebiger Punkt in der Ebene
+gespeichert.
+
+\paragraph{FieldDescriptor}
+Definiert eine Schnittstelle, welche spezifiziert, wie auf die Informationen eines magnetischen Feldes zugegriffen werden kann.
+Durch Angabe des gew\"unschten Ortes, an welchem die Feldst\"arke bestimmt werden soll, kann diese erfragt werden.
+
+\paragraph{Condition}
+Liefert eine Schnittstelle f\"ur Abbruchbedingungen. Die implementierenden Klassen erhalten in der Methode \textit{check} eine
+Referenz auf die bis dahin vorliegende Flugbahn. Soll das Verfahren abgebrochen werden, wird der Wert \textit{true} zur\"uckgegeben.
+
+\paragraph{MaximumDistanceCondition}
+Konkrete Implementierung der \textit{Condition}-Schnittstelle. Gibt den Wahrheitswert \textit{true} zur\"uck, sobald eine maximale
+Distanz zu einem Referenzpunkt \"uberbr\"uckt wurde.
+
+\paragraph{PlaneIntersectionCondition}
+Diese Implementierung der \textit{Condition}-Schnittstelle gibt den Wert \textit{true} zur\"uck, sobald die Flugbahn eine
+gegebene Ebene schneidet.
+
+\paragraph{Propagator}
+Kapselt den beschriebenen Algorithmus zur Bestimmung der Teilchenflugbahn. Bei der Erzeugung des Propagators muss ein
+\textit{FieldDescriptor} angegeben werden, welcher das magnetische Feld beschreibt, auf welchem die Simulation durchgef\"uhrt werden
+soll. Die Methode \textit{getTrack} enth\"alt im Wesentlichen den bereits vorgestellten Pseudocode aus \fref{sec:algorithmus} und gibt
+die Flugbahn als Aneinanderreihung von Teilchenzust\"anden zur\"uck.
+
+\subsection{M\"oglichkeit der Einbindung}
+
+Um die Software nun einbinden und nutzen zu k\"onnen, muss zun\"achst die Datei \textit{libpropagator.a} dem \textit{Linking-Prozess}
+hinzugef\"ugt werden. Die Bibliotheksdatei erh\"alt man direkt aus der \"Ubersetzung, welche wie in \fref{sec:cmake} beschrieben
+durch den Aufruf der Programme \textit{CMake} und \textit{Make} (Auf UNIX-Betriebssystemen) erfolgt.
+
+Bei der Nutzung des Verfahrens muss zun\"achst das magnetische Feld zugreifbar gemacht werden, auf welchem Simuliert werden soll.
+Hierzu kann bequem das Interface \textit{FieldDescriptor} erweitert werden. Im n\"achsten Schritt l\"asst sich unter Zuhilfenahme
+dieser neu
+erstellten Klasse ein Objekt vom Typ \textit{Propagator} instanziieren. Um die Methode \textit{getTrack} ausf\"uhren zu k\"onnen,
+welche die gew\"unschten Ergebnisse liefert, muss zun\"achst ein Objekt vom Typ \textit{Particle} erzeugt werden. Dieses
+repr\"asentiert den Startzustand des Teilchens in der Simulation. Anschlie{\ss}end muss man eine Abbruchbedingung ausw\"ahlen,
+ist man mit den beiden bestehenden Bedingungen noch nicht zufrieden, l\"asst sich das Interface \textit{Condition} nach beliebigen
+W\"unschen erweitern. Je nach erforderlicher Genauigkeit muss nun der Parameter \textit{initialTimeStep} angepasst werden, schon
+l\"asst sich die Simulation starten.
 
 \section{Verwendete Entwicklerwerkzeuge}
 
 \subsection{CMake}
+\label{sec:cmake}
 
 \subsection{Google Test}
 
