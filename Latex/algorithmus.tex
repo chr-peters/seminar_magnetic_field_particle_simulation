@@ -102,7 +102,8 @@ zu k\"onnen. Der zugeh\"orige Winkel kann wie folgt berechnet werden:
 Um die neue Position des Ladungstr\"agers bezogen auf das globale Koordinatensystem zu erhalten, ist ein Wechsel der Basis erforderlich.
 Zun\"achst m\"ussen die Gr\"o{\ss}en \(\vec{v}\) und \(\vec{B}\) in das lokale Bezugssystem des Ladungstr\"agers \"uberf\"uhrt werden,
 damit in dieser neuen Basis die Zusammenh\"ange aus \fref{sec:lokales_bezugssystem} angewandt werden k\"onnen. Anschlie{\ss}end werden
-die Ergebnisse, also die berechnete neue Position des Ladungstr\"agers, wieder zur\"uck in die urspr\"ungliche Basis transformiert.
+die Ergebnisse, also die berechnete neue Position des Ladungstr\"agers sowie dessen Geschwindigkeit, wieder zur\"uck in die
+urspr\"ungliche Basis transformiert.
 
 \subsubsection{Eulersche Winkel}
 
@@ -144,7 +145,7 @@ Richtung des magnetischen Feldes \(\vec{B}\). Um \(\vec{B}\) nun durch Drehungen
 \(z\)-Achse entspricht, k\"onnen Eulersche Winkel eingesetzt werden. Da die Drehung von \(\vec{B}\) auf die \(z\)-Achse genau der
 entgegengesetzten, also der \textit{inversen} Drehung der \(z\)-Achse auf \(\vec{B}\) entspricht, die Winkel zu dieser inversen
 Drehung allerdings leichter zu bestimmen sind, wird zun\"achst die \(z\)-Achse auf \(\vec{B}\) gedreht. Diese Transformation kann
-dann unter Verwendung von \fref{eq:gesamtdrehung} im Umkehrschluss auf \(\vec{B}\) angewandt werden, um die eigentlich relevante
+dann unter Verwendung von \fref{eq:gesamtdrehung} im Umkehrschluss auf \(\vec{B}\) angewendet werden, um die eigentlich relevante
 Drehmatrix zu erhalten.
 
 Um die \(z\)-Achse, im Folgenden mit der Bezeichnung des Einheitsvektors \(\vec{z}\) beschrieben, auf \(\vec{B}\) zu drehen, sind
@@ -182,7 +183,7 @@ Um nun den Drehwinkel \(\beta\) zu bestimmen, der die Drehung um die \textit{lok
 zun\"achst der Winkel \(\delta\) berechnet, welcher den Winkel zwischen der \(y\)-Achse, im Folgenden mit \(\vec{y}\) bezeichnet,
 und \(\vec{B}\) angibt. Der Winkel \(\beta\) ergibt sich dann anschaulich aus dem Zusammenhang
 \(\beta = -\left(\frac{\pi}{2} - \delta\right) = \delta - \frac{\pi}{2}\). Das \(-\) r\"uhrt daher, dass in diesem Fall entgegen
-der mathematisch positiven Drehrichtung gedreht wird. Auch hier muss der Fall, dass \(\vec{B}_y < 0 \), um der Drehrichtung willen
+der mathematisch positiven Drehrichtung gedreht wird. Auch hier muss der Fall \(\vec{B}_y < 0 \) um der Drehrichtung willen
 gesondert betrachtet werden: Da hier genau entgegengesetzt gedreht werden muss, entf\"allt das \(-\) und es gilt
 \(\beta = \frac{\pi}{2} - \delta\). Zeigt \(\vec{z}\) analog zum vorherigen Fall bereits in Richtung \(\vec{B}\), so entf\"allt auch
 hier die Notwendigkeit der Drehung, und es kann \(\beta = 0\) gesetzt werden. Analog zu den obigen \"Uberlegungen berechnet sich
@@ -211,7 +212,7 @@ aufgrund der umgekehrten Drehrichtung im Falle von \(\vec{p}_{v_x} < 0\) ergibt 
 Unter Verwendung der in \fref{sec:drehwinkel} bestimmten Drehwinkel, kann nun die vollst\"andige Transformationsvorschrift angegeben
 werden, die den \"Ubergang vom \textit{globalen} ins \textit{lokale} Bezugssystem des Ladungstr\"agers beschreibt. Im ersten Schritt
 muss hierzu die Position des Teilchens in den Ursprung verschoben werden. F\"ur die relevanten Vektoren \(\vec{B}\) und \(\vec{v}\)
-hat dies keine Auswirkungen, sie bleiben davon also unbeeinflusst. Im n\"achsten Schritt m\"ussen die beschriebenen Drehungen
+hat dies keine Auswirkungen, sie bleiben davon unbeeinflusst. Im n\"achsten Schritt m\"ussen die beschriebenen Drehungen
 durchgef\"uhrt werden. Da sich \(\alpha\) und \(\beta\) darauf beziehen, wie die \(z\)-Achse auf \(\vec{B}\) gedreht wird, wir aber
 \(\vec{B}\) auf die \(z\)-Achse drehen wollen, erhalten wir aus obigen \"Uberlegungen die \textit{inverse} der gew\"unschten
 Transformation \(T_B\), die sich aus den \textit{Eulerschen Winkeln} \(\alpha\) und \(\beta\) ergibt:
@@ -316,6 +317,7 @@ Aneinanderreihung von Teilchenzust\"anden, repr\"asentiert, die sich jeweils auf
 Information wird in der Variable \textit{track} abgelegt.
 
 \paragraph{Der Algorithmus in Pseudocode}
+\label{sec:algorithmus}
 \begin{algorithmic}[1]
   \STATE \COMMENT{Init variables}
   \STATE track, timeStep, particleState
