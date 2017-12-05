@@ -8,7 +8,7 @@
 
 #include "plane3d.h"
 
-void plot(std::string title, const std::vector<Vector3D> &points){
+void plot(std::string title, const std::vector<Vector3D> &points, bool latex = false){
   // first write the data points to a temporary file so gnuplot will be able to open it
   std::ofstream outFile;
   outFile.open("points.txt");
@@ -27,8 +27,19 @@ void plot(std::string title, const std::vector<Vector3D> &points){
   gnuplotFile.open("plot.plt");
   if (gnuplotFile.is_open()) {
     std::ostringstream gnuplotScript;
-    gnuplotScript << "set title '" << title << "'" << std::endl;
-    gnuplotScript << "set xlabel 'x'" << std::endl << "set ylabel 'y'" << std::endl << "set zlabel 'z'" << std::endl;
+    if (!latex) {
+      gnuplotScript << "set title '" << title << "'" << std::endl;
+    }
+    if (latex) {
+      gnuplotScript << "set terminal latex" << std::endl;
+      gnuplotScript << "set output '../../../Latex/gnuplot/" << title << ".tex'" << std::endl;
+    }
+    gnuplotScript << "set view equal xyz" << std::endl;
+    gnuplotScript << "set view 80,300" << std::endl;
+    //gnuplotScript << "set xlabel 'x'" << std::endl << "set ylabel 'y'" << std::endl << "set zlabel 'z'" << std::endl;
+    gnuplotScript << "set format x ''" << std::endl;
+    gnuplotScript << "set format y ''" << std::endl;
+    gnuplotScript << "set format z ''" << std::endl;
     /* === ANIMATION === */
     /* gnuplotScript << "n=1000" << std::endl; */
     /* gnuplotScript << "do for [i=1:n] {" << std::endl; */

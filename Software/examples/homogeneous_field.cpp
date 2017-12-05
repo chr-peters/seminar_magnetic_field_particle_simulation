@@ -17,6 +17,6 @@ int main () {
   Vector3D fieldStrength(0.1, 0, 0);
   HomogeneousField field(fieldStrength);
   Propagator propagator(field);
-  std::vector<Vector3D> points = propagator.getPoints(particle, MaximumDistanceCondition(1200, location));
-  plot("Homogeneous Field Example", points);
+  std::vector<Vector3D> points = propagator.getPoints(particle, MaximumDistanceCondition(700, location), 3);
+  plot("Homogeneous Field Example", points, true);
 }
