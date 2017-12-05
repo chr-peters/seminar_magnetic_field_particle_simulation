@@ -10,7 +10,7 @@ realisiert, diese kann dann zum konkreten Einsatz bequem eingebunden werden.
 
 Das Gesamtger\"ust des Programms wurde auf dem Paradigma der \textit{objektorientierten Programmierung} aufgebaut. Dies bedeutet,
 dass der Algorithmus
-und die zugrundeliegende Funktionalit\"at in Klassen gekapselt und durch klar definierte Schnittstellen dem Benutzer zug\"anglich
+und die zugrundeliegende Funktionalit\"at in Klassen gekapselt und dem Benutzer durch klar definierte Schnittstellen zug\"anglich
 gemacht wird.
 
 \subsection{Klassendesign}
@@ -99,7 +99,8 @@ die Flugbahn als Aneinanderreihung von Teilchenzust\"anden zur\"uck.
 
 Um die Software nun einbinden und nutzen zu k\"onnen, muss zun\"achst die Datei \textit{libpropagator.a} dem \textit{Linking-Prozess}
 hinzugef\"ugt werden. Die Bibliotheksdatei erh\"alt man direkt aus der \"Ubersetzung, welche wie in \fref{sec:cmake} beschrieben
-durch den Aufruf der Programme \textit{CMake} und \textit{Make} (Auf UNIX-Betriebssystemen) erfolgt.
+durch den Aufruf der Programme \textit{CMake} und \textit{Make} (Auf UNIX-Betriebssystemen) erfolgt. Weiterhin m\"ussen die
+mitgelieferten \textit{Header-Dateien} in einem Ordner liegen, der dem Compiler bekannt ist.
 
 Bei der Nutzung des Verfahrens muss zun\"achst das magnetische Feld zugreifbar gemacht werden, auf welchem Simuliert werden soll.
 Hierzu kann bequem das Interface \textit{FieldDescriptor} erweitert werden. Im n\"achsten Schritt l\"asst sich unter Zuhilfenahme
@@ -113,9 +114,40 @@ l\"asst sich die Simulation starten.
 
 \section{Verwendete Entwicklerwerkzeuge}
 
+Im Zuge der Erstellung der Simulationssoftware wurden einige Werkzeuge eingesetzt, die den Entwicklungsprozess wesentlich
+unterst\"utzt und vereinfacht haben. Diese werden im Folgenden kurz beschrieben.
+
 \subsection{CMake}
 \label{sec:cmake}
 
+Das plattformunabh\"angige Programmierwerkzeug CMake \textit{(cross platform make)} wurde verwendet, um einen reibungslosen
+Build-Prozess zu gew\"ahrleisten. CMake verf\"ugt \"uber die F\"ahigkeit, automatisch Abh\"angigkeiten zwischen den verschiedenen
+Quelldateien zu erkennen. Zusammen mit den weiteren Instruktionen, wie das gegebene Projekt zu \"ubersetzen ist, werden diese
+Abh\"angigkeiten in ein resultierendes \textit{Makefile} \"uberf\"uhrt, welches die Basis f\"ur das unter UNIX verf\"ugbare
+Build-Management-Tool \textit{Make} bildet, mit dessen Hilfe das Programm anschlie{\ss}end reibungslos \"ubersetzt werden kann.
+Arbeitet man auf einer anderen Plattform als UNIX, beispielsweise auf Windows, l\"asst sich mit
+CMake auch ohne Probleme ein \textit{Visual Studio}-Projekt erzeugen. Somit kann das Programm plattformunabh\"angig \"ubersetzt und
+eingesetzt werden.
+
+Ein weiterer Vorteil von CMake besteht darin, einzelne Komponenten der Software unabh\"angig zu verarbeiten. In diesem Fall wurde
+es durch CMake beispielsweise m\"oglich, die Test- und Demonstrationsf\"alle als eigenst\"andige ausf\"uhrbare Programme zu
+\"ubersetzen. Diese Programme betten allesamt die Kernbibliothek \textit{libpropagator.a} ein, was die lose und bequeme Kopplung
+von funktionalem Programmkern und speziellem Anwendungsfall verdeutlicht.
+
 \subsection{Google Test}
+
+Um die Korrektheit der einzelnen Programmteile zu gew\"ahrleisten, mussten zahlreiche Testf\"alle kodiert werden. Hierbei wurde
+nach dem Unittest-Prinzip vorgegangen, welches es erm\"oglicht, Testf\"alle f\"ur unabh\"angige Komponenten unabh\"angig voneinander
+zu betrachten. Auf diese Weise konnte zum Beispiel das Berechnen der Drehwinkel getrennt von der tats\"achlichen Transformation
+untersucht werden. Durch diese feingranulare Spezifikation von Testf\"allen k\"onnen Fehlerf\"alle schnell identifiziert, zugeordnet
+und damit auch schnell behoben werden.
+
+Eine Programmbibliothek, welche diese Art der Arbeitsweise bestens unterst\"utzt, wird von der Firma Google unter dem Namen
+\textit{Google Test}
+oder auch \textit{GTest} bereitgestellt. GTest erm\"oglicht es, eine Reihe einzelner Unit-Tests zu kodieren und diese komfortabel
+hintereinander auszuf\"uhren. Dieses Verhalten erleichtert die Durchf\"uhrung von sogenannten \textit{Regressionstests} ungemein:
+Sobald eine \"Anderung am Programm vorgenommen wurde, k\"onnen im Anschluss alle Testf\"alle bequem durch einen Aufruf von GTest
+ausgef\"uhrt werden. So l\"asst sich leicht erkennen, ob die eingef\"uhrte  \"Anderung die Korrektheit des Programms weiterhin
+gew\"ahrleistet.
 
 \section{Visualisierung und Testl\"aufe}
