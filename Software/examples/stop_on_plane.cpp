@@ -13,11 +13,11 @@
 int main () {
   // initialize the particle
   Vector3D momentum(1, 1, 1);
-  Vector3D location(1, 1, 1);
+  Vector3D location(1, 1, 30);
   Particle particle(0, 1, 1, 0.5, location, momentum);
 
   // initialize the field
-  Vector3D fieldStrength(0.1, 0.1, 0);
+  Vector3D fieldStrength(0.15, 0.15, 0);
   HomogeneousField field(fieldStrength);
 
   // initialize the plane

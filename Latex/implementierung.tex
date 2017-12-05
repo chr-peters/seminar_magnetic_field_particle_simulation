@@ -153,13 +153,45 @@ gew\"ahrleistet.
 
 \section{Visualisierung und Demonstration}
 
+Um die Ergebnisse der Simulationen f\"ur einige Beispiele zu veranschaulichen, wurde das Programm \textit{gnuplot} eingesetzt.
+Die jeweiligen Positionen, die das Teilchen auf seinem Weg durch das Magnetfeld einnimmt, werden durch Punkte repr\"asentiert,
+welche durch Linien miteinander verbunden sind. Eine Auswahl an konkreten Demonstrationen wird im Folgenden vorgestellt.
+
 \subsection{Schraubenlinien im homogenen Magnetfeld}
 
-\begin{figure}
-  \begin{center}
-    \input{gnuplot/homogeneous.tex}
-  \end{center}
+Der einfachste Fall einer Demonstration bel\"auft sich auf ein rein homogenes Magnetfeld. Wie in \fref{fig:homogeneous_plot} zu sehen,
+ergeben sich hier genau die Schraubenlinien, welche bereits zu Anfang der Arbeit beschrieben wurden.
+
+\begin{figure}[h]
+  \label{fig:homogeneous_plot}
+  \centering
+  \includegraphics[width=0.75\textwidth]{gnuplot/homogeneous}
   \caption{Die Schraubenlinien der Teilchenbewegung im homogenen Magnetfeld.}
 \end{figure}
 
+\subsection{Abbruchbedingung bei Schnitt mit Ebene}
+
+Der Fall, dass die Simulation beendet werden soll, sobald das Teilchen eine Ebene durchquert, sei hier dargestellt. Wie in
+\fref{fig:stop_plane} zu sehen ist, vollzieht das Teilchen zun\"achst seine charakteristische Bewegung und trifft anschlie{\ss}end
+auf eine Ebene. Dies l\"ost die bereits beschriebene \textit{PlaneIntersectionCondition} aus, die Simulation wird beendet.
+
+\begin{figure}[h]
+  \label{fig:stop_plane}
+  \centering
+  \includegraphics[width=0.75\textwidth]{gnuplot/stop_plane}
+  \caption{Die Simulation wird beendet, sobald das Teilchen die Ebene durchquert.}
+\end{figure}
+
 \subsection{Abrupter \"Ubergang zwischen zwei homogenen Magnetfeldern}
+
+Um zu demonstrieren, wie sich das Verfahren bei inhomogenen Magnetfeldern verh\"alt, wird in diesem Beispiel der unmittelbare
+\"Ubergang zwischen zwei homogenen Magnetfeldern simuliert. Das zweite Feld zeigt hierbei genau in die entgegengesetzte Richtung
+des ersten Feldes. Wie in \fref{fig:two_fields} zu sehen, f\"uhrt dieser \"Ubergang wie erwartet zu einer Umkehrung der
+Kreisbewegung. Die gleichf\"ormige Komponente der Bewegung bleibt hiervon unbeeinflusst.
+
+\begin{figure}[h]
+  \label{fig:two_fields}
+  \centering
+  \includegraphics[width=0.75\textwidth]{gnuplot/two_fields}
+  \caption{Der abrupte \"Ubergang zwischen den Feldern schl\"agt sich auf die Flugbahn nieder.}
+\end{figure}

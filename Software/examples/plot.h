@@ -28,7 +28,7 @@ void plot(std::string title, const std::vector<Vector3D> &points, bool latex = f
   if (gnuplotFile.is_open()) {
     std::ostringstream gnuplotScript;
     if (!latex) {
-      gnuplotScript << "set title '" << title << "'" << std::endl;
+      //gnuplotScript << "set title '" << title << "'" << std::endl;
     }
     if (latex) {
       gnuplotScript << "set terminal latex" << std::endl;
@@ -92,9 +92,12 @@ void plot(std::string title, const std::vector<Vector3D> &points, const std::vec
   gnuplotFile.open("plot.plt");
   if (gnuplotFile.is_open()) {
     std::ostringstream gnuplotScript;
-    gnuplotScript << "set title '" << title << "'" << std::endl;
-    gnuplotScript << "\n";
-    gnuplotScript << "set xlabel 'x'" << std::endl << "set ylabel 'y'" << std::endl << "set zlabel 'z'" << std::endl;
+    //gnuplotScript << "set title '" << title << "'" << std::endl;
+    gnuplotScript << "set view equal xyz" << std::endl;
+    gnuplotScript << "set format x ''" << std::endl;
+    gnuplotScript << "set format y ''" << std::endl;
+    gnuplotScript << "set format z ''" << std::endl;
+    //gnuplotScript << "set xlabel 'x'" << std::endl << "set ylabel 'y'" << std::endl << "set zlabel 'z'" << std::endl;
 
     // now get the equation that describes the plane
     // special treatment necessary when the z coordinate of the normal vector is zero

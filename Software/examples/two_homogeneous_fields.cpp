@@ -35,12 +35,12 @@ int main () {
   Particle particle(0, 1, 1, 0.5, location, momentum);
 
   // initiate the magnetic field
-  Vector3D fieldStrength1(0.1, 0, 0);
-  Vector3D fieldStrength2(-0.1, 0, 0);
+  Vector3D fieldStrength1(0.075, 0, 0);
+  Vector3D fieldStrength2(-0.075, 0, 0);
   TwoFields field(fieldStrength1, fieldStrength2);
 
   // propagate the particle through the field
   Propagator propagator(field);
-  std::vector<Vector3D> points = propagator.getPoints(particle, MaximumDistanceCondition(4000, location));
+  std::vector<Vector3D> points = propagator.getPoints(particle, MaximumDistanceCondition(3000, location), 2.5);
   plot("Two Homogeneous Fields Example", points);
 }
