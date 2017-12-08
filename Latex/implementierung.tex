@@ -140,7 +140,7 @@ von funktionalem Programmkern und speziellem Anwendungsfall verdeutlicht.
 Um die Korrektheit der einzelnen Programmteile zu gew\"ahrleisten, mussten zahlreiche Testf\"alle kodiert werden. Hierbei wurde
 nach dem Unittest-Prinzip vorgegangen, welches es erm\"oglicht, Testf\"alle f\"ur unabh\"angige Komponenten unabh\"angig voneinander
 zu betrachten. Auf diese Weise konnte zum Beispiel das Berechnen der Drehwinkel getrennt von der tats\"achlichen Transformation
-untersucht werden. Durch diese feingranulare Spezifikation von Testf\"allen k\"onnen Fehlerf\"alle schnell identifiziert, zugeordnet
+untersucht werden. Durch diese feingranulare Spezifikation der Testf\"alle k\"onnen Fehler schnell identifiziert, zugeordnet
 und damit auch schnell behoben werden.
 
 Eine Programmbibliothek, welche diese Art der Arbeitsweise bestens unterst\"utzt, wird von der Firma Google unter dem Namen
@@ -153,14 +153,14 @@ gew\"ahrleistet.
 
 \section{Visualisierung und Demonstration}
 
-Um die Ergebnisse der Simulationen f\"ur einige Beispiele zu veranschaulichen, wurde das Programm \textit{gnuplot} eingesetzt.
+Um die Ergebnisse der Simulationen f\"ur einzelne Beispiele zu veranschaulichen, wurde das Programm \textit{gnuplot} eingesetzt.
 Die jeweiligen Positionen, die das Teilchen auf seinem Weg durch das Magnetfeld einnimmt, werden durch Punkte repr\"asentiert,
 welche durch Linien miteinander verbunden sind. Eine Auswahl an konkreten Demonstrationen wird im Folgenden vorgestellt.
 
 \subsection{Schraubenlinien im homogenen Magnetfeld}
 
 Der einfachste Fall einer Demonstration bel\"auft sich auf ein rein homogenes Magnetfeld. Wie in \fref{fig:homogeneous_plot} zu sehen,
-ergeben sich hier genau die Schraubenlinien, welche bereits zu Anfang der Arbeit beschrieben wurden.
+ergeben sich hier genau die Schraubenlinien, welche bereits zu Anfang dieser Arbeit beschrieben wurden.
 
 \begin{figure}[h]
   \label{fig:homogeneous_plot}
@@ -173,7 +173,8 @@ ergeben sich hier genau die Schraubenlinien, welche bereits zu Anfang der Arbeit
 
 Der Fall, dass die Simulation beendet werden soll, sobald das Teilchen eine Ebene durchquert, sei hier dargestellt. Wie in
 \fref{fig:stop_plane} zu sehen ist, vollzieht das Teilchen zun\"achst seine charakteristische Bewegung und trifft anschlie{\ss}end
-auf eine Ebene. Dies l\"ost die bereits beschriebene \textit{PlaneIntersectionCondition} aus, die Simulation wird beendet.
+auf eine Ebene. Dies l\"ost die bereits beschriebene \textit{PlaneIntersectionCondition} aus, was das Ende der Simulation zur Folge
+hat.
 
 \begin{figure}[h]
   \label{fig:stop_plane}
@@ -193,5 +194,5 @@ Kreisbewegung. Die gleichf\"ormige Komponente der Bewegung bleibt hiervon unbeei
   \label{fig:two_fields}
   \centering
   \includegraphics[width=0.75\textwidth]{gnuplot/two_fields}
-  \caption{Der abrupte \"Ubergang zwischen den Feldern schl\"agt sich auf die Flugbahn nieder.}
+  \caption{Der abrupte \"Ubergang zwischen den Feldern resultiert in einer Umkehrung der Kreisbewegung.}
 \end{figure}
