@@ -1,3 +1,18 @@
 \chapter{Ausblick}
 
-Was noch alles gemacht werden kann.
+Selbstverst\"andlich gilt es noch einige Elemente zu ber\"ucksichtigen, bevor das Verfahren produktiv eingesetzt werden kann.
+In einem echten Versuchsaufbau herrscht beispielsweise kein echtes Vakuum vor. Es kann also passieren, dass das Teilchen auf seinem
+Weg durch das magnetische Feld mit anderen Teilchen zusammentrifft, wodurch Wechselwirkungen entstehen. Diese Ereignisse, welche
+sich im Einzelnen nicht vorhersehen lassen und somit von stochastischer Natur sind, k\"onnnen mit den gegebenen Auftrittswahrscheinlichkeiten in das Verfahren integriert werden. So kann beispielsweise festgestellt werden, wie sich die Teilchenflugbahn im Mittel ver\"andert,
+wenn der Ladungstr\"ager ein anderes Material durchquert oder beispielsweise mit anderen Teilchen wechselwirkt.
+
+Ein weiterer Aspekt, der noch besondere Betrachtung verdient, ist die Behandlung des Approximationsfehlers. Bisher gilt die Faustregel, dass
+der Fehler abnimmt, je feiner das Magnetfeld unterteilt wird. Unter Umst\"anden sind jedoch konkrete Fehlerschranken von Interesse, die bei der
+Simulation eingehalten werden sollen. Ein weiterer Schritt in diese Richtung ist die Konstruktion eines adaptiven Verfahrens auf Basis dieses Algorithmus.
+Hier setzt man sich zum Ziel, die Unterteilung an die \"Anderung des magnetischen Feldes anzupassen. Liegt beispielsweise eine gro{\ss}e \"Anderung des Feldes
+vor, so wird die Diskretisierung sehr feingranular vorgenommen, bei ann\"ahernd homogenen Feldern kann eine gr\"obere Unterteilung verwendet werden.
+
+Gleichwohl liegt mit dem beschriebenen Verfahren eine solide Basis vor, auf der zahlreiche weitere Schritte aufbauen k\"onnen. Interessant
+wird vor allem die Einbindung in bestehende Frameworks sein, die mithilfe dieser Simulationen Experimente der Praxis evaluieren und bewerten.
+Vor allem die Performance spielt hier eine herausragende Rolle, da mit sehr gro{\ss}en Datenmengen gearbeitet wird. In dieser Hinsicht ist der
+Algorithmus auf der Grundlage von C++ jedoch bestens gewappnet, sich auch  mit anderen konkurrierenden Verfahren zu messen.
