@@ -2,7 +2,7 @@
 
 Um nun aufbauend auf diesen Erkenntnissen die allgemeinen Flugbahnen beliebiger Ladungstr\"ager durch beliebige, unter Umst\"anden
 auch \textit{inhomogene}, Magnetfelder simulieren zu k\"onnen, sind mehrere Zwischenschritte notwendig.
-Unter Verwendung der Ergebnisse aus \fref{sec:flugbahnbeschreibung} wird zun\"achst ein Verfahren hergeleitet, welches es erm\"oglicht,
+Unter Verwendung der Ergebnisse aus dem vorigen Abschnitt wird zun\"achst ein Verfahren hergeleitet, welches es erm\"oglicht,
 die Teilchenflugbahnen in \textit{homogenen} Magnetfeldern zu simulieren. Dieses Verfahren kann anschlie{\ss}end auf beliebige
 Magnetfelder ausgeweitet werden, indem man diese abschnittsweise durch homogene Teilfelder approximiert, auf welchen dann das
 hergeleitete Verfahren zur Anwendung kommt.
@@ -13,8 +13,8 @@ Bewegen sich Teilchen im Raum, so kann dies in allen m\"oglichen Orientierungen 
 werden zun\"achst s\"amtliche Schritte im lokalen Bezugssystem des Ladungstr\"agers durchgef\"uhrt. Unabh\"angig von der speziellen
 Orientierung des Teilchens gew\"ahrleistet dies einheitliche Rechenvorschriften, welche im Anschluss durch einfache
 Basistransformationen in das globale Koordinatensystem \"uberf\"uhrt werden k\"onnen. Die gr\"o{\ss}en \(v\) und \(B\), welche
-in \fref{sec:flugbahnbeschreibung} noch als Skalare betrachtet wurden, m\"ussen nun \textit{vektoriell} als \(\vec{v}\) und \(\vec{B}\)
-aufgefasst werden. Es wird sich aber zeigen, dass dies durch geeignete Wahl der lokalen Basisvektoren nur eine untergeordnete Rolle
+im vorigen Abschnitt noch als Skalare betrachtet wurden, m\"ussen nun \textit{vektoriell} als \(\vec{v}\) und \(\vec{B}\)
+aufgefasst werden. Es wird sich aber zeigen, dass dies durch die geeignete Wahl der lokalen Basisvektoren nur eine untergeordnete Rolle
 spielt.
 
 \subsection{Die Flugbahn im lokalen Bezugssystem des Ladungstr\"agers}
@@ -24,8 +24,7 @@ Das lokale Koordinatensystem wird nun so gew\"ahlt, dass sich die Position des T
 Weiterhin zeigen die magnetischen
 Feldlinien genau in Richtung der \textit{z-Achse}, die orthogonale Projektion der Teilchenbewegung auf die xy-Ebene zeigt genau
 entlang der \textit{y-Achse}, wie in \fref{fig:locale_movement} dargelegt. Auf diese Weise lassen sich die beiden Anteile der
-Bewegung, welche in \fref{sec:flugbahnbeschreibung}
-beschrieben wurden, optimal trennen: Der gleichf\"ormige Anteil der Bewegung, welcher auf \(v_\parallel\) zur\"uckzuf\"uhren ist,
+Bewegung optimal trennen: Der gleichf\"ormige Anteil, welcher auf \(v_\parallel\) zur\"uckzuf\"uhren ist,
 verl\"auft genau entlang der \textit{z-Achse}, w\"ahrend \(v_\perp\) eine Kreisbewegung in der \textit{xy-Ebene} verursacht.
 \(v_\parallel\) beeinflusst also nur die \textit{z-Koordinate} des Ladungstr\"agers, w\"ahrend \(v_\perp\) ausschlie{\ss}lich die
 \textit{x}-, sowie die \textit{y-Koordinate} beeinflusst.
@@ -101,7 +100,7 @@ zu k\"onnen. Der zugeh\"orige Winkel kann wie folgt berechnet werden:
 
 Um die neue Position des Ladungstr\"agers bezogen auf das globale Koordinatensystem zu erhalten, ist ein Wechsel der Basis erforderlich.
 Zun\"achst m\"ussen die Gr\"o{\ss}en \(\vec{v}\) und \(\vec{B}\) in das lokale Bezugssystem des Ladungstr\"agers \"uberf\"uhrt werden,
-damit in dieser neuen Basis die Zusammenh\"ange aus \fref{sec:lokales_bezugssystem} angewandt werden k\"onnen. Anschlie{\ss}end werden
+damit in dieser neuen Basis die Zusammenh\"ange aus dem vorigen Abschnitt angewandt werden k\"onnen. Anschlie{\ss}end werden
 die Ergebnisse, also die berechnete neue Position des Ladungstr\"agers sowie dessen Geschwindigkeit, wieder zur\"uck in die
 urspr\"ungliche Basis transformiert.
 
@@ -110,7 +109,7 @@ urspr\"ungliche Basis transformiert.
 Betrachtet man das vorliegende Modell genauer, so f\"allt auf, dass sich alle notwendigen Transformationen auf die
 Hintereinanderausf\"uhrung von Drehungen zur\"uckf\"uhren lassen. Da es sich bei Drehungen um sogenannte orthogonale Transformationen
 handelt, bleiben Abst\"ande und Normen nach der Transformation erhalten. Diese Eigenschaft ist besonders wichtig, da sich sonst
-die Erkenntnisse aus \fref{sec:lokales_bezugssystem} nicht ohne weiteres auf die transformierten Gr\"o{\ss}en anwenden lie{\ss}en.
+die Erkenntnisse aus dem vorigen Abschnitt nicht ohne weiteres auf die transformierten Gr\"o{\ss}en anwenden lie{\ss}en.
 
 Die Hintereinanderausf\"uhrung von Drehungen wird durch sogenannte \textit{Eulersche Winkel} beschrieben. Hierbei handelt es sich
 um die Angabe von Winkeln, die jeweils die Rotation um eine Achse beschreiben. Die Besonderheit hierbei ist, dass nur die erste
@@ -125,7 +124,7 @@ in der gew\"unschten Reihenfolge. M\"ochte man beispielweise zun\"achst um die \
 Gesamtdrehmatrix \(R\) zu \(R = R_x(\alpha) \cdot R_y(\beta) \cdot R_z(\gamma)\), wenn jeweils um die zugeh\"origen Winkel
 \(\alpha\), \(\beta\) und \(\gamma\) gedreht wird, die man in diesem Kontext als \textit{Eulersche Winkel} bezeichnet.
 
-M\"ochte man die Drehung r\"uckg\"angig machen, so stellt sich die Frage nach der \textit{inversen} zu \(R\), also \(R^{-1}\).
+M\"ochte man die Drehung r\"uckg\"angig machen, so stellt sich die Frage nach der \textit{inversen} Matrix zu \(R\), also \(R^{-1}\).
 Da f\"ur die Matrizen der Einzeldrehungen jeweils der Zusammenhang \(R_g(\alpha)^{-1} = R_g(-\alpha)\) gilt, wobei \(g\) eine beliebige
 Achse beschreibt, gilt f\"ur die Inverse der Gesamtdrehmatrix \(R\):
 \begin{equation}
@@ -185,7 +184,8 @@ und \(\vec{B}\) angibt. Der Winkel \(\beta\) ergibt sich dann anschaulich aus de
 \(\beta = -\left(\frac{\pi}{2} - \delta\right) = \delta - \frac{\pi}{2}\). Das \(-\) r\"uhrt daher, dass in diesem Fall entgegen
 der mathematisch positiven Drehrichtung gedreht wird. Auch hier muss der Fall \(\vec{B}_y < 0 \) um der Drehrichtung willen
 gesondert betrachtet werden: Da hier genau entgegengesetzt gedreht werden muss, entf\"allt das \(-\) und es gilt
-\(\beta = \frac{\pi}{2} - \delta\). Zeigt \(\vec{z}\) analog zum vorherigen Fall bereits in Richtung \(\vec{B}\), so entf\"allt auch
+\(\beta = \frac{\pi}{2} - \delta\). Zeigt die gedrehte \(z\)-Achse analog zum vorigen Fall bereits in
+Richtung \(\vec{B}\), so entf\"allt auch
 hier die Notwendigkeit der Drehung, und es kann \(\beta = 0\) gesetzt werden. Analog zu den obigen \"Uberlegungen berechnet sich
 \(\delta\) f\"ur \(\vec{B}_y \geq 0\) zu
 \begin{equation}
@@ -255,7 +255,7 @@ Feld wird dabei in lokal homogene Teilfelder zerteilt, auf denen die bekannten B
 
 Um nun inhomogene Magnetfelder diskretisieren zu k\"onnen, muss im ersten Schritt die lokale Feldst\"arke \(\vec{B}\) an der Position
 des Teilchens bestimmt werden. Aufbauend auf \(\vec{B}\) und der Teilchengeschwindigkeit \(\vec{v}\) k\"onnen anschlie{\ss}end nach
-der notwendigen Transformation die Erkenntnisse aus \fref{sec:lokales_bezugssystem} angewendet werden. Zur Diskretisierung stellt
+der notwendigen Transformation die Berechnungsvorschriften aus dem lokalen Bezugssystem angewendet werden. Zur Diskretisierung stellt
 sich nun noch die
 Frage, wie fein bzw. grob das inhomogene Feld unterteilt werden soll. Diese Unterteilung l\"asst sich leicht \"uber die
 Simulationszeit \(t\) steuern. Beschr\"ankt man die Simulation der Flugbahn unter
@@ -280,15 +280,15 @@ Die hier aufgelisteten m\"oglichen Bedingungen zur Beendigung der Iteration werd
 \paragraph{Schnittpunkt der Flugbahn mit einer Ebene}
 Oft k\"onnen bestimmte r\"aumliche Bereiche, in denen die Simulation der Teilchenflugbahn nicht weiter gew\"unscht ist, durch
 Ebenen abgetrennt werden. Durchquert das Teilchen auf seinem Weg eine solche Ebene, die den \"Ubergang in einen derartigen Bereich
-markiert, kann die Simulation somit abgebrochen werden.
+markiert, so kann die Simulation abgebrochen werden.
 
 \paragraph{Zur\"ucklegen einer maximalen Distanz}
 M\"ochte man die Ausdehnung der Flugbahn \"uber die zur\"uckgelegte Distanz beschr\"anken, so kann dieses Kriterium zur Anwendung
 kommen. Unter Verwendung eines Bezugspunktes kann in jedem Iterationsschritt die aktuelle Distanz zu diesem Punkt berechnet werden,
-\"uberschreitet diese eine gegebene Schwelle, so kann die Iteration abgebrochen werden.
+\"uberschreitet diese eine gegebene Schwelle, f\"uhrt dies gem\"a{\ss} der Bedingung zum Abbruch der Iteration.
 
 \paragraph{Wechsel der Detektorgeometrie}
-Liegen Informationen \"uber den Aufbau des verwendeten Teilchendetektors vor, so kann mithilfe dieser Bedingung der \"Ubergang in
+Liegen Informationen \"uber den Aufbau des verwendeten Teilchendetektors vor, kann mithilfe dieser Bedingung der \"Ubergang in
 irrelevante Bereiche des Detektors erfragt werden. Gelangt das Teilchen auf seinem Weg in solche Detektorabschnitte, so kann die
 Simulation beendet werden.
 
@@ -312,13 +312,13 @@ das Verfahren l\"asst sich in dieser Hinsicht also beliebig erweitern und konfig
 Um abschlie{\ss}end alle Schritte zusammenzufassen, welche das Verfahren beschreiben, wird der resultierende Algorithmus im Folgenden
 in Pseudocode dargestellt. Das erzielte Ergebnis der Simulation, also die Flugbahn des Ladungstr\"agers, wird hierbei durch eine
 Aneinanderreihung von Teilchenzust\"anden, repr\"asentiert, die sich jeweils auf einen konkreten Zeitpunkt beziehen. Diese
-Informationen werden in der Variable \textit{track} abgelegt, welche das Ergebnis der Simulation widerspiegelt.
+Informationen werden in der Variable \textit{track} abgelegt.
 \clearpage
 
 \paragraph{Der Algorithmus in Pseudocode}
 \label{sec:algorithmus}
 \begin{algorithmic}[1]
-  \STATE \COMMENT{Init variables}
+  \STATE \COMMENT{Initialize variables}
   \STATE track, timeStep, particleState
   \STATE track.add(particleState)
   \WHILE{!stoppingCondition}

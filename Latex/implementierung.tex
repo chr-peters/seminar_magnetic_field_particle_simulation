@@ -15,7 +15,8 @@ gemacht wird.
 
 \subsection{Klassendesign}
 
-\fref{fig:klassen} gibt einen \"Uberblick \"uber die Struktur der wichtigsten Klassen und Interfaces in Form eines UML-Klassendiagramms.
+\fref{fig:klassen} gibt einen \"Uberblick \"uber die Struktur der wichtigsten Klassen und Schnittstellen in Form eines
+UML-Klassendiagramms.
 Weniger wichtige Beziehungen und Operationen, sowie Klassen, die nur der reinen Repr\"asentation von Daten dienen, wurden bewusst
 aus Gr\"unden der \"Ubersichtlichkeit ausgespart.
 Die konkreten Aufgaben aller Klassen werden im Folgenden n\"aher beschrieben.
@@ -140,8 +141,8 @@ von funktionalem Programmkern und speziellem Anwendungsfall verdeutlicht.
 Um die Korrektheit der einzelnen Programmteile zu gew\"ahrleisten, mussten zahlreiche Testf\"alle kodiert werden. Hierbei wurde
 nach dem Unittest-Prinzip vorgegangen, welches es erm\"oglicht, Testf\"alle f\"ur unabh\"angige Komponenten unabh\"angig voneinander
 zu betrachten. Auf diese Weise konnte zum Beispiel das Berechnen der Drehwinkel getrennt von der tats\"achlichen Transformation
-untersucht werden. Durch diese feingranulare Spezifikation der Testf\"alle k\"onnen Fehler schnell identifiziert, zugeordnet
-und damit auch schnell behoben werden.
+untersucht werden. Durch diese feingranulare Spezifikation der Testf\"alle wurde es au{\ss}erdem m\"oglich, Fehler schnell zu
+identifizieren, zuzuordnen und zu beheben.
 
 Eine Programmbibliothek, welche diese Art der Arbeitsweise bestens unterst\"utzt, wird von der Firma Google unter dem Namen
 \textit{Google Test}
@@ -188,7 +189,9 @@ hat.
 Um zu demonstrieren, wie sich das Verfahren bei inhomogenen Magnetfeldern verh\"alt, wird in diesem Beispiel der unmittelbare
 \"Ubergang zwischen zwei homogenen Magnetfeldern simuliert. Das zweite Feld zeigt hierbei genau in die entgegengesetzte Richtung
 des ersten Feldes. Wie in \fref{fig:two_fields} zu sehen, f\"uhrt dieser \"Ubergang wie erwartet zu einer Umkehrung der
-Kreisbewegung. Die gleichf\"ormige Komponente der Bewegung bleibt hiervon unbeeinflusst.
+Kreisbewegung. Die gleichf\"ormige Komponente der Bewegung bleibt hiervon unbeeinflusst. Dieser Zusammenhang l\"asst sich leicht
+durch die Anwendung der bereits beschriebenen \textit{Linke-Hand-Regel} nachvollziehen: Durch eine Umkehrung des Zeigefingers
+(die Magnetfeldrichtung) kehrt sich auch der Mittelfinger (die Richtung der Lorentz-Kraft) um.
 
 \begin{figure}[h]
   \label{fig:two_fields}
