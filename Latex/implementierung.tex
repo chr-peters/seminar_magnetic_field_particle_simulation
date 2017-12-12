@@ -1,10 +1,10 @@
 \chapter{Implementierung}
 
 Im Folgenden wird vorgestellt, wie das beschriebene Verfahren, welches wir auf Basis der vorigen
-\"Uberlegungen erhalten haben, konkret in Programmcode umgesetzt wird. Aufgrund des hohen Ma{\ss}es an Kontrolle \"uber den Einsatz der
-Hardware, des damit einhergehenden Geschwindigkeitsvorteils, sowie der erleichterten Anbindung an bestehende Frameworks, wurde zu
-diesem Zweck die Programmiersprache C++ gew\"ahlt. Der funktionale Kern des Programms wird hierbei als \textit{statische Bibliothek}
-realisiert, diese kann dann zum konkreten Einsatz bequem eingebunden werden.
+\"Uberlegungen erhalten haben, konkret in Programmcode umgesetzt wird. Aufgrund des hohen Ma{\ss}es an Kontrolle \"uber das
+Speichermanagement, des damit einhergehenden Geschwindigkeitsvorteils, sowie der erleichterten Anbindung an bestehende Frameworks,
+wurde zu diesem Zweck die Programmiersprache C++ gew\"ahlt. Der funktionale Kern des Programms wird hierbei als
+\textit{statische Bibliothek} realisiert, diese kann dann zum konkreten Einsatz bequem eingebunden werden.
 
 \section{Aufbau der Software}
 
@@ -188,7 +188,9 @@ hat.
 
 Um zu demonstrieren, wie sich das Verfahren bei inhomogenen Magnetfeldern verh\"alt, wird in diesem Beispiel der unmittelbare
 \"Ubergang zwischen zwei homogenen Magnetfeldern simuliert. Das zweite Feld zeigt hierbei genau in die entgegengesetzte Richtung
-des ersten Feldes. Wie in \fref{fig:two_fields} zu sehen, f\"uhrt dieser \"Ubergang wie erwartet zu einer Umkehrung der
+des ersten Feldes. Es sei zu beachten, dass dieser Testfall in der Realit\"at aufgrund des scharfen \"Ubergangs nicht anzutreffen ist,
+er entleiht sich an dieser Stelle jedoch, um das Verhalten der Simulation bei starken Feld\"anderungen zu veranschaulichen.
+Wie in \fref{fig:two_fields} zu sehen ist, f\"uhrt dieser \"Ubergang wie erwartet zu einer Umkehrung der
 Kreisbewegung. Die gleichf\"ormige Komponente der Bewegung bleibt hiervon unbeeinflusst. Dieser Zusammenhang l\"asst sich leicht
 durch die Anwendung der bereits beschriebenen \textit{Linke-Hand-Regel} nachvollziehen: Durch eine Umkehrung des Zeigefingers
 (die Magnetfeldrichtung) kehrt sich auch der Mittelfinger (die Richtung der Lorentz-Kraft) um.
