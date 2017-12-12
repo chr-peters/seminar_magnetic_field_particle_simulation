@@ -41,7 +41,7 @@ verl\"auft genau entlang der \textit{z-Achse}, w\"ahrend \(v_\perp\) eine Kreisb
 Um nun den Mittelpunkt \(M\) des Kreises zu ermitteln, welchem die Bewegung in der \textit{xy-Ebene} folgt, kann zun\"achst der
 Radius \(r\) dieses Kreises bestimmt werden. Gem\"a{\ss} der Konstruktion und unter Ber\"ucksichtigung der \textit{Linke-Hand-Regel}
 liegt \(M\) dann genau auf der \textit{x-Achse} und hat die xy-Koordinaten \(\left(-r| 0 \right)\). Der Radius l\"asst sich nun,
-wie in \fref{sec:flugbahnbeschreibung} mit \fref{eq:radius} beschrieben, ohne weiteres berechnen. Man beachte, dass aufgrund der
+wie mit \fref{eq:radius} beschrieben, ohne weiteres berechnen. Man beachte, dass aufgrund der
 Konstruktion nur die \textit{z-Koordinate} des Magnetfeldes \(\vec{B}\), sowie die \textit{y-Koordinate} der Teilchengeschwindigkeit
 \(\vec{v}\) relevant ist. Weiterhin ist ebenfalls konstruktionsbedingt \(\alpha = \frac{\pi}{2}\), weshalb der Term \(\sin{\alpha}\)
 entf\"allt. Benutzen wir also \(v_\perp = \vec{v}_y\) und \(B = \vec{B}_z\), so erhalten wir folgenden Zusammenhang f\"ur den Radius
@@ -89,7 +89,7 @@ Ladungstr\"agers nach der Zeit \(t\), bezogen auf sein lokales Koordinatensystem
     \vec{v}_z \cdot t
   \end{pmatrix}
 \end{equation}
-Weiterhin geht aus diesem Zusammenhang der Drehwinkel \(\varphi\) unmittelbar hervor, der die Drehung der Richtung von \(v_\perp\)
+Weiterhin geht hieraus auch der Drehwinkel \(\varphi\) unmittelbar hervor, der die Drehung der Richtung von \(v_\perp\)
 beschreibt. Die Drehung von \(v_\perp\) um diesen Winkel muss erfolgen, um im n\"achsten Schritt auf dieser neuen Richtung aufbauen
 zu k\"onnen. Der zugeh\"orige Winkel kann wie folgt berechnet werden:
 \begin{equation}
@@ -197,7 +197,7 @@ und f\"ur \(\vec{B}_y < 0 \) zu
 \end{equation}
 Da die \(z\)-Achse nun durch diese beiden Drehungen erfolgreich auf \(\vec{B}\) gedreht wurde, fehlt im n\"achsten Schritt nur noch
 die Drehung von \(\vec{v}\), so dass die orthogonale Projektion von \(\vec{v}\) auf die \(xy\)-Ebene genau auf der \(y\)-Achse
-liegt. Der Winkel \(\gamma\), welcher zu diesem Zweck ben\"otigt wird, kann leicht bestimmt werden, indem der Winkel zwischen
+liegt. Der Winkel \(\gamma\), welcher zu diesem Zweck ben\"otigt wird, kann leicht ermittelt werden, indem der Winkel zwischen
 der Projektion \(\vec{p}_v\) und \(\vec{y}\) bestimmt wird. Analog zu den obigen Ergebnissen berechnet sich dieser f\"ur
 \(\vec{p}_{v_x} \geq 0\) zu
 \begin{equation}
@@ -209,7 +209,7 @@ aufgrund der umgekehrten Drehrichtung im Falle von \(\vec{p}_{v_x} < 0\) ergibt 
 \end{equation}
 
 \subsubsection{Zusammenfassung der Transformationsschritte}
-Unter Verwendung der in \fref{sec:drehwinkel} bestimmten Drehwinkel, kann nun die vollst\"andige Transformationsvorschrift angegeben
+Unter Verwendung der zuvor bestimmten Drehwinkel, kann nun die vollst\"andige Transformationsvorschrift angegeben
 werden, die den \"Ubergang vom \textit{globalen} ins \textit{lokale} Bezugssystem des Ladungstr\"agers beschreibt. Im ersten Schritt
 muss hierzu die Position des Teilchens in den Ursprung verschoben werden. F\"ur die relevanten Vektoren \(\vec{B}\) und \(\vec{v}\)
 hat dies keine Auswirkungen, sie bleiben davon unbeeinflusst. Im n\"achsten Schritt m\"ussen die beschriebenen Drehungen
@@ -257,8 +257,8 @@ Um nun inhomogene Magnetfelder diskretisieren zu k\"onnen, muss im ersten Schrit
 des Teilchens bestimmt werden. Aufbauend auf \(\vec{B}\) und der Teilchengeschwindigkeit \(\vec{v}\) k\"onnen anschlie{\ss}end nach
 der notwendigen Transformation die Erkenntnisse aus \fref{sec:lokales_bezugssystem} angewendet werden. Zur Diskretisierung stellt
 sich nun noch die
-Frage, wie fein bzw. grob das inhomogene Feld unterteilt werden soll. Diese Unterteilung l\"asst sich leicht \"uber die in
-\fref{sec:lokales_bezugssystem} beschriebene Simulationszeit \(t\) steuern. Beschr\"ankt man die Simulation der Flugbahn unter
+Frage, wie fein bzw. grob das inhomogene Feld unterteilt werden soll. Diese Unterteilung l\"asst sich leicht \"uber die
+Simulationszeit \(t\) steuern. Beschr\"ankt man die Simulation der Flugbahn unter
 Verwendung des lokalen homogenen Modells nur auf einen kurzen Zeitabschnitt \(t\), so ist die Unterteilung fein. Erh\"oht man \(t\),
 so erh\"alt man eine gr\"obere Diskretisierung. Die Zeit \(t\) wird also zum Diskretisierungsparameter des Verfahrens. Je kleiner
 die einzelnen Zeitabschnitte sind, in die die Gesamtsimulation unterteilt wird, desto feiner wird diskretisiert und desto geringer
@@ -304,7 +304,7 @@ auch diverse Kombinationen und Verkn\"upfungen der verschiedenen Abbruchkriterie
 speziellen Fall die Simulation beenden wollen, wenn das Teilchen entweder eine bestimmte Ebene schneidet, die beispielsweise eine
 Seitenwand des Detektors markiert, oder wenn es eine maximale Distanz zur\"ucklegt.
 
-Wichtig ist es, an dieser Stelle zu betonen, dass die aufgef\"uhrte Liste bei Weitem keine Anspruch auf Vollst\"andigkeit erhebt,
+Wichtig ist es, an dieser Stelle zu betonen, dass die aufgef\"uhrte Liste bei Weitem keinen Anspruch auf Vollst\"andigkeit erhebt,
 das Verfahren l\"asst sich in dieser Hinsicht also beliebig erweitern und konfigurieren.
 
 \section{Der resultierende Algorithmus}
@@ -312,7 +312,8 @@ das Verfahren l\"asst sich in dieser Hinsicht also beliebig erweitern und konfig
 Um abschlie{\ss}end alle Schritte zusammenzufassen, welche das Verfahren beschreiben, wird der resultierende Algorithmus im Folgenden
 in Pseudocode dargestellt. Das erzielte Ergebnis der Simulation, also die Flugbahn des Ladungstr\"agers, wird hierbei durch eine
 Aneinanderreihung von Teilchenzust\"anden, repr\"asentiert, die sich jeweils auf einen konkreten Zeitpunkt beziehen. Diese
-Information wird in der Variable \textit{track} abgelegt.
+Informationen werden in der Variable \textit{track} abgelegt, welche das Ergebnis der Simulation widerspiegelt.
+\clearpage
 
 \paragraph{Der Algorithmus in Pseudocode}
 \label{sec:algorithmus}

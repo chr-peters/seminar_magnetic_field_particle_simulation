@@ -56,7 +56,7 @@ Die konkreten Aufgaben aller Klassen werden im Folgenden n\"aher beschrieben.
     \draw[umlcd  style  dashed  line ,->] (Propagator) --node[above , sloped ,
       black]{} (Condition);
   \end{tikzpicture}
-  \caption{Die strukturelle Anordnung der wichtigsten Klassen.}
+  \caption{Die strukturelle Anordnung der wichtigsten Klassen und Schnittstellen.}
 \end{figure}
 
 \paragraph{Particle}
@@ -92,7 +92,7 @@ gegebene Ebene schneidet.
 \paragraph{Propagator}
 Kapselt den beschriebenen Algorithmus zur Bestimmung der Teilchenflugbahn. Bei der Erzeugung des Propagators muss ein
 \textit{FieldDescriptor} angegeben werden, welcher das magnetische Feld beschreibt, auf welchem die Simulation durchgef\"uhrt werden
-soll. Die Methode \textit{getTrack} enth\"alt im Wesentlichen den bereits vorgestellten Pseudocode aus \fref{sec:algorithmus} und gibt
+soll. Die Methode \textit{getTrack} enth\"alt im Wesentlichen den bereits vorgestellten Pseudocode und gibt
 die Flugbahn als Aneinanderreihung von Teilchenzust\"anden zur\"uck.
 
 \subsection{M\"oglichkeit der Einbindung}
@@ -102,7 +102,7 @@ hinzugef\"ugt werden. Die Bibliotheksdatei erh\"alt man direkt aus der \"Uberset
 durch den Aufruf der Programme \textit{CMake} und \textit{Make} (Auf UNIX-Betriebssystemen) erfolgt. Weiterhin m\"ussen die
 mitgelieferten \textit{Header-Dateien} in einem Ordner liegen, der dem Compiler bekannt ist.
 
-Bei der Nutzung des Verfahrens muss zun\"achst das magnetische Feld zugreifbar gemacht werden, auf welchem Simuliert werden soll.
+Bei der Nutzung des Verfahrens muss zun\"achst das magnetische Feld zugreifbar gemacht werden, auf welchem simuliert werden soll.
 Hierzu kann bequem das Interface \textit{FieldDescriptor} erweitert werden. Im n\"achsten Schritt l\"asst sich unter Zuhilfenahme
 dieser neu
 erstellten Klasse ein Objekt vom Typ \textit{Propagator} instanziieren. Um die Methode \textit{getTrack} ausf\"uhren zu k\"onnen,
