@@ -159,7 +159,7 @@ ist.
   \label{fig:winkelfig}
 \end{figure}
 
-Der Winkel \(\alpha\) l\"asst sich bestimmen, indem \(\vec{B}\) zun\"achst orthogonal auf die \(xz\)-Ebene projiziert wird. \(\alpha\)
+\noindent{}Der Winkel \(\alpha\) l\"asst sich bestimmen, indem \(\vec{B}\) zun\"achst orthogonal auf die \(xz\)-Ebene projiziert wird. \(\alpha\)
 entspricht dann genau dem Winkel zwischen dem aus der Projektion resultierenden Vektor \(\vec{p}_B\) und \(\vec{z}\).
 Um \(\vec{B}\) auf die \(xz\)-Ebene zu projizieren, kann einfach \(\vec{B}_y=0\) gesetzt werden. Zur Berechnung des Winkels
 zwischen \(\vec{p}_B\) und \(\vec{z}\)
@@ -205,9 +205,9 @@ und f\"ur \(\vec{B}_y < 0 \) zu
 \end{equation}
 Da die \(z\)-Achse nun durch diese beiden Drehungen erfolgreich auf \(\vec{B}\) gedreht wurde, fehlt im n\"achsten Schritt nur noch
 die Drehung von \(\vec{v}\), so dass die orthogonale Projektion von \(\vec{v}\) auf die \(xy\)-Ebene genau auf der \(y\)-Achse
-liegt. Der Winkel \(\gamma\), welcher zu diesem Zweck ben\"otigt wird, kann leicht ermittelt werden, indem der Winkel zwischen
-der Projektion \(\vec{p}_v\) und \(\vec{y}\) bestimmt wird. Analog zu den obigen Ergebnissen berechnet sich dieser f\"ur
-\(\vec{p}_{v_x} \geq 0\) zu
+liegt. Der Winkel \(\gamma\), welcher zu diesem Zweck ben\"otigt wird, kann leicht ermittelt werden, indem man den Winkel zwischen
+der Projektion \(\vec{p}_v\) und \(\vec{y}\) bestimmt, wie in \fref{fig:winkelv} gezeigt wird.
+Analog zu den obigen Ergebnissen berechnet sich dieser f\"ur \(\vec{p}_{v_x} \geq 0\) zu
 \begin{equation}
   \gamma = \arccos{\left(\frac{\vec{v}_y}{\norm{\vec{p}_v}_2}\right)}
 \end{equation}
@@ -215,6 +215,13 @@ aufgrund der umgekehrten Drehrichtung im Falle von \(\vec{p}_{v_x} < 0\) ergibt 
 \begin{equation}
   \gamma = -\arccos{\left(\frac{\vec{v}_y}{\norm{\vec{p}_v}_2}\right)}
 \end{equation}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.45\textwidth]{geogebra/img/winkel_v_edited}
+  \caption{Darstellung des Winkels \(\gamma\), welcher zur Transformation von \(\vec{v}\) ben\"otigt wird.}
+  \label{fig:winkelv}
+\end{figure}
 
 \subsubsection{Zusammenfassung der Transformationsschritte}
 Unter Verwendung der zuvor bestimmten Drehwinkel, kann nun die vollst\"andige Transformationsvorschrift angegeben
