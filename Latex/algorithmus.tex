@@ -30,11 +30,11 @@ verl\"auft genau entlang der \textit{z-Achse}, w\"ahrend \(v_\perp\) eine Kreisb
 \textit{x}-, sowie die \textit{y-Koordinate} beeinflusst.
 
 \begin{figure}
-  \label{fig:locale_movement}
   \centering
   \includegraphics[width=0.6\textwidth]{geogebra/img/local_movement_edited}
   \caption{Das lokale Koordinatensystem des im Ursprung befindlichen Ladungstr\"agers mit Andeutung der Kreisbahn in der
     \textit{xy}-Ebene.}
+  \label{fig:locale_movement}
 \end{figure}
 
 Um nun den Mittelpunkt \(M\) des Kreises zu ermitteln, welchem die Bewegung in der \textit{xy-Ebene} folgt, kann zun\"achst der
@@ -149,7 +149,15 @@ Drehmatrix zu erhalten.
 
 Um die \(z\)-Achse, im Folgenden mit der Bezeichnung des Einheitsvektors \(\vec{z}\) beschrieben, auf \(\vec{B}\) zu drehen, sind
 zwei Drehungen erforderlich: Zun\"achst muss eine Drehung um die \(y\)-Achse um den Winkel \(\alpha\), anschlie{\ss}end eine Drehung
-um die lokal mitgedrehte \(x\)-Achse um den Winkel \(\beta\) erfolgen.
+um die lokal mitgedrehte \(x\)-Achse um den Winkel \(\beta\) erfolgen, wie es zur Veranschaulichung in \fref{fig:winkelfig} zu sehen
+ist.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.45\textwidth]{geogebra/img/winkel_edited}
+  \caption{Illustration der Winkel \(\alpha\), \(\beta\) und \(\delta\), die zur Drehung der \(z\)-Achse ben\"otigt werden.}
+  \label{fig:winkelfig}
+\end{figure}
 
 Der Winkel \(\alpha\) l\"asst sich bestimmen, indem \(\vec{B}\) zun\"achst orthogonal auf die \(xz\)-Ebene projiziert wird. \(\alpha\)
 entspricht dann genau dem Winkel zwischen dem aus der Projektion resultierenden Vektor \(\vec{p}_B\) und \(\vec{z}\).

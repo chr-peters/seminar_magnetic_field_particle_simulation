@@ -1,8 +1,8 @@
 \chapter{Implementierung}
 
 Im Folgenden wird vorgestellt, wie das beschriebene Verfahren, welches wir auf Basis der vorigen
-\"Uberlegungen erhalten haben, konkret in Programmcode umgesetzt wird. Aufgrund des hohen Ma{\ss}es an Kontrolle \"uber das
-Speichermanagement, des damit einhergehenden Geschwindigkeitsvorteils, sowie der erleichterten Anbindung an bestehende Frameworks,
+\"Uberlegungen erhalten haben, konkret in Programmcode umgesetzt wird. Aufgrund des hohen Ma{\ss}es an Speichereffizienz,
+des damit einhergehenden Geschwindigkeitsvorteils, sowie der erleichterten Anbindung an bestehende Frameworks,
 wurde zu diesem Zweck die Programmiersprache C++ gew\"ahlt. Der funktionale Kern des Programms wird hierbei als
 \textit{statische Bibliothek} realisiert, diese kann dann zum konkreten Einsatz bequem eingebunden werden.
 
@@ -22,7 +22,6 @@ aus Gr\"unden der \"Ubersichtlichkeit ausgespart.
 Die konkreten Aufgaben aller Klassen werden im Folgenden n\"aher beschrieben.
 
 \begin{figure}
-  \label{fig:klassen}
   \centering
   \begin{tikzpicture}%[show background grid]
     \begin{class}[text width=15cm]{Propagator}{0,0}
@@ -58,6 +57,7 @@ Die konkreten Aufgaben aller Klassen werden im Folgenden n\"aher beschrieben.
       black]{} (Condition);
   \end{tikzpicture}
   \caption{Die strukturelle Anordnung der wichtigsten Klassen und Schnittstellen.}
+  \label{fig:klassen}
 \end{figure}
 
 \paragraph{Particle}
@@ -164,10 +164,10 @@ Der einfachste Fall einer Demonstration bel\"auft sich auf ein rein homogenes Ma
 ergeben sich hier genau die Schraubenlinien, welche bereits zu Anfang dieser Arbeit beschrieben wurden.
 
 \begin{figure}[h]
-  \label{fig:homogeneous_plot}
   \centering
   \includegraphics[width=0.75\textwidth]{gnuplot/homogeneous}
   \caption{Die Schraubenlinien der Teilchenbewegung im homogenen Magnetfeld.}
+  \label{fig:homogeneous_plot}
 \end{figure}
 
 \subsection{Abbruchbedingung bei Schnitt mit Ebene}
@@ -178,10 +178,10 @@ auf eine Ebene. Dies l\"ost die bereits beschriebene \textit{PlaneIntersectionCo
 hat.
 
 \begin{figure}[h]
-  \label{fig:stop_plane}
   \centering
   \includegraphics[width=0.75\textwidth]{gnuplot/stop_plane}
   \caption{Die Simulation wird beendet, sobald das Teilchen die Ebene durchquert.}
+  \label{fig:stop_plane}
 \end{figure}
 
 \subsection{Abrupter \"Ubergang zwischen zwei homogenen Magnetfeldern}
@@ -196,8 +196,8 @@ durch die Anwendung der bereits beschriebenen \textit{Linke-Hand-Regel} nachvoll
 (die Magnetfeldrichtung) kehrt sich auch der Mittelfinger (die Richtung der Lorentz-Kraft) um.
 
 \begin{figure}[h]
-  \label{fig:two_fields}
   \centering
   \includegraphics[width=0.75\textwidth]{gnuplot/two_fields}
   \caption{Der abrupte \"Ubergang zwischen den Feldern resultiert in einer Umkehrung der Kreisbewegung.}
+  \label{fig:two_fields}
 \end{figure}
