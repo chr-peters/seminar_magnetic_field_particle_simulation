@@ -1,0 +1,69 @@
+%\chapter{Einleitung}
+\mode*
+\begin{frame}
+  \frametitle{Motivation}
+  \begin{itemize}
+    \item Planung physikalischer Experimente
+    \begin{itemize}
+      \item Welche Ereignisse k\"onnen auftreten?
+      \item Kann der Versuch in der Praxis durchgef\"uhrt werden?
+    \end{itemize}
+    \item Computergest\"utzte Simulation liefert Antworten
+      \begin{itemize}
+        \item Erm\"oglicht das wiederholte Durchspielen eines Versuchs
+      \end{itemize}
+    \item Enormes finanzielles Einsparpotential
+      \begin{itemize}
+        \item Die Zeiten von "`trial and error"' sind vorbei
+        \item Ein Versuch wird nur dann in der Praxis durchgef\"uhrt,
+          wenn er vorher alle Simulationstests bestanden hat
+      \end{itemize}
+    \item Wie entsteht ein solches Verfahren?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivation}
+  \begin{itemize}
+    \item Magnetische Felder werden in vielen gro{\ss}en
+      Versuchsaufbauten eingesetzt (CERN, IKP am FZJ, \ldots)
+    \begin{itemize}
+      \item lenken freie Ladungstr\"ager auf bestimmte Bahnen
+      \item erm\"oglichen R\"uckschl\"usse auf Teilchenbeschaffenheit
+        durch Analyse des Flugverhaltens
+    \end{itemize}
+    \item Wie k\"onnen diese Vorg\"ange simuliert werden?
+  \end{itemize}
+\end{frame}
+
+Bevor ein physikalisches Experiment in der Praxis durchgef\"uhrt werden kann, findet zu Beginn stets eine
+pr\"azise Simulation aller m\"oglichen Ereignisse statt. Egal ob am Teilchenbeschleuniger des CERN oder am
+Institut f\"ur Kernphysik des Forschungszentrums in J\"ulich, f\"ur einen erfolgreichen Versuch
+m\"ussen schon im Voraus alle Eventualit\"aten ber\"ucksichtigt werden. Zu diesem Zweck ist die
+computergest\"utzte Simulation ein m\"achtiges Werkzeug in den H\"anden der Physiker. Durch das
+wiederholte Durchspielen des Versuchs kann \"uber jedes Detail entschieden werden, noch bevor der
+Versuchsaufbau in der Praxis umgesetzt wird.
+
+Das Ziel dieser Arbeit ist es nun, die Entstehung eines
+solchen Verfahrens zu beschreiben, welches ein bestimmtes Element dieses Simulationsprozesses
+herausgreift: Die Simulation der Flugbahnen bewegter Ladungstr\"ager in magnetischen Feldern.
+In vielen gro{\ss}en Versuchsaufbauten werden magnetische
+Felder eingesetzt, um die freien Ladungstr\"ager auf bestimmte Bahnen zu lenken, oder um
+beispielsweise durch das Flugverhalten der Teilchen R\"uckschl\"usse auf deren Beschaffenheit zu
+ziehen. Diese Arbeit legt die Basis f\"ur ein Verfahren, welches die Simulation dieser Vorg\"ange
+erm\"oglicht.
+
+Zu diesem Zweck werden zun\"achst die physikalischen Grundlagen beschrieben, die f\"ur das
+Verst\"andnis dieser Arbeit unerl\"asslich sind. Aufbauend auf diesem Fundament wird im weiteren
+Verlauf die Berechnung der Teilchenflugbahn erl\"autert. Der Weg f\"uhrt hierbei zun\"achst \"uber
+den leicht verst\"andlichen Spezialfall, um dann durch wirkungsvoll gew\"ahlte Basistransformationen immer weiter
+hin zur Verallgemeinerung auf beliebige Konstellationen von Teilchenzust\"anden und Magnetfeldern zu
+gelangen. Abschlie{\ss}end wird nach einem \"Uberblick \"uber das resultierende Verfahren die
+konkrete Implementierung in der Programmiersprache C++ vorgestellt. Diese Gelegenheit wird
+au{\ss}erdem dazu genutzt, um einige Werkzeuge zu demonstrieren, die sich bei der Entwicklung als
+\"au{\ss}erst wertvoll erwiesen haben.
+
+Die Funktionsf\"ahigkeit des Verfahrens wird schlussendlich
+durch die Pr\"asentation einiger Fallbeispiele gezeigt, welche die Ergebnisse der Simulationen in
+konkreten Situationen visuell untermauern.
+\mode<all>

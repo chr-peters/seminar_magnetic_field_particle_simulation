@@ -1,0 +1,38 @@
+\RequirePackage{ifluatex}
+
+\RequirePackage{xcolor}
+\documentclass[ngerman, ignorenonframetext]{beamer}
+\usetheme{ACUAS}
+
+\input{../common/config}
+
+\addbibresource{../common/references.bib}
+
+\title[Algorithmische Bestimmung von Teilchenflugbahnen]{Algorithmische Bestimmung von Teilchenflugbahnen durch inhomogene Magnetfelder}
+
+\author{Christian Peters}
+
+\begin{document}
+\mode<all>
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\include{motivation}
+
+\include{grundlagen}
+
+\include{algorithmus}
+
+\include{implementierung}
+
+\include{ausblick}
+
+\begin{frame}[allowframebreaks]
+  \nocite{*}
+  \printbibliography
+\end{frame}
+
+\mode*
+
+\end{document}
