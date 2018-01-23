@@ -1,34 +1,38 @@
 \mode*
+
 \begin{frame}
   \frametitle{Ausblick}
   \begin{itemize}
-    \item Was
-    \item geht
-    \item ab?
+    \item Das Verfahren ist noch nicht perfekt
+      \begin{itemize}
+        \item echter Versuchsaufbau: kein perfektes Vakuum
+        \item Wechselwirkungen mit anderen Teilchen sind m\"oglich
+        \item Wie verh\"alt sich die Flugbahn bei anderen Materialien?
+          \begin{itemize}
+            \item Ansatz: Berechnung einer "`mittleren Abweichung"' basierend auf stochastischen Zusammenh\"angen
+          \end{itemize}
+      \end{itemize}
+    \item Behandlung des Approximationsfehlers
+      \begin{itemize}
+        \item konkrete Fehlerschranken sind von Interesse
+        \item Ansatz: Konstruktion eines adaptiven Verfahrens
+          \begin{itemize}
+            \item Verfeinerung der Schrittweite bis ein Toleranzkriterium erf\"ullt ist
+            \item starke Feld\"anderung \(\rightarrow\) feinere Unterteilung als bei geringerer \"Anderung
+          \end{itemize}
+      \end{itemize}
+    \item Gleichwohl: Solide Basis
+      \begin{itemize}
+        \item weitere Schritte k\"onnen folgen
+        \item mit C++ gut gewappnet f\"ur die Einbindung in bestehende Simulationsframeworks
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
-%\chapter{Ausblick}
-
-Selbstverst\"andlich gilt es noch einige Elemente zu ber\"ucksichtigen, bevor das Verfahren produktiv eingesetzt werden kann.
-In einem echten Versuchsaufbau herrscht beispielsweise kein echtes Vakuum vor. Es kann also passieren, dass das Teilchen auf seinem
-Weg mit anderen Teilchen zusammentrifft, wodurch Wechselwirkungen entstehen. Diese Ereignisse, welche
-sich nicht vorhersehen lassen, k\"onnen mit den gegebenen Auftrittswahrscheinlichkeiten in das Verfahren integriert werden. So kann beispielsweise festgestellt werden, wie sich die Teilchenflugbahn im Mittel ver\"andert,
-wenn der Ladungstr\"ager ein anderes Material durchquert oder beispielsweise mit anderen Teilchen wechselwirkt.
-
-Ein weiterer Aspekt, der noch besondere Betrachtung verdient, ist die Behandlung des Approximationsfehlers. Bisher gilt die Faustregel, dass
-der Fehler abnimmt, je feiner das Magnetfeld unterteilt wird. Unter Umst\"anden sind jedoch konkrete Fehlerschranken von Interesse, die bei der
-Simulation eingehalten werden sollen. Ein weiterer Schritt in diese Richtung ist die Konstruktion eines adaptiven Verfahrens auf Basis dieses Algorithmus.
-Hier setzt man sich zum Ziel, die Unterteilung an die \"Anderung des magnetischen Feldes anzupassen. Besteht eine
-gro{\ss}e \"Anderung des Feldes, so wird die Diskretisierung sehr feingranular vorgenommen, bei ann\"ahernd homogenen Feldern kann
-eine gr\"obere Unterteilung verwendet werden. Dies lie{\ss}e sich beispielsweise realisieren, indem die Simulation mit
-verschiedenen Zeitschritten durchgef\"uhrt wird. Durch einen Vergleich der Abweichungen mit einem zuvor spezifizierten
-Toleranzkriterium l\"asst sich erkennen, wo eine Verfeinerung erforderlich ist, und wo der gr\"obere Zeitschritt ausreicht.
-So kann an den betreffenden Stellen immer weiter verfeinert werden, bis die Genauigkeit den Anforderungen in jedem Punkt gen\"ugt.
-
-Gleichwohl liegt mit dem beschriebenen Verfahren eine solide Basis vor, auf der zahlreiche weitere Schritte aufbauen k\"onnen. Interessant
-wird vor allem die Einbindung in bestehende Frameworks sein, die mithilfe dieser Simulationen Experimente der Praxis evaluieren und bewerten.
-Vor allem die Performance spielt hier eine herausragende Rolle, da mit sehr gro{\ss}en Datenmengen gearbeitet wird. In dieser Hinsicht ist der
-Algorithmus auf der Grundlage von C++ jedoch bestens gewappnet, sich auch  mit anderen konkurrierenden Verfahren zu messen.
+\begin{frame}
+  \frametitle{Vielen Dank!}
+  \centering
+  \textbf{Vielen Dank f\"ur eure Zeit!}
+\end{frame}
 
 \mode<all>

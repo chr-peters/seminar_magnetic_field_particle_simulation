@@ -70,7 +70,7 @@ TEST(PropagatorTest, TestGetGamma) {
   Vector3D yAxis(0, 1, 0);
   double gamma = getGamma(testVector);
   Vector3D result = yAxis.rotateZ(gamma);
-  ASSERT_NEAR(result.x, 0.7071068, 1e-6);
+  ASSERT_NEAR(result.x, -0.7071068, 1e-6);
   ASSERT_NEAR(result.y, 0.7071068, 1e-6);
   ASSERT_NEAR(result.z, 0, 1e-6);
 }
@@ -80,7 +80,7 @@ TEST(PropagatorTest, TestGetGammaNegative) {
   Vector3D yAxis(0, 1, 0);
   double gamma = getGamma(testVector);
   Vector3D result = yAxis.rotateZ(gamma);
-  ASSERT_NEAR(result.x, -0.7071068, 1e-6);
+  ASSERT_NEAR(result.x, 0.7071068, 1e-6);
   ASSERT_NEAR(result.y, 0.7071068, 1e-6);
   ASSERT_NEAR(result.z, 0, 1e-6);
 }
