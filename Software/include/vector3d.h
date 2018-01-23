@@ -39,7 +39,7 @@ public:
   /**
    * @return The euclidean norm.
    */
-  inline double norm() {
+  inline double norm() const{
     return sqrt(x*x + y*y + z*z);
   }
 
