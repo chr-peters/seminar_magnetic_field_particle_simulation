@@ -1,135 +1,63 @@
 \mode*
 \begin{frame}
   \frametitle{Physikalische Grundlagen}
+  \textbf{Die Lorentz-Kraft}
   \begin{itemize}
-    \item Was
-    \item geht
-    \item ab?
+    \item proportional zur Ladung \(Q\) des Teilchens
+    \item proportional zur Geschwindigkeit \(v\)
+    \item senkrecht zur Bewegungsrichtung
+    \item senkrecht zur Magnetfeldrichtung
+    \item \"andert sich abh\"angig vom Winkel \(\alpha\) zwischen Teilchenbewegung und Magnetfeld
+    \item Wirkungsrichtung? \(\rightarrow\)Linke-Hand-Regel
+  \end{itemize}
+  \vspace*{\fill}
+  \begin{equation*}
+    \label{eq:lorentz_abs}
+    F_L = Q \cdot v \cdot B \cdot \sin{\alpha}
+  \end{equation*}
+  \vspace*{\fill}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Physikalische Grundlagen}
+  \textbf{Die gleichf\"ormige Kreisbewegung}
+  \begin{itemize}
+    \item K\"orper muss durch Zentripetalkraft \(F\) auf Bahn gehalten werden
+    \item \(F\) ist radial zum Mittelpunkt des Kreises gerichtet
+  \end{itemize}
+  \vspace*{\fill}
+  \begin{equation*}
+    \label{eq:zentripetalkraft}
+    F = \frac{mv^2}{r} = m\omega^2r
+  \end{equation*}
+  \vspace*{\fill}
+  \begin{itemize}
+    \item \(m\) ist die Masse des K\"orpers
+    \item \(v\) ist die Bahngeschwindigkeit
+    \item \(\omega\) ist die Winkelgeschwindigkeit
+    \item \(r\) ist der Radius der Kreisbahn
   \end{itemize}
 \end{frame}
 
-%\chapter{Physikalische Grundlagen}
-
-Um ein Fundament zu schaffen, auf welchem diese Arbeit im weiteren Verlauf aufbauen kann, werden
-an dieser Stelle zun\"achst die physikalischen Grundlagen dargelegt, auf denen das sp\"ater beschriebene
-Verfahren basiert. Es werden vornehmlich die Wechselwirkungen von bewegten Teilchen in homogenen
-Magnetfeldern beschrieben, ein \"Uberblick dieser Zusammenh\"ange ist f\"ur das weitere Verst\"andnis
-dieser Arbeit unbedingt notwendig. Die hier dargelegten Ausf\"uhrungen berufen sich im Wesentlichen auf \cite{Vog99}
-\footnote{Vgl. S.354-355 zur Lorentz-Kraft und S.451-453 zu Elektronen in homogenen Magnetfeldern.}.
-
-\section{Die Lorentz-Kraft und ihre Eigenschaften}
-\label{sec:lorentz}
-
-Bewegt sich ein geladenes Teilchen mit der Geschwindigkeit \(v\) durch ein homogenes magnetisches Feld der Feldst\"arke \(B\),
-so erf\"ahrt es die Lorentz-Kraft \(F_L\). Diese Kraft wirkt nur, wenn sich das geladene Teilchen \textit{bewegt}, weiterhin
-ist der Betrag dieser Kraft sowohl proportional zur Ladung \(Q\) des Teilchens, als auch zu seiner Geschwindigkeit.
-Die Lorentz-Kraft wirkt stets sowohl \textit{senkrecht} zur Bewegungsrichtung des Teilchens, als auch \textit{senkrecht} zur Richtung
-des Magnetfeldes. Das Teilchen wird in seiner Flugbahn also
-\textit{seitlich} abgelenkt. Der Betrag der Kraft h\"angt au{\ss}erdem von der Richtung der Teilchenbewegung ab: Verl\"auft diese
-parallel zur Richtung des magnetischen Feldes, so gilt \(F_L = 0\). F\"ur beliebige Winkel \(\alpha\) ver\"andert
-sich der Betrag der Lorentz-Kraft wie \(v \cdot \sin{\alpha}\).
-Fasst man alle diese Eigenschaften zusammen, so erh\"alt man den folgenden Ausdruck:
-\begin{equation}
-  \label{eq:lorentz_abs}
-  F_L = Q \cdot v \cdot B \cdot \sin{\alpha}
-\end{equation}
-Die konkrete Wirkungsrichtung der Lorentz-Kraft l\"asst sich leicht anhand der \textit{Linke-Hand-Regel} ermitteln:
-Zeigt der Daumen der linken Hand in Richtung der Ursache f\"ur die Lorentz-Kraft, also der Bewegung eines geladenen Teilchens,
-und zeigt ferner der Zeigefinger der linken Hand in Richtung des magnetischen Feldes, so ergibt sich die Richtung der
-Lorentz-Kraft aus der Richtung des Mittelfingers der linken Hand. Fasst man die bisherigen Gr\"o{\ss}en als die Vektoren
-\(\vec{v}\), \(\vec{B}\) und \(\vec{F_L}\) auf, so bilden diese ein \textit{Linkssystem}.
-Hierbei einigt man sich auf die sogenannte \textit{physikalische Stromrichtung}: Negative Ladungen (beispielsweise
-freie Elektronen) bewegen sich per Definition vom negativen hin zum positiven Pol einer Spannungsquelle. Im Falle der
-\textit{Linke-Hand-Regel} zeigt der Daumen also immer hin zur \textit{physikalischen Stromrichtung}.
-W\"urde man unter sonst gleichen Bedingungen die Richtung des Stromes andersherum definieren (\textit{technische Stromrichtung}),
-so k\"ame anstelle der linken Hand nun die rechte Hand zur Anwendung. Alle Gr\"o{\ss}en blieben aber unver\"andert, somit bleibt es
-jedem selbst \"uberlassen, welche der Definitionen er bevorzugt.
-
-\section{Bewegte Ladungstr\"ager im homogenen Magnetfeld}
-
-Bewegt sich nun ein Ladungstr\"ager durch ein homogenes Magnetfeld, so stellt sich die Frage, durch welche Eigenschaften sich
-die Flugbahn beschreiben l\"asst, auf welcher sich dieser aufgrund der Lorentz-Kraft bewegt. Beachtet man die Tatsache, dass die
-Lorentz-Kraft stets senkrecht zur Bewegungsrichtung wirkt, so wird man unweigerlich zu der Schlussfolgerung gelangen, dass es sich
-hierbei um eine gleichf\"ormige Kreisbewegung handeln muss. Um dies nachvollziehen zu k\"onnen, werden die allgemeinen Eigenschaften
-einer gleichf\"ormigen Kreisbewegung und die Eigenschaften der Flugbahn des Ladungstr\"agers im Speziellen an dieser Stelle n\"aher
-beschrieben.
-
-\subsection{Eigenschaften der gleichf\"ormigen Kreisbewegung}
-\label{sec:kreisbewegung}
-
-Bewegt sich ein K\"orper der Masse \(m\) mit konstanter Geschwindigkeit \(v\) auf einer kreisf\"ormigen Bahn mit dem Radius \(r\) um den
-Kreismittelpunkt \(M\), so spricht man von einer gleichf\"ormigen Kreisbewegung. Der Begriff "`gleichf\"ormig"' r\"uhrt daher,
-dass sich der Betrag der \textit{Bahngeschwindigkeit} \(v\) des K\"orpers nicht \"andert, wohl aber die Richtung, welche stets
-tangential zur Kreisbahn verl\"auft. W\"ahrend die \textit{Bahngeschwindigkeit} \(v\) angibt, welche Bogenl\"ange des Kreises in einer
-bestimmten Zeit \(t\) durchlaufen wird, so beschreibt die \textit{Winkelgeschwindigkeit} \(\omega\), welcher Winkel (man verwendet hier
-das \textit{Bogenma{\ss}}) in \(t\) zur\"uckgelegt wird.
-
-Damit sich ein K\"orper \"uberhaupt auf einer Kreisbahn bewegen kann, muss auf ihn eine Kraft \(F\) wirken, die ihn auf dieser Bahn
-h\"alt. Diese Kraft, die stets radial zum Mittelpunkte des Kreises hin gerichtet ist, nennt man \textit{Zentripetalkraft}.
-Es gilt der folgende Zusammenhang f\"ur die Gr\"o{\ss}e der Zentripetalkraft:
-\begin{equation}
-\label{eq:zentripetalkraft}
-F = \frac{mv^2}{r} = m\omega^2r
-\end{equation}
-
-\subsection{Beschreibung der Flugbahn}
-\label{sec:flugbahnbeschreibung}
-
-Betrachtet man vor diesem Hintergrund erneut die Lorentz-Kraft \(F_L\), so wird deutlich, dass diese alle Eigenschaften der in
-\fref{sec:kreisbewegung} beschriebenen Zentripetalkraft erf\"ullt. Dies liegt daran, dass die Lorentz-Kraft zum einen den Betrag
-der Teilchengeschwindigkeit nicht \"andert und zum anderen immer senkrecht auf der Bewegungsrichtung des Teilchens steht.
-
-Da sich der Ladungstr\"ager jedoch im Allgemeinen nicht vollst\"andig senkrecht zum Magnetfeld bewegt, gibt es auch eine Komponente
-der Geschwindigkeit des Teilchens (im Folgenden \(v_\parallel\)), welche von der Lorentz-Kraft unbeeinflusst bleibt, da sie parallel zum
-Magnetfeld verl\"auft.
-Um diesem Sachverhalt gerecht zu werden, betrachtet man diese unterschiedlichen Komponenten getrennt voneinander. Dies hat zur
-Folge, dass der Anteil der Bewegungsrichtung, welcher senkrecht zum magnetischen Feld verl\"auft (\(v_\perp\)), eine Kreisbewegung
-beschreibt,
-der Anteil \(v_\parallel\) wird jedoch nicht von der Lorentz-Kraft beeinflusst. 
-Die Summe dieser beiden Bewegungen ergibt
-eine Schraubenlinie, welche durch einen Zylinder mit dem Radius \(r\) begrenzt ist. Die orthogonale Projektion dieser
-Schraubenbewegung vollzieht genau die Kreisbewegung, welche von der Lorentz-Kraft verursacht wird.
-Um die konkreten Eigenschaften der Flugbahn zu quantifizieren, reicht es also aus, beide Teile der Bewegung f\"ur sich genommen
-zu beschreiben. 
-
-Betrachtet man die zum Magnetfeld senkrechte Komponente \(v_\perp\) der Teilchenbewegung, so l\"asst sich die resultierende Kreisbewegung
-eindeutig durch die Angabe des Radius \(r\), sowie durch die Winkelgeschwindigkeit \(\omega\) beschreiben. Den Radius \(r\) erh\"alt
-man aus dem Zusammenhang, dass die Lorentz-Kraft die Rolle der Zentripetalkraft einnimmt. Setzt man \fref{eq:lorentz_abs} unter der
-Bedingung \(\alpha = \frac{\pi}{2}\), die sich aus der Konstruktion ergibt (\(v_\perp\) steht \textit{senkrecht} zum Magnetfeld),
-mit \fref{eq:zentripetalkraft}, der Gleichung der Zentripetalkraft, gleich, so erh\"alt man:
-\begin{equation*}
-  \frac{m \cdot v_\perp^2}{r} = Q \cdot v_\perp \cdot B
-\end{equation*}
-\begin{equation}
-  \label{eq:radius}
-  r = \frac{m \cdot v_\perp}{Q \cdot B}
-\end{equation}
-Ein \"ahnlicher Ansatz wird verwendet, um die Winkelgeschwindigkeit \(\omega\) der Kreisbewegung zu berechnen. Der einzige Unterschied
-ist, dass die Gleichung der Zentripetalkraft verwendet wird, welche die Winkelgeschwindigkeit enth\"alt. Gleichsetzen ergibt den
-folgenden Ausdruck:
-\begin{equation*}
-  m \cdot \omega^2 \cdot r = Q \cdot v_\perp \cdot B
-\end{equation*}
-\begin{equation*}
-  \omega^2 = \frac{Q \cdot v_\perp \cdot B}{m \cdot r}
-\end{equation*}
-Setzen wir nun f\"ur \(r\) das Ergebnis aus \fref{eq:radius} ein, so ergibt sich folgender Zusammenhang f\"ur die
-Winkelgeschwindigkeit der Bewegung:
-\begin{equation*}
-  \omega^2 = \frac{Q^2 \cdot v_\perp \cdot B^2}{m^2 \cdot v_\perp} = \frac{Q^2 \cdot B^2}{m^2}
-\end{equation*}
-\begin{equation}
-  \label{eq:omega}
-  \omega = \frac{Q \cdot B}{m}
-\end{equation}
-
-Um den Bewegungsanteil \(v_\parallel\) zu beschreiben, welcher entlang des Magnetfeldes verl\"auft, gen\"ugen die Gesetze einer
-gleichf\"ormigen Bewegung konstanter Geschwindigkeit. Ist man daran interessiert, welche Strecke \(S\) das Teilchen innerhalb einer
-Zeit \(t\) zur\"ucklegt, so gilt der folgende allgemein bekannte Zusammenhang:
-\begin{equation}
-  \label{eq:s_parallel}
-  S = v_\parallel \cdot t
-\end{equation}
-Addiert man diese beiden unabh\"angigen Teile der Bewegung, so erh\"alt man insgesamt die oben beschriebenen Schraubenlinien, welche
-das Teilchen auf seinem Weg durch das homogene Magnetfeld verfolgt.
+\begin{frame}
+  \frametitle{Physikalische Grundlagen}
+  \textbf{Beschreibung der Flugbahn}
+  \begin{itemize}
+    \item Unterteilung von \(v\) in \(v_\perp\) und \(v_\parallel\)
+    \item \(v_\parallel\) von Lorentz-Kraft unbeeinflusst, daher gleichf\"ormige Bewegung
+      \begin{itemize}
+        \item \(S = v_\parallel \cdot t\)
+      \end{itemize}
+    \item auf \(v_\perp\) wirkt Lorentz-Kraft wie Zentripetalkraft \(\rightarrow\) Kreisbewegung
+    \item durch Gleichsetzen und Umformen ergeben sich folgende Zusammenh\"ange:
+  \end{itemize}
+  \begin{equation*}
+    \label{eq:radius}
+    r = \frac{m \cdot v_\perp}{Q \cdot B}
+  \end{equation*}
+  \begin{equation*}
+    \label{eq:omega}
+    \omega = \frac{Q \cdot B}{m}
+  \end{equation*}
+\end{frame}
 \mode<all>
