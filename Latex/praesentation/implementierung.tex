@@ -2,15 +2,16 @@
 
 \begin{frame}
   \frametitle{Implementierung}
+  \onslide<+->
   \begin{itemize}
-    \item Programmiersprache: C++
+    \item<+-> Programmiersprache: C++
       \begin{itemize}
-        \item Speichereffizienz, Performanz und leichte Anbindung an bestehende Frameworks
+        \item<+-> Speichereffizienz, Performanz und leichte Anbindung an bestehende Frameworks
       \end{itemize}
-    \item Realisierung als statische Bibliothek
+    \item<+-> Realisierung als statische Bibliothek
       \begin{itemize}
-        \item erm\"oglicht bequeme Einbindung in den Linking-Prozess
-        \item es m\"ussen nur Bibliotheksdatei und Header-Dateien zur Verf\"ugung stehen
+        \item<+-> erm\"oglicht bequeme Einbindung in den Linking-Prozess
+        \item<+-> es m\"ussen nur Bibliotheksdatei und Header-Dateien zur Verf\"ugung stehen
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -59,26 +60,27 @@
 
 \begin{frame}
   \frametitle{Implementierung}
+  \onslide<+->
   \textbf{Verwendete Entwicklerwerkzeuge}
   \begin{itemize}
-    \item CMake (Cross-Platform Make)
+    \item<+-> CMake (Cross-Platform Make)
       \begin{itemize}
-        \item erkennt automatisch Abh\"angigkeiten zwischen den Quelldateien
-        \item kann automatisch Makefiles erzeugen (auf Windows auch Visual Studio Projekte)
-        \item erm\"oglicht unabh\"angige Verarbeitung von Softwarekomponenten
+        \item<+-> erkennt automatisch Abh\"angigkeiten zwischen den Quelldateien
+        \item<+-> kann automatisch Makefiles erzeugen (auf Windows auch Visual Studio Projekte)
+        \item<+-> erm\"oglicht unabh\"angige Verarbeitung von Softwarekomponenten
           \begin{itemize}
-            \item getrenntes \"Ubersetzen von Testf\"allen und Demonstrationsf\"allen
+            \item<+-> getrenntes \"Ubersetzen von Testf\"allen und Demonstrationsf\"allen
           \end{itemize}
       \end{itemize}
-    \item Google Test
+    \item<+-> Google Test
       \begin{itemize}
-        \item Unittest-Prinzip
-        \item unabh\"angige Testf\"alle unabh\"angiger Komponenten
-        \item leichte Durchf\"uhrung von Regressionstests
+        \item<+-> Unittest-Prinzip
+        \item<+-> unabh\"angige Testf\"alle unabh\"angiger Komponenten
+        \item<+-> leichte Durchf\"uhrung von Regressionstests
       \end{itemize}
-    \item Gnuplot
+    \item<+-> Gnuplot
       \begin{itemize}
-        \item eingesetzt zur Visualisierung der Demonstrationsf\"alle
+        \item<+-> eingesetzt zur Visualisierung der Demonstrationsf\"alle
       \end{itemize}
   \end{itemize}
 \end{frame}

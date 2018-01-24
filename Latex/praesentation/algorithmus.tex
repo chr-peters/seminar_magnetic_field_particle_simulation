@@ -1,4 +1,5 @@
 \mode*
+
 \begin{frame}
   \frametitle{Aufbau des Verfahrens}
   \begin{figure}
@@ -12,12 +13,14 @@
 
 \begin{frame}
   \frametitle{Aufbau des Verfahrens}
+  \onslide<+->
   \textbf{Die Flugbahn im lokalen Bezugssystem}
   \begin{itemize}
-    \item \(v_\parallel\) verfolgt gleichf\"ormige Bewegung
-    \item \(v_\perp\) verfolgt Kreisbewegung in der \textit{xy}-Ebene
-    \item allgemeine Beschreibung von Kreisbewegungen in der Ebene:
+    \item<+-> \(v_\parallel\) verfolgt gleichf\"ormige Bewegung
+    \item<+-> \(v_\perp\) verfolgt Kreisbewegung in der \textit{xy}-Ebene
+    \item<+-> allgemeine Beschreibung von Kreisbewegungen in der Ebene:
   \end{itemize}
+  \onslide<+->
   \begin{equation*}
     \begin{pmatrix}
       x(t) \\
@@ -30,8 +33,9 @@
     \end{pmatrix}
   \end{equation*}
   \begin{itemize}
-  \item unter Verwendung der bisherigen \"Uberlegungen ergibt sich konkret:
+  \item<+-> unter Verwendung der bisherigen \"Uberlegungen ergibt sich konkret:
   \end{itemize}
+  \onslide<+->
   \begin{equation*}
     \begin{pmatrix}
       x(t) \\
@@ -49,22 +53,23 @@
 
 \begin{frame}
   \frametitle{Aufbau des Verfahrens}
+  \onslide<+->
   \textbf{\"Ubertragung auf das globale Koordinatensystem}
   \begin{enumerate}
-    \item Transformation von \(\vec{v}\) und \(\vec{B}\) in das lokale Bezugssystem des Teilchens (\(\rightarrow\) Basiswechsel)
-    \item Anwendung der hergeleiteten Zusammenh\"ange im lokalen System \(\rightarrow\) neue Teilchenposition und Bewegungsrichtung
-    \item R\"ucktransformation (\(\rightarrow\) Zur\"uck zur alten Basis)
+    \item<+-> Transformation von \(\vec{v}\) und \(\vec{B}\) in das lokale Bezugssystem des Teilchens (\(\rightarrow\) Basiswechsel)
+    \item<+-> Anwendung der hergeleiteten Zusammenh\"ange im lokalen System \(\rightarrow\) neue Teilchenposition und Bewegungsrichtung
+    \item<+-> R\"ucktransformation (\(\rightarrow\) Zur\"uck zur alten Basis)
   \end{enumerate}
   \begin{itemize}
-    \item Hierzu: Verwendung von orthogonalen Transformationen
+    \item<+-> Hierzu: Verwendung von orthogonalen Transformationen
       \begin{itemize}
-        \item Drehung von \(\vec{v}\) und \(\vec{B}\)
+        \item<+-> Drehung von \(\vec{v}\) und \(\vec{B}\)
       \end{itemize}
-    \item Eulersche Winkel
+    \item<+-> Eulersche Winkel
       \begin{itemize}
-        \item erm\"oglichen Drehungen um bereits gedrehte Achsen
+        \item<+-> erm\"oglichen Drehungen um bereits gedrehte Achsen
       \end{itemize}
-    \item Wie lauten die Drehwinkel?
+    \item<+-> Wie lauten die Drehwinkel?
   \end{itemize}
 \end{frame}
 
@@ -90,63 +95,66 @@
 
 \begin{frame}
   \frametitle{Aufbau des Verfahrens}
+  \onslide<+->
   \textbf{Ausweitung auf inhomogene Magnetfelder}
   \begin{itemize}
-    \item lokale Approximation durch ein homogenes Magnetfeld
+    \item<+-> lokale Approximation durch ein homogenes Magnetfeld
       \begin{itemize}
-        \item Diskretisierung des inhomogenen Feldes
+        \item<+-> Diskretisierung des inhomogenen Feldes
       \end{itemize}
-    \item Berechnung der neuen Position in der lokalen Approximation
-    \item Generierung einer neuen Approximation nach jedem Update von Position und Bewegungsrichtung
+    \item<+-> Berechnung der neuen Position in der lokalen Approximation
+    \item<+-> Generierung einer neuen Approximation nach jedem Update von Position und Bewegungsrichtung
       \begin{itemize}
-        \item mehrere Iterationen
+        \item<+-> mehrere Iterationen
       \end{itemize}
-    \item Zeit \(t\) als Diskretisierungsparameter
+    \item<+-> Zeit \(t\) als Diskretisierungsparameter
       \begin{itemize}
-        \item wie "`lange"' soll das lokal homogene Modell verwendet werden?
+        \item<+-> wie "`lange"' soll das lokal homogene Modell verwendet werden?
       \end{itemize}
-    \item je kleiner \(t\), desto genauer das Verfahren
-    \item Wann endet die Simulation?
+    \item<+-> je kleiner \(t\), desto genauer das Verfahren
+    \item<+-> Wann endet die Simulation?
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Aufbau des Verfahrens}
+  \onslide<+->
   \textbf{Abbruchkriterien}
   \begin{itemize}
-    \item Schnittpunkt der Flugbahn mit einer Ebene
+    \item<+-> Schnittpunkt der Flugbahn mit einer Ebene
       \begin{itemize}
-        \item Bestimmte Bereiche im Detektor k\"onnen durch Ebenen abgetrennt werden
+        \item<+-> Bestimmte Bereiche im Detektor k\"onnen durch Ebenen abgetrennt werden
       \end{itemize}
-    \item Zur\"ucklegen einer maximalen Distanz
+    \item<+-> Zur\"ucklegen einer maximalen Distanz
       \begin{itemize}
-        \item Verwendung eines Bezugspunktes zur Berechnung der Entfernung
+        \item<+-> Verwendung eines Bezugspunktes zur Berechnung der Entfernung
       \end{itemize}
-    \item Wechsel der Detektorgeometrie
+    \item<+-> Wechsel der Detektorgeometrie
       \begin{itemize}
-        \item Stop der Iteration bei Eintritt in irrelevante Detektorabschnitte
+        \item<+-> Stop der Iteration bei Eintritt in irrelevante Detektorabschnitte
       \end{itemize}
-    \item Passieren eines bestimmten Ortes
+    \item<+-> Passieren eines bestimmten Ortes
       \begin{itemize}
-        \item Stop der Iteration wenn Distanz zu gegebenem Ort minimal wird
+        \item<+-> Stop der Iteration wenn Distanz zu gegebenem Ort minimal wird
       \end{itemize}
-    \item logische Verkn\"upfungen der Bedingungen
-    \item \ldots
+    \item<+-> logische Verkn\"upfungen der Bedingungen
+    \item<+-> \ldots
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Aufbau des Verfahrens}
+  \onslide<+->
   \textbf{Der resultierende Algorithmus}\\
   \begin{itemize}
-  \item solange Abbruchbedingung nicht erf\"ullt:
+  \item<+-> solange Abbruchbedingung nicht erf\"ullt:
     \begin{enumerate}
-    \item erfrage die Gr\"o{\ss}en \(\vec{B}\), \(\vec{v}\), sowie die aktuelle Position
-    \item berechne die Winkel f\"ur die Basistransformation
-    \item f\"uhre den Basiswechsel durch
-    \item berechne die neue Position in der lokalen Basis und aktualisiere die Richtung von \(\vec{v}\)
-    \item transformiere zur\"uck in die alte Basis
-    \item speichere die neue Teilchenposition
+    \item<+-> erfrage die Gr\"o{\ss}en \(\vec{B}\), \(\vec{v}\), sowie die aktuelle Position
+    \item<+-> berechne die Winkel f\"ur die Basistransformation
+    \item<+-> f\"uhre den Basiswechsel durch
+    \item<+-> berechne die neue Position in der lokalen Basis und aktualisiere die Richtung von \(\vec{v}\)
+    \item<+-> transformiere zur\"uck in die alte Basis
+    \item<+-> speichere die neue Teilchenposition
     \end{enumerate}
   \end{itemize}
 \end{frame}
